@@ -19,6 +19,7 @@ import com.shopping4th.ecommerce.service.CategoryService;
 public class CategoryRest {
 	private CategoryService categoryService;
 
+	@Autowired
 	public CategoryRest(CategoryService categoryService) {
 		super();
 		this.categoryService = categoryService;
@@ -35,7 +36,7 @@ public class CategoryRest {
 		if(!isCategory) {
 			throw new RuntimeException("Category "+ id + " is not found");
 		}
-		
+		System.out.println(categoryService.findById(id));
 		return categoryService.findById(id);
 	}
 	

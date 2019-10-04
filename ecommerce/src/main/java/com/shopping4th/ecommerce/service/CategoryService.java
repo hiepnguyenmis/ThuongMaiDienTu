@@ -27,7 +27,7 @@ public class CategoryService implements ICategoryService {
 
 	@Override
 	public Category findById(int id) {
-		return null;
+		return this.categoryRepo.findById(id).get();
 	}
 
 	@Override

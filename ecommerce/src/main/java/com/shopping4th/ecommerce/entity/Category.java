@@ -1,12 +1,12 @@
 package com.shopping4th.ecommerce.entity;
 
-import java.sql.Date;
-
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,9 +23,14 @@ public class Category {
 	@Column(name = "name", nullable=false, columnDefinition = "nvarchar")
 	private String name;
 	
-	
-	@Column(name ="created_at")
-	private Date createdAt;
+	@Temporal(value = TemporalType.TIMESTAMP)
+    @Column(name = "created_at")
+    private Date createdAt;
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = new Date();
+    }
 	
 	
 	@Column(name ="updated_at")
