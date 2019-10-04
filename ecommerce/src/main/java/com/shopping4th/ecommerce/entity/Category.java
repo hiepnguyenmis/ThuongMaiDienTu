@@ -20,7 +20,7 @@ public class Category {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name = "name", nullable=false)
+	@Column(name = "name", nullable=false, columnDefinition = "nvarchar")
 	private String name;
 	
 	
@@ -32,7 +32,11 @@ public class Category {
 	private Date updatedAt;
 
 	
-	
+	public Category() {
+		super();
+	}
+
+
 	public Category(String name) {
 		super();
 		this.name = name;
