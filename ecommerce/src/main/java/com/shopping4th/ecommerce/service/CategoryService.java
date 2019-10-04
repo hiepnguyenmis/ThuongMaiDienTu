@@ -3,6 +3,8 @@ package com.shopping4th.ecommerce.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +29,17 @@ public class CategoryService implements ICategoryService {
 
 	@Override
 	public Category findById(int id) {
-		return this.categoryRepo.findById(id).get();
+		
+		//return this.categoryRepo.findById(id).get();
+		
+		Optional<Category> category = this.categoryRepo.findById(id);
+		if(category.isPresent()) {
+			return category.get();
+		
+		}
+		else {
+			throw new EntityNotFoundException();
+		}
 	}
 
 	@Override
