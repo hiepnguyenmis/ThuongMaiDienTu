@@ -160,6 +160,7 @@
           <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Charts </a></li>
           <li><a href="forms.html"> <i class="icon-padnote"></i>Forms </a></li>
           <li><a href="products.html"> <i class="icon-padnote"> </i>Sản Phẩm </a></li>
+          <li><a href="Catory_product.html"> <i class="icon-padnote"> </i>Danh Mục Sản Phẩm </a></li>
           <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i
                 class="icon-interface-windows"></i>Example dropdown </a>
             <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
@@ -201,7 +202,7 @@
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
-                      <table class="table">
+                      <table class="table table-responsive table-hover">
                         <thead>
                           <tr>
                             <th>Stt</th>
@@ -214,7 +215,9 @@
                             <th>Khuyến Mãi</th>
                           </tr>
                         </thead>
-                        <tbody>
+
+                        <tbody class="clickable" data-toggle="collapse" data-target="#group-of-rows-1"
+                          aria-expanded="false" aria-controls="group-of-rows-1">
                           <tr class="clickable text-center" onclick="window.location='#'">
                             <th scope="row">1</th>
                             <td>1</td>
@@ -224,6 +227,15 @@
                             <td>Stock</td>
                             <td>DMSP</td>
                             <td>KM</td>
+                          </tr>
+                        </tbody>
+                        <tbody id="group-of-rows-1" class="collapse">
+                          <tr>
+                            <td>Dell</td>
+                            <td>Chi tiet</td>
+                          </tr>
+                          <tr>
+                            <td><img src="../img/avatar-1.jpg"></td>
                           </tr>
                         </tbody>
                       </table>

@@ -159,7 +159,7 @@
           <li class="active"><a href="../pages/tables.html"> <i class="icon-grid"></i>Tables </a></li>
           <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Charts </a></li>
           <li><a href="forms.html"> <i class="icon-padnote"></i>Forms </a></li>
-          <li><a href="products.html"> <i class="icon-padnote"></i>Sản Phẩm </a></li>
+          <li><a href="products.html"> <i class="icon-padnote"> </i>Sản Phẩm </a></li>
           <li><a href="Catory_product.html"> <i class="icon-padnote"> </i>Danh Mục Sản Phẩm </a></li>
           <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i
                 class="icon-interface-windows"></i>Example dropdown </a>
@@ -182,14 +182,14 @@
         <!-- Page Header-->
         <header class="page-header">
           <div class="container-fluid">
-            <h2 class="no-margin-bottom">Tables</h2>
+            <h2 class="no-margin-bottom">Danh Mục Sản Phẩm</h2>
           </div>
         </header>
         <!-- Breadcrumb-->
         <div class="breadcrumb-holder container-fluid">
           <ul class="breadcrumb">
             <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
-            <li class="breadcrumb-item active">Tables</li>
+            <li class="breadcrumb-item active">Danh Mục Sản Phẩm</li>
           </ul>
         </div>
         <section class="tables">
@@ -198,73 +198,25 @@
               <div class="col-lg-12">
                 <div class="card">
                   <div class="card-header d-flex align-items-center">
-                    <h3 class="h4">Basic Table</h3>
+                    <h3 class="h4">Bảng Danh Mục Sản Phẩm</h3>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
-                      <table class="table">
+                      <table class="table table-responsive table-hover">
                         <thead>
                           <tr>
-                            <th>#</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Username</th>
+                            <th>Stt</th>
+                            <th>Mã Danh Mục</th>
+                            <th>Tên Danh Mục</th>
                           </tr>
                         </thead>
-                        <tbody>
-                          <tr>
+
+                        <tbody class="clickable" data-toggle="collapse" data-target="#group-of-rows-1"
+                          aria-expanded="false" aria-controls="group-of-rows-1">
+                          <tr class="clickable text-center" onclick="window.location='#'">
                             <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
+                            <td>1</td>
+                            <td>Dell</td>
                           </tr>
                         </tbody>
                       </table>
@@ -292,6 +244,7 @@
       </div>
     </div>
   </div>
+
   <!-- JavaScript files-->
   <script src="../vendor/jquery/jquery.min.js"></script>
   <script src="../vendor/popper.js/umd/popper.min.js"> </script>
