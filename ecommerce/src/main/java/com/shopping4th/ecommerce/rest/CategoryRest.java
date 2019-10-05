@@ -2,11 +2,15 @@ package com.shopping4th.ecommerce.rest;
 
 import java.util.List;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,13 +29,13 @@ public class CategoryRest {
 		this.categoryService = categoryService;
 	}
 	
-	@GetMapping("")
-	public List<Category> getAll(){
+	@GetMapping
+	public List<Category> getAllCategory(){
 		return this.categoryService.findAll();
 	}
 	
 	@GetMapping("/{id}")
-	public Category getById(@PathVariable int id) {
+	public Category getCategory(@PathVariable int id) {
 		boolean isCategory = this.categoryService.existsById(id);
 		if(!isCategory) {
 			throw new RuntimeException("Category "+ id + " is not found");
@@ -41,7 +45,7 @@ public class CategoryRest {
 	}
 	
 	@DeleteMapping("/{id}")
-	public String delete(@PathVariable int id) {
+	public String deleteCategory(@PathVariable int id) {
 		boolean isCategory = this.categoryService.existsById(id);
 		if(!isCategory) {
 			throw new RuntimeException("Category "+ id + " is not found");
@@ -49,6 +53,16 @@ public class CategoryRest {
 		
 		categoryService.deletedById(id);
 		return "Deleted category id "+ id;
+	}
+	
+	@PutMapping("/{id}")
+	public Category updateCategory(@PathVariable int id, @RequestBody Category category) {
+		if(!categoryService.existsById(id)) {
+			throw new EntityNotFoundException("Category "+ id + " is not found");
+		}
+		
+		categoryService.save(category);
+		return this.categoryService.findById(id);
 	}
 	
 	
