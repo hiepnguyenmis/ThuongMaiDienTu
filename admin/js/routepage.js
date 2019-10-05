@@ -6,5 +6,8 @@ app.config(function($routeProvider) {
   })
   .when("/table", {
     templateUrl : "pages/tables.html"
+  })
+  .when("/profile",{
+    templateUrl:"pages/profile.html"
   });
 });
