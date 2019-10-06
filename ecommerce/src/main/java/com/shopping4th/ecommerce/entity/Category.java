@@ -44,7 +44,7 @@ public class Category {
 
 
 	public Category(String name) {
-		super();
+		
 		this.name = name;
 	}
 
@@ -74,7 +74,7 @@ public class Category {
 	}
 
 
-	public void setCreatedAt(Timestamp createdAt) {
+	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
 
