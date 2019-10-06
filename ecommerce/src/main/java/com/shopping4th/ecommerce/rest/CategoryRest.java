@@ -65,6 +65,7 @@ public class CategoryRest {
 			throw new EntityNotFoundException("Category "+ id + " is not found");
 		}
 		
+		category.setId(id);
 		categoryService.save(category);
 		return this.categoryService.findById(id);
 	}
