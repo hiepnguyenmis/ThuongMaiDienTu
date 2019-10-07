@@ -25,23 +25,20 @@
                   </tr>
                 </thead>
                 <tbody>
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Dropdown button
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="https://www.facebook.com/">Action</a>
-                          <a class="dropdown-item" href="#" >Another action</a>
-                          <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                      </div>
                   <tr class="clickable" onclick="window.location='#'" ng-repeat="category in categories">
                     <th scope="row">3</th>
                     <td>{{category.name}}</td>
                     <td>{{category.createdAt}}</td>
                     <td>{{category.updatedAt}}</td>
                     <td>
-                      
+                      <div class="btn-group" uib-dropdown keyboard-nav>
+                        <button id="simple-btn-keyboard-nav" class="btn btn-primary" uib-dropdown-toggle>
+                            Dropdown with keyboard navigation <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="simple-btn-keyboard-nav">
+                            
+                        </ul>
+                    </div>
                     </td>
                   </tr>
                 </tbody>
