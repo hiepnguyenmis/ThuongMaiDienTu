@@ -26,14 +26,14 @@
                 </thead>
                 <tbody>
                     
-                  <tr class="clickable" ng-repeat="category in categories">
-                    <th scope="row">{{$index+1}}</th>
+                  <tr class="clickable" onclick="window.location='#'" ng-repeat="category in categories | limitTo:1">
+                    <th scope="row">3</th>
                     <td>{{category.name}}</td>
                     <td>{{category.createdAt}}</td>
                     <td>{{category.updatedAt}}</td>
                     <td>
                       <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-secondary dropdown-toggle"   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Dropdown button
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">

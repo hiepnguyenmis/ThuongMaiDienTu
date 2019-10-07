@@ -26,8 +26,8 @@
                 </thead>
                 <tbody>
                     
-                  <tr class="clickable" ng-repeat="category in categories">
-                    <th scope="row">{{$index+1}}</th>
+                  <tr class="clickable" onclick="window.location='#'" ng-repeat="category in categories | limitTo:1">
+                    <th scope="row">3</th>
                     <td>{{category.name}}</td>
                     <td>{{category.createdAt}}</td>
                     <td>{{category.updatedAt}}</td>

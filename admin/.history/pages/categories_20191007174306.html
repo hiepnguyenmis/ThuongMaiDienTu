@@ -25,23 +25,22 @@
                   </tr>
                 </thead>
                 <tbody>
-                    
-                  <tr class="clickable" ng-repeat="category in categories">
-                    <th scope="row">{{$index+1}}</th>
-                    <td>{{category.name}}</td>
-                    <td>{{category.createdAt}}</td>
-                    <td>{{category.updatedAt}}</td>
-                    <td>
-                      <div class="dropdown">
+                    <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Dropdown button
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                           <a class="dropdown-item" href="https://www.facebook.com/">Action</a>
-                          <div class="dropdown-item">adddddc</div>
+                          <div>adddddc</div>
                           <a class="dropdown-item" href="#">Something else here</a>
                         </div>
                       </div>
+                  <tr class="clickable" onclick="window.location='#'" ng-repeat="category in categories">
+                    <th scope="row">3</th>
+                    <td>{{category.name}}</td>
+                    <td>{{category.createdAt}}</td>
+                    <td>{{category.updatedAt}}</td>
+                    <td>
                       
                     </td>
                   </tr>
