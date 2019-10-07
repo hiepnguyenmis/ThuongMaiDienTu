@@ -35,5 +35,5 @@ Chạy thư mục **admin** với localhost (có thể sử dụng tính năng  
 ----
 
 ## Danh sách API (update liên tục)
-* [Xem tại đây](https://docs.google.com/spreadsheets/d/1rB3IyRcgI-OpsfN2i__oDMM8Q5hKQfJoNaJpaoVl0cg/edit#gid=0)
+* [Xem tại đây](https://documenter.getpostman.com/view/8563174/SVtSW9tH)
 
