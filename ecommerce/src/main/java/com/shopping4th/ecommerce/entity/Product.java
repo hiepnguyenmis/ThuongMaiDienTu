@@ -1,6 +1,7 @@
 package com.shopping4th.ecommerce.entity;
 
-import java.sql.Date;
+import java.util.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name = "products")
@@ -40,13 +43,23 @@ public class Product {
 	private int stock;
 	
 	
-	@Column(name = "created_at")
-	private Date createAt;
+	@Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created_at", updatable = false)
+    private Date createdAt;
+    
+	
+	@UpdateTimestamp
+    @Column(name = "updated_at")
+    private Date updatedAt;
 	
 	@ManyToOne(fetch = FetchType.EAGER,
             cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-	@JoinColumn(name="category_id")
+	@JoinColumn(name="category_id", nullable = false)
 	private Category category;
+
+	public Product() {
+		super();
+	}
 
 	public Product(String productCode, String name, String price, String thumbnail, int stock, Category category) {
 		super();
@@ -106,12 +119,23 @@ public class Product {
 		this.stock = stock;
 	}
 
-	public Date getCreateAt() {
-		return createAt;
+	public Date getCreatedAt() {
+		return createdAt;
 	}
 
-	public void setCreateAt(Date createAt) {
-		this.createAt = createAt;
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+
+	public void setUpdatedAt(Timestamp updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 
 	public Category getCategory() {
@@ -121,6 +145,8 @@ public class Product {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+
+	
 	
 	
 }

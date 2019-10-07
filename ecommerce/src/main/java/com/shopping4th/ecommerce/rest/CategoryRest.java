@@ -25,13 +25,14 @@ import com.shopping4th.ecommerce.service.CategoryService;
 @RequestMapping("/api/categories")
 @CrossOrigin
 public class CategoryRest {
+	
 	private CategoryService categoryService;
 
-	@Autowired
-	public CategoryRest(CategoryService categoryService) {
-		super();
-		this.categoryService = categoryService;
-	}
+//	@Autowired
+//	public CategoryRest(CategoryService categoryService) {
+//		super();
+//		this.categoryService = categoryService;
+//	}
 	
 	@GetMapping
 	public List<Category> getAllCategory(){
