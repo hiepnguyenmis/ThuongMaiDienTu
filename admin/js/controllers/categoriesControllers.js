@@ -1,5 +1,5 @@
 (function(module){
-    module.controller('categories',function($scope,$http){
+    module.controller('categoriesControllers',function($scope,$http){
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
         $http({

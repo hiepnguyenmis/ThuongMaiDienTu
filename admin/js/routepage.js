@@ -9,6 +9,11 @@ app.config(function($stateProvider, $urlRouterProvider){
   .state('category', {
     url: '/categories',
     templateUrl: 'pages/categories.html',
-    controller: 'categories'
+    controller: 'categoriesControllers'
+  })
+  .state('login',{
+    url:'/login',
+    templateUrl:'pages/login.html',
+    controller:'loginContronller'
   });
 });

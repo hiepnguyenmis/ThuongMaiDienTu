@@ -18,11 +18,9 @@
 ```
 3. Quay lại thư mục **src/main/java** -> **com.shopping4th.ecommerce**. *Right click* vào **EcommerceApplication.java** chọn *Run as* -> *Java Application*.
 
-> Lưu ý: Cài đặt môi trường NodeJs trước khi khởi động ứng dụng
-
 ----
 ## Chạy client
-Chạy thư mục **admin** với localhost (có thể sử dụng tính năng  [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) trong [VS Code] (https://code.visualstudio.com/).
+Chạy thư mục **admin** với localhost (có thể sử dụng tính năng  [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) trong [VS Code](https://code.visualstudio.com/).
 
 
 
@@ -37,5 +35,5 @@ Chạy thư mục **admin** với localhost (có thể sử dụng tính năng  
 ----
 
 ## Danh sách API (update liên tục)
-* [Xem tại đây] (https://docs.google.com/spreadsheets/d/1rB3IyRcgI-OpsfN2i__oDMM8Q5hKQfJoNaJpaoVl0cg/edit#gid=0)
+* [Xem tại đây](https://documenter.getpostman.com/view/8563174/SVtSW9tH)
 
