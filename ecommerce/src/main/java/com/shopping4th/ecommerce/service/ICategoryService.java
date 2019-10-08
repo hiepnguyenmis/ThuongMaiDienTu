@@ -8,13 +8,13 @@ public interface ICategoryService {
 
 	public List<Category> findAll();
 	
-	public Category findById(int id);
+	public Category findById(Long id);
 	
 	public void save(Category category);
 	
-	public void deletedById(int id);
+	public void deletedById(Long id);
 	
-	public boolean existsById(int id);
+	public boolean existsById(Long id);
 	
 	
 }
