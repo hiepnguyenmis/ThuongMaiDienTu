@@ -6,6 +6,9 @@ import java.util.Optional;
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.shopping4th.ecommerce.dao.IProductRepo;
@@ -55,6 +58,18 @@ public class ProductService implements IProductService {
 	public void deletedById(Long id) {
 		this.productRepo.deleteById(id);
 	}
+
+	@Override
+	public List<Product> findAll(Pageable pageable) {
+		Page<Product> products=this.productRepo.findAll(pageable);
+		return products.getContent();
+	}
+
+//	@Override
+//	public Page<Product> findAllByPage(Pageable pageable) {
+//		return this.productRepo.findAll(pageable);
+//	}
  
+	
 	
 }
