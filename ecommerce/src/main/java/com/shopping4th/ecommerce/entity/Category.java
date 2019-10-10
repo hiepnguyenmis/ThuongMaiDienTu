@@ -1,5 +1,6 @@
 package com.shopping4th.ecommerce.entity;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
 import javax.persistence.Column;
@@ -18,12 +19,13 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name = "categories")
-public class Category {
+public class Category implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name ="id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	
 	@Column(name = "name", nullable=false, columnDefinition = "nvarchar")
 	private String name;
@@ -49,12 +51,12 @@ public class Category {
 	}
 
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

@@ -1,6 +1,7 @@
 package com.shopping4th.ecommerce.entity;
 
 import java.util.Date;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 import javax.persistence.CascadeType;
@@ -16,16 +17,22 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.UpdateTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "products")
-public class Product {
-	
+public class Product implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name= "id")
-	private int id;
+	private Long id;
 	
 	@Column(name="product_code")
 	private String productCode;
@@ -52,9 +59,15 @@ public class Product {
     @Column(name = "updated_at")
     private Date updatedAt;
 	
-	@ManyToOne(fetch = FetchType.EAGER,
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+	
+	@ManyToOne(
+            fetch = FetchType.EAGER,
+            cascade = { CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH}
+    )
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	//@JsonIgnore
 	@JoinColumn(name="category_id", nullable = false)
+	
 	private Category category;
 
 	public Product() {
@@ -71,11 +84,11 @@ public class Product {
 		this.category = category;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

@@ -24,6 +24,7 @@
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   </head>
   <body>
     <div class="page login-page">
@@ -53,7 +54,9 @@
                     <div class="form-group">
                       <input id="login-password" type="password" name="loginPassword" required data-msg="Please enter your password" class="input-material">
                       <label for="login-password" class="label-material">Password</label>
-                    </div><a id="login" href="index.html" class="btn btn-primary">Login</a>
+                    </div>
+                    <div class="g-recaptcha mb-3" data-sitekey="6LdMebwUAAAAALqgz2YUV1RJGUO4ZBoW8n-DKNjA"></div> 
+                    <a id="login" href="index.html" class="btn btn-primary">Login</a>
                     <!-- This should be submit button but I replaced it with <a> for demo purposes-->
                   </form><a href="#" class="forgot-pass">Forgot Password?</a><br><small>Do not have an account? </small><a href="register.html" class="signup">Signup</a>
                 </div>

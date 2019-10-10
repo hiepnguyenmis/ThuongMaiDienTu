@@ -40,17 +40,17 @@ public class CategoryRest {
 	}
 	
 	@GetMapping("/{id}")
-	public Category getCategory(@PathVariable int id) {
+	public Category getCategory(@PathVariable Long id) {
 		boolean isCategory = this.categoryService.existsById(id);
 		if(!isCategory) {
 			throw new RuntimeException("Category "+ id + " is not found");
 		}
-		System.out.println(categoryService.findById(id));
+		
 		return categoryService.findById(id);
 	}
 	
 	@DeleteMapping("/{id}")
-	public String deleteCategory(@PathVariable int id) {
+	public String deleteCategory(@PathVariable Long id) {
 		boolean isCategory = this.categoryService.existsById(id);
 		if(!isCategory) {
 			throw new RuntimeException("Category "+ id + " is not found");
@@ -61,7 +61,7 @@ public class CategoryRest {
 	}
 	
 	@PutMapping("/{id}")
-	public Category updateCategory(@PathVariable int id, @RequestBody Category category) {
+	public Category updateCategory(@PathVariable Long id, @RequestBody Category category) {
 		if(!categoryService.existsById(id)) {
 			throw new EntityNotFoundException("Category "+ id + " is not found");
 		}

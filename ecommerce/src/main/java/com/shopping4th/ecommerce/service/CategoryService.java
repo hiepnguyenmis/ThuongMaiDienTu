@@ -15,12 +15,13 @@ import com.shopping4th.ecommerce.entity.Category;
 @Service
 public class CategoryService implements ICategoryService {
 
+	@Autowired
     private ICategoryRepo categoryRepo;
     
-    public CategoryService(ICategoryRepo categoryRepo) {
-		
-		this.categoryRepo = categoryRepo;
-	}
+//    public CategoryService(ICategoryRepo categoryRepo) {
+//		
+//		this.categoryRepo = categoryRepo;
+//	}
 
 	@Override
 	public List<Category> findAll() {
@@ -28,7 +29,7 @@ public class CategoryService implements ICategoryService {
 	}
 
 	@Override
-	public Category findById(int id) {
+	public Category findById(Long id) {
 		
 		//return this.categoryRepo.findById(id).get();
 		
@@ -48,12 +49,12 @@ public class CategoryService implements ICategoryService {
 	}
 
 	@Override
-	public void deletedById(int id) {
+	public void deletedById(Long id) {
 		this.categoryRepo.deleteById(id);
 	}
 
 	@Override
-	public boolean existsById(int id) {
+	public boolean existsById(Long id) {
 		return this.categoryRepo.existsById(id);
 	}
 

@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.shopping4th.ecommerce.entity.Category;
 
 @Repository
-public interface ICategoryRepo extends JpaRepository<Category, Integer> {
+public interface ICategoryRepo extends JpaRepository<Category, Long> {
 
 }
