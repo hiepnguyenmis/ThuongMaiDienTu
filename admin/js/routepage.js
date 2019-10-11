@@ -1,4 +1,4 @@
-var app = angular.module("myApp", ['ui.router','ui.tinymce']);
+var app = angular.module("myApp", ['ui.router','ckeditor', 'chart.js']);
 app.config(function($stateProvider, $urlRouterProvider){
   $urlRouterProvider.otherwise('/home');
     $stateProvider
@@ -6,19 +6,42 @@ app.config(function($stateProvider, $urlRouterProvider){
       url: '/home',
       templateUrl: 'pages/main.html'
   })
-  .state('category', {
+  .state('categories', {
     url: '/categories',
     templateUrl: 'pages/categories.html',
     controller: 'categoriesControllers'
   })
+  .state('addposts', {
+    url: '/addposts',
+    templateUrl: 'pages/addposts.html',
+    controller: 'postsControllers'
+  })
   .state('posts', {
     url: '/posts',
     templateUrl: 'pages/posts.html',
-    controller: 'TinyMceController'
   })
   .state('login',{
     url:'/login',
     templateUrl:'pages/login.html',
     controller:'loginContronller'
+  })
+  .state('products',{
+    url:'/products',
+    templateUrl:'pages/products.html'
+
+  })
+  .state('customers',{
+    url:'/customers',
+    templateUrl:'pages/customers.html'
+  })
+  .state('profiles',{
+    url:'/profiles',
+    templateUrl:'pages/profiles.html'
+  })
+  .state('reports',{
+    url:'/reports',
+    templateUrl:'pages/reports.html',
+    controller:'reportsControllers'
+
   });
 });

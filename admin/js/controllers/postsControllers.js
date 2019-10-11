@@ -1,18 +1,17 @@
 (function(module){
-    app.controller('TinyMceController', function($scope) {
-        $scope.tinymceModel = 'Initial content';
+    module.controller("postsControllers", [
+        '$scope',
+        '$rootScope',
+        function($scope, $rootScope){
       
-        $scope.getContent = function() {
-          console.log('Editor content:', $scope.tinymceModel);
-        };
+          $scope.data = {
+            textInput: '',
+            options: {
+              language: 'vi',
+              allowedContent: true,
+              entities: false
+            }
+          };
       
-        $scope.setContent = function() {
-          $scope.tinymceModel = 'Time: ' + (new Date());
-        };
-      
-        $scope.tinymceOptions = {
-          plugins: 'link image code',
-          toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
-        }
-    });
+        }]);
 }(angular.module('myApp')));
