@@ -28,22 +28,20 @@
                     alert('sửa thất bại');
                 });
         }
-        $scope.deleteCategory=function(category){
-            
-            console.log(category.id);
-            
-            // $http.delete(baseUrl+category.id,data).then((response)=>{
-            //     $window.location.reload();
-            // }, (err)=>{
-            //     alert('sửa thất bại');
-            // });
-           $http.delete(baseUrl+category.id).then((response)=>{
-               console.log('xoá ok');
+        $scope.deleteCategory=function(id){
+            $http.delete(baseUrl+id).then((response)=>{
+                
+                $window.location.reload();
+            }, (err)=>{
+                alert('sửa thất bại');
+            });
+        //    $http.delete(baseUrl+category.id).then((response)=>{
+        //        console.log('xoá ok');
                
-           }, (err)=>{
-               console.log(err);
+        //    }, (err)=>{
+        //        console.log(err);
                
-           })
+        //    })
         }
         
     });

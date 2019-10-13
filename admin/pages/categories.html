@@ -80,15 +80,15 @@
                       </a>
                       <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                         <!-- item update -->
-                        <a class="dropdown-item" data-toggle="modal" data-target=".updateCategory"><i
+                        <a class="dropdown-item" data-toggle="modal" data-target="#updateCategory{{category.id}}"><i
                             class="fas fa-pen text-success"></i> Cập nhật</a>
                         <!-- item delete -->
-                        <a class="dropdown-item" data-toggle="modal" data-target="#deleteCategory"><i
+                        <a class="dropdown-item" data-toggle="modal" data-target="#deleteCategory{{category.id}}"><i
                             class="fas fa-trash-alt text-danger"></i> Xóa</a>
                       </div>
                     </div>
                     <!-- modal-delete -->
-                    <div class="modal fade" id="deleteCategory" tabindex="-1" role="dialog"
+                    <div class="modal fade" id="deleteCategory{{category.id}}" tabindex="-1" role="dialog"
                       aria-labelledby="deleteCategoryLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -103,13 +103,13 @@
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
-                            <button type="button" ng-click="deleteCategory(category)" class="btn btn-primary">Đồng Ý</button>
+                            <button type="button" ng-click="deleteCategory(category.id)" class="btn btn-primary">Đồng Ý</button>
                           </div>
                         </div>
                       </div>
                     </div>
                     <!-- modal-update -->
-                    <div class="modal fade updateCategory" tabindex="-1" role="dialog"
+                    <div class="modal fade " id="updateCategory{{category.id}}"tabindex="-1" role="dialog"
                       aria-labelledby="myLargeModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-lg">
                         <div class="modal-content">
