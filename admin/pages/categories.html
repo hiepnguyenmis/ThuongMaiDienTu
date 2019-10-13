@@ -22,7 +22,7 @@
                     <div class="modal-content">
                       <div class="modal-header bg-light">
                         <h5 class="modal-title" id="deleteCategoryLabel">Thêm Danh Mục</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
@@ -34,11 +34,11 @@
                               <div class="form-group row">
                                 <label for="inputText" class="col-sm-5 col-form-label">Tên danh mục</label>
                                 <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="inputText"
-                                    placeholder="Nhập tên danh mục" ng-model="name">
+                                  <input type="text" class="form-control" id="inputText" placeholder="Nhập tên danh mục"
+                                    ng-model="name">
                                 </div>
                               </div>
-                              
+
                             </div>
                             <div class="col-6"></div>
                           </div>
@@ -46,7 +46,7 @@
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
-                        <button type="submit" class="btn btn-primary" >Đồng Ý</button>
+                        <button type="submit" class="btn btn-primary">Đồng Ý</button>
                       </div>
                   </form>
                 </div>
@@ -103,13 +103,14 @@
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
-                            <button type="button" ng-click="deleteCategory(category.id)" class="btn btn-primary">Đồng Ý</button>
+                            <button type="button" ng-click="deleteCategory(category.id)" class="btn btn-primary">Đồng
+                              Ý</button>
                           </div>
                         </div>
                       </div>
                     </div>
                     <!-- modal-update -->
-                    <div class="modal fade " id="updateCategory{{category.id}}"tabindex="-1" role="dialog"
+                    <div class="modal fade " id="updateCategory{{category.id}}" tabindex="-1" role="dialog"
                       aria-labelledby="myLargeModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -119,29 +120,28 @@
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
-                          <form ng-submit="updateCategory(category.id,category.name)">
-                              <div class="modal-body">
-                                  <div class="container">
-                                      <div class="row">
-                                        <div class="col-6">
-            
-                                          <div class="form-group row">
-                                            <label for="inputText" class="col-sm-5 col-form-label">Tên danh mục</label>
-                                            <div class="col-sm-10">
-                                              <input type="text" class="form-control" id="inputText"
-                                                placeholder="Nhập tên danh mục" ng-model="category.name">
-                                            </div>
-                                          </div>
-                                          
-                                        </div>
-                                        <div class="col-6"></div>
+                          <form ng-submit="updateCategory(category)">
+                            <div class="modal-body">
+                              <div class="container">
+                                <div class="row">
+                                  <div class="col-6">
+
+                                    <div class="form-group row">
+                                      <label for="inputText" class="col-sm-5 col-form-label">Tên danh mục</label>
+                                      <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inputText"
+                                          placeholder="Nhập tên danh mục" ng-model="category.name">
                                       </div>
                                     </div>
+                                  </div>
+                                  <div class="col-6"></div>
+                                </div>
                               </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
-                                <button type="submit" class="btn btn-primary">Đồng Ý</button>
-                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+                              <button type="submit" class="btn btn-primary">Đồng Ý</button>
+                            </div>
                           </form>
                         </div>
                       </div>

@@ -19,13 +19,13 @@
                 alert('Thêm thất bại');
             });
         }
-        $scope.updateCategory= function(id,dataName){
+        $scope.updateCategory= function(category){
             let data={
-                name:dataName};
-                $http.put(baseUrl+id, data).then((response)=>{
+                name:category.name};
+                $http.put(baseUrl+category.id, data).then((response)=>{
                     $window.location.reload();
                 }, (err)=>{
-                    alert('sửa thất bại');
+                    alert('Sửa thất bại');
                 });
         }
         $scope.deleteCategory=function(id){
@@ -33,16 +33,8 @@
                 
                 $window.location.reload();
             }, (err)=>{
-                alert('sửa thất bại');
+                alert('Xóa thất bại');
             });
-        //    $http.delete(baseUrl+category.id).then((response)=>{
-        //        console.log('xoá ok');
-               
-        //    }, (err)=>{
-        //        console.log(err);
-               
-        //    })
         }
-        
     });
 }(angular.module("myApp")));
