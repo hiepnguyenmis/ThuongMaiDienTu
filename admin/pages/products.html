@@ -37,8 +37,6 @@
                                     placeholder="nhap ten danh muc">
                                 </div>
                               </div>
-                              
-                            
                           </div>
                           <div class="col-6"></div>
                         </div>
@@ -65,19 +63,23 @@
                     <th scope="col">Giá Sản Phẩm</th>
                     <th scope="col">Hình Ảnh</th>
                     <th scope="col">Danh Mục Sản Phẩm</th>
-                    <th scope="col">Khuyến Mãi</th>
+                    <!-- <th scope="col">Khuyến Mãi</th> -->
+                    <th scope="col">Ngày tạo</th>
+                    <th scope="col">Ngày cập nhật</th>
                     <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="clickable text-center">
+                  <tr class="clickable text-center" ng-repeat="product in products">
                     <th scope="row">1</th>
-                    <td>SP001</td>
-                    <td>Dell</td>
-                    <td>200000VND</td>
+                    <td>...</td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.price}}</td>
                     <th scope="col">...</th>
-                    <th scope="col">...</th>
-                    <th scope="col">...</th>
+                    <th scope="col">{{product.category.name}}</th>
+                    <th scope="col">{{product.createdAt}}</th>
+                    <th scope="col">{{product.updatedAt}}</th>
+                    
                     <td>
                       <div class="dropdown">
                         <a class="btn btn-sm btn-icon-only text-secondary" role="button" data-toggle="dropdown"

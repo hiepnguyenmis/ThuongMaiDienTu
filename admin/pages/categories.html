@@ -18,7 +18,7 @@
               aria-hidden="true">
               <div class="modal-dialog modal-lg">
                 <div class="modal-content">
-                  <form ng-submit="createCategory()">
+                  <form>
                     <div class="modal-content">
                       <div class="modal-header bg-light">
                         <h5 class="modal-title" id="deleteCategoryLabel">Thêm Danh Mục</h5>
@@ -46,7 +46,8 @@
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
-                        <button type="submit" class="btn btn-primary">Đồng Ý</button>
+                        <button type="submit" class="btn btn-primary" data-dismiss="modal"
+                          ng-click="createCategory()">Đồng Ý</button>
                       </div>
                   </form>
                 </div>
@@ -103,7 +104,8 @@
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
-                            <button type="button" ng-click="deleteCategory(category.id)" class="btn btn-primary">Đồng
+                            <button type="button" ng-click="deleteCategory(category.id)" data-dismiss="modal"
+                              class="btn btn-primary">Đồng
                               Ý</button>
                           </div>
                         </div>
@@ -120,7 +122,7 @@
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
-                          <form ng-submit="updateCategory(category)">
+                          <form>
                             <div class="modal-body">
                               <div class="container">
                                 <div class="row">
@@ -140,7 +142,8 @@
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
-                              <button type="submit" class="btn btn-primary">Đồng Ý</button>
+                              <button type="submit" class="btn btn-primary" data-dismiss="modal"
+                                ng-click="updateCategory(category)">Đồng Ý</button>
                             </div>
                           </form>
                         </div>
