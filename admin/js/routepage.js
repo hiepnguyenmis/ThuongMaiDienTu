@@ -27,8 +27,8 @@ app.config(function($stateProvider, $urlRouterProvider){
   })
   .state('products',{
     url:'/products',
-    templateUrl:'pages/products.html'
-
+    templateUrl:'pages/products.html',
+    controller:'productsControllers'
   })
   .state('customers',{
     url:'/customers',
@@ -42,6 +42,5 @@ app.config(function($stateProvider, $urlRouterProvider){
     url:'/reports',
     templateUrl:'pages/reports.html',
     controller:'reportsControllers'
-
   });
 });
