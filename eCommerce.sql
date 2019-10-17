@@ -16,6 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `accounts`
+--
+
+DROP TABLE IF EXISTS `accounts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `accounts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `role_name` varchar(45) DEFAULT NULL,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `accounts`
+--
+
+LOCK TABLES `accounts` WRITE;
+/*!40000 ALTER TABLE `accounts` DISABLE KEYS */;
+INSERT INTO `accounts` VALUES (13,'mailtest@gmail.com','$2a$12$aNYbF19GZ2QwH8DTB6M0MOosWhPOr8L8zna1rohkrvZ1ZvFJgFP9O','ROLE_USER','2019-10-17 10:16:33'),(14,'tamht298@gmail.com','$2a$12$NmhO9pM1QcxnrMlNipPrE.4tXm1/Vlx7V1ZIfhV3HuE8NSQOCEvvi','ROLE_USER','2019-10-17 11:07:47'),(15,'tamht29@gmail.com','$2a$10$l6Su8ZK.y/tALRhZt8URn.Ftwbb74aaESTJhjYyVBD72xLmFOBzg2','ROLE_USER','2019-10-17 13:35:25'),(16,'tamht29@gmail.com','$2a$10$NEg69h9dSViAm2GLjyvpqu2Gvmj3ew8zfpQQbNH.U9yOfZsKlQYJG','ROLE_USER','2019-10-17 14:52:08');
+/*!40000 ALTER TABLE `accounts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `carts`
 --
 
@@ -78,7 +105,7 @@ CREATE TABLE `categories` (
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -87,7 +114,7 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (1,'Máy dell','2019-10-04 21:06:04','2019-10-04 21:06:04');
+INSERT INTO `categories` VALUES (1,'Acer','2019-10-04 21:06:04','2019-10-08 07:05:33');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -360,10 +387,11 @@ CREATE TABLE `products` (
   `stock` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `FKog2rp4qthbtt2lfyhfo32lsw9` (`category_id`),
   CONSTRAINT `FKog2rp4qthbtt2lfyhfo32lsw9` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -372,6 +400,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
+INSERT INTO `products` VALUES (5,NULL,'Acer blablabl','1000000','hello',10,1,'2019-10-10 04:53:05','2019-10-10 04:53:05'),(6,NULL,'Acer blablabl','1000000','hello',10,1,'2019-10-10 04:57:25','2019-10-10 04:57:25'),(7,NULL,'Acer blablabl','1000000','hello',10,1,'2019-10-10 04:57:29','2019-10-10 04:57:29'),(8,NULL,'Acer blablabl','1000000','hello',10,1,'2019-10-10 04:57:30','2019-10-10 04:57:30'),(9,NULL,'Acer blablabl','1000000','hello',10,1,'2019-10-10 04:57:31','2019-10-10 04:57:31'),(10,NULL,'Acer blablabl','1000000','hello',22,1,'2019-10-10 11:55:12','2019-10-10 11:55:12'),(11,NULL,'Acer blablabl','1000000','hello',10,1,'2019-10-10 11:58:36','2019-10-10 11:58:36'),(12,NULL,'Acer blablabl','1000000','hello',22,1,'2019-10-14 16:27:11','2019-10-14 16:27:11');
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -565,7 +594,7 @@ DROP TABLE IF EXISTS `roles`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `roles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `role_name` varchar(45) NOT NULL,
+  `name` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -636,12 +665,11 @@ DROP TABLE IF EXISTS `users`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
-  `role_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_USER_ROLE_ID_ROLE_idx` (`role_id`),
-  CONSTRAINT `FK_USER_ROLE_ID_ROLE` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`)
+  `email` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role_name` varchar(100) NOT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -687,4 +715,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-10-05 12:35:56
+-- Dump completed on 2019-10-17 14:53:21

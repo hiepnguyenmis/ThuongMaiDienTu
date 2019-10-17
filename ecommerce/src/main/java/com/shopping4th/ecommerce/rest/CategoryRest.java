@@ -50,14 +50,14 @@ public class CategoryRest {
 	}
 	
 	@DeleteMapping("/{id}")
-	public String deleteCategory(@PathVariable Long id) {
+	public void deleteCategory(@PathVariable Long id) {
 		boolean isCategory = this.categoryService.existsById(id);
 		if(!isCategory) {
 			throw new RuntimeException("Category "+ id + " is not found");
 		}
 		
 		categoryService.deletedById(id);
-		return "Deleted category id "+ id;
+		//return "Deleted category id "+ id;
 	}
 	
 	@PutMapping("/{id}")
