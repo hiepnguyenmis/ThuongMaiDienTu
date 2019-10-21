@@ -38,6 +38,10 @@ app.config(function($stateProvider, $urlRouterProvider){
     url:'/profiles',
     templateUrl:'pages/profiles.html'
   })
+  .state('registers',{
+    url:'/registers',
+    templateUrl:'pages/registers.html'
+  })
   .state('reports',{
     url:'/reports',
     templateUrl:'pages/reports.html',
