@@ -43,7 +43,7 @@ public class AccountRest {
 		
 		Accounts loginAccount = this.accountService.findByEmail(accounts.getEmail());
 		if(loginAccount.getEmail().equals(accounts.getEmail()) && checkHashPasswd(accounts.getPassword(), loginAccount.getPassword())) {
-			return "Logging succesfully with email " + loginAccount.getEmail();
+			return "Login succesfully with email " + loginAccount.getEmail();
 		}
 		
 		return "Login falied!";
