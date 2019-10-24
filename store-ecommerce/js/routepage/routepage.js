@@ -10,9 +10,18 @@ app.config(function($stateProvider, $urlRouterProvider){
       url:'/reports',
       templateUrl:'pages/reports.html'
     })
+    .state('abouts',{
+      url:'/abouts',
+      templateUrl:'pages/abouts-us.html'
+    })
+    .state('login',{
+      url:'/login',
+      templateUrl:'pages/login-register.html'
+    })
     .state('contact',{
       url: '/contact',
       templateUrl: 'pages/contact.html'
     });
+    
 
 });
