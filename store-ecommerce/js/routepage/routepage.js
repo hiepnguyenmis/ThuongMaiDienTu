@@ -14,4 +14,5 @@ app.config(function($stateProvider, $urlRouterProvider){
       url: '/contact',
       templateUrl: 'pages/contact.html'
     });
+
 });
