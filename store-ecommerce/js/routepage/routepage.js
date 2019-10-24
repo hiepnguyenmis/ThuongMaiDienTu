@@ -21,6 +21,10 @@ app.config(function($stateProvider, $urlRouterProvider){
     .state('contact',{
       url: '/contact',
       templateUrl: 'pages/contact.html'
+    })
+    .state('search',{
+      url: '/search',
+      templateUrl: 'pages/search-engine.html'
     });
     
 
