@@ -12,7 +12,7 @@ app.config(function($stateProvider, $urlRouterProvider){
     })
     .state('abouts',{
       url:'/abouts',
-      templateUrl:'pages/abouts-us.html'
+      templateUrl:'pages/about-us.html'
     })
     .state('login',{
       url:'/login',
