@@ -10,8 +10,8 @@ app.config(function($stateProvider, $urlRouterProvider){
       url:'/reports',
       templateUrl:'pages/reports.html'
     })
-    // .state('account',{
-    //   url: '/account',
-    //   templateUrl: 'pages/login-register.html'
-    // });
+    .state('contact',{
+      url: '/contact',
+      templateUrl: 'pages/contact.html'
+    });
 });
