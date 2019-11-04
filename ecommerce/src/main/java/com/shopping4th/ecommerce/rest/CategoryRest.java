@@ -57,6 +57,7 @@ public class CategoryRest {
 		}
 		
 		categoryService.deletedById(id);
+		
 		//return "Deleted category id "+ id;
 	}
 	

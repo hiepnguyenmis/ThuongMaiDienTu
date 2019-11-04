@@ -1,6 +1,8 @@
 package com.shopping4th.ecommerce.entity;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
@@ -12,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -21,7 +24,6 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "products")
@@ -69,6 +71,9 @@ public class Product implements Serializable{
 	@JoinColumn(name="category_id", nullable = false)
 	
 	private Category category;
+	
+	@ManyToMany(mappedBy = "products", cascade = CascadeType.PERSIST, fetch=FetchType.EAGER)
+	private Set<Promotion> promotions = new HashSet<>();
 
 	public Product() {
 		super();
