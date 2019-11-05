@@ -22,6 +22,11 @@ app.config(function($stateProvider, $urlRouterProvider){
       url: '/contact',
       templateUrl: 'pages/contact.html'
     })
+    .state('single-product',{
+      url: '/single-product',
+      templateUrl: 'pages/single-product-affiliate.html',
+      controller: 'single_product_controllers'
+    })
     .state('search',{
       url: '/search',
       templateUrl: 'pages/search-engine.html'
