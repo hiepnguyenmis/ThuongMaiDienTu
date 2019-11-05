@@ -30,11 +30,13 @@ public class Category implements Serializable {
 	@Column(name = "name", nullable=false, columnDefinition = "nvarchar")
 	private String name;
 	
+	@Column(name="enabled")
+	private Boolean enabled = true;
+	
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at", updatable = false)
     private Date createdAt;
     
-	
 	@UpdateTimestamp
     @Column(name = "updated_at")
     private Date updatedAt;
@@ -68,6 +70,16 @@ public class Category implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
 	}
 
 

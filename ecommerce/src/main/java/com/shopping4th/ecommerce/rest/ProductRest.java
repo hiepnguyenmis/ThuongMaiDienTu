@@ -47,6 +47,7 @@ public class ProductRest {
 	public List<Product> getAllProduct(Pageable pageable){
 		return  this.productService.findAll(pageable);
 	}
+	
 	@GetMapping("/{id}")
 	public Product getProduct(@PathVariable Long id) {
 		boolean isProduct = this.productService.existsById(id);

@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import com.shopping4th.ecommerce.dao.ICategoryRepo;
 import com.shopping4th.ecommerce.entity.Category;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
+
 
 @Service
 public class CategoryService implements ICategoryService {
@@ -50,7 +52,16 @@ public class CategoryService implements ICategoryService {
 
 	@Override
 	public void deletedById(Long id) {
-		this.categoryRepo.deleteById(id);
+		//this.categoryRepo.deleteById(id);
+		Optional<Category> category = this.categoryRepo.findById(id);
+		if(category.isPresent()) {
+			
+			Category uCategory = new Category();
+			uCategory=category.get();
+			uCategory.setEnabled(false);
+			this.categoryRepo.save(uCategory);
+			
+		}
 	}
 
 	@Override
