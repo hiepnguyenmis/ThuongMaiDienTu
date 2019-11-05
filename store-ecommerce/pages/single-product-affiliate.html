@@ -19,20 +19,11 @@
                 <div class="container p-5">
                    <div class="container">
                        <div class="row">
-                            <img src="../images/m1.jpg" id="main_image_slider" alt="">
+                            <img src="{{url_image}}" id="main_image_slider" alt="">
                        </div>
                        <div class="row">
-                           <div class="col-md-3 bg-warning">
-                            <img src="../images/m1.jpg" id="frotn_image_slider" class="img-thumbnail" alt="" ng-click="change_image_slider(this)">
-                           </div>
-                           <div class="col-md-3 bg-secondary">
-                            <img src="../images/si1.jpg" id="back_image_slider" class="img-thumbnail" alt="" ng-click="change_image_slider(this)">
-                           </div>
-                           <div class="col-md-3 bg-success">
-                            <img src="../images/si1.jpg" id="left_image_slider" class="img-thumbnail" alt="" ng-click="change_image_slider(this)">
-                           </div>
-                           <div class="col-md-3 bg-success">
-                            <img src="../images/m1.jpg" id="right_image_slider " class="img-thumbnail" alt=""ng-click="change_image_slider(this)">
+                           <div class="col-md-3" ng-repeat= "item_img in image"  ng-click="change_image_slider(item_img.id,item_img.img)">
+                            <img src="{{item_img.img}}" class="img-thumbnail" alt="" >
                            </div>
                        </div>
                    </div>
