@@ -2,6 +2,7 @@ package com.shopping4th.ecommerce.entity;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -16,6 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,6 +25,9 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.UpdateTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 
 @Entity
@@ -62,11 +67,10 @@ public class Product implements Serializable{
     private Date updatedAt;
 	
 	
-	@ManyToOne(
-            fetch = FetchType.EAGER,
-            cascade = { CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH}
-    )
-	@OnDelete(action = OnDeleteAction.CASCADE)
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
 	//@JsonIgnore
 	@JoinColumn(name="category_id", nullable = false)
 	
@@ -75,6 +79,14 @@ public class Product implements Serializable{
 	@ManyToMany(mappedBy = "products", cascade = CascadeType.PERSIST, fetch=FetchType.EAGER)
 	private Set<Promotion> promotions = new HashSet<>();
 
+    @OneToMany(
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL
+    )
+    
+    @JoinColumn(name = "product_id")
+    private List<Images> images;
+	
 	public Product() {
 		super();
 	}
@@ -162,6 +174,14 @@ public class Product implements Serializable{
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+
+	public List<Images> getImages() {
+		return images;
+	}
+
+	public void setImages(List<Images> images) {
+		this.images = images;
 	}
 
 	

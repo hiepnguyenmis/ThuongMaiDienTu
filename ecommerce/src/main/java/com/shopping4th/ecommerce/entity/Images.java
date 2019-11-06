@@ -24,11 +24,11 @@ public class Images {
 	@Column(name="path")
 	private String path;
 	
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "product_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
-    private Product product;
+//	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+//	@JoinColumn(name = "product_id", nullable = false)
+//    @OnDelete(action = OnDeleteAction.CASCADE)
+//    @JsonIgnore
+//    private Product product;
 
 	public Long getId() {
 		return id;
@@ -46,20 +46,20 @@ public class Images {
 		this.path = path;
 	}
 
-	public Product getProduct() {
-		return product;
-	}
+//	public Product getProduct() {
+//		return product;
+//	}
+//
+//	public void setProduct(Product product) {
+//		this.product = product;
+//	}
 
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-
-	public Images(Long id, String path, Product product) {
-		super();
-		this.id = id;
-		this.path = path;
-		this.product = product;
-	}
+//	public Images(Long id, String path, Product product) {
+//		super();
+//		this.id = id;
+//		this.path = path;
+//		this.product = product;
+//	}
 
 	public Images(String path) {
 		super();
@@ -69,9 +69,11 @@ public class Images {
 	public Images() {
 		super();
 	}
-	
-	
-	
-	
+
+	public Images(Long id, String path) {
+		super();
+		this.id = id;
+		this.path = path;
+	}
 	
 }

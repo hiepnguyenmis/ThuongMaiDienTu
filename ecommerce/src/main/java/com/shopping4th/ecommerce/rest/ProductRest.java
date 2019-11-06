@@ -25,30 +25,20 @@ import com.shopping4th.ecommerce.entity.Product;
 import com.shopping4th.ecommerce.service.ProductService;
 
 @RestController
-@RequestMapping("/api/products")
+@RequestMapping("/api")
 @CrossOrigin
 public class ProductRest {
 
 	@Autowired
 	private ProductService productService;
 	
-//	@GetMapping
-//	public List<Product> getAllProduct(){
-//		return this.productService.findAll();
-//	}
-	//pagination
-//	@GetMapping
-//	public Page<Product> getAll(Pageable pageable){
-//		Page<Product> list=this.productService.findAllByPage(pageable);
-//		return list;
-//	}
-	
-	@GetMapping
+
+	@GetMapping("/products")
 	public List<Product> getAllProduct(Pageable pageable){
 		return  this.productService.findAll(pageable);
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping("/products/{id}")
 	public Product getProduct(@PathVariable Long id) {
 		boolean isProduct = this.productService.existsById(id);
 		if(!isProduct) {
@@ -58,7 +48,12 @@ public class ProductRest {
 		return productService.findById(id);
 	}
 	
-	@DeleteMapping("/{id}")
+	@GetMapping("/categories/{categoryId}/products")
+	public List<Product> getProductByCategoryId(@PathVariable Long categoryId){
+		return this.productService.findByCategoryId(categoryId);
+	}
+	
+	@DeleteMapping("/products/{id}")
 	public String deleteProduct(@PathVariable Long id) {
 		boolean isProduct = this.productService.existsById(id);
 		if(!isProduct) {
@@ -69,7 +64,7 @@ public class ProductRest {
 		return "Deleted Product id "+ id;
 	}
 	
-	@PutMapping("/{id}")
+	@PutMapping("/products/{id}")
 	public Product updateProduct(@PathVariable Long id, @RequestBody Product product) {
 		if(!productService.existsById(id)) {
 			throw new EntityNotFoundException("Product "+ id + " is not found");
@@ -80,7 +75,7 @@ public class ProductRest {
 		return this.productService.findById(id);
 	}
 	
-	@PostMapping
+	@PostMapping("/products")
 	public Product createProduct(@Valid @RequestBody Product product) {
 		product.setCreatedAt(new Date());
 		productService.save(product);
