@@ -1,1 +1,17 @@
 /* your styles go here */
+.cot1{
+    min-height: 150px;
+    margin: 0px;
+}
+.cot2{
+    min-height: 150px;
+    margin: 0 10px;
+}
+.cot3{
+    min-height: 150px;
+    margin-left: 20px;
+}
+.cot4{
+    min-height: 150px;
+    margin-left: 29px;
+}
