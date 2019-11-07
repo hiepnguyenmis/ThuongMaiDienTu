@@ -1277,8 +1277,8 @@ textarea:focus {
 /* 1.14 Scroll Up
 /*----------------------------------------*/
 #scrollUp {
-	right: 25px;
-	bottom: 25px;
+	right: 30px;
+	bottom: 120px;
 	height: 50px;
 	width: 50px;
 	line-height: 50px;
