@@ -27,6 +27,15 @@ app.config(function($stateProvider, $urlRouterProvider){
       templateUrl: 'pages/single-product-affiliate.html',
       controller: 'single_product_controllers'
     })
+    .state('shopping-cart',{
+      url: '/shopping-cart',
+      templateUrl: 'pages/shopping-cart.html'
+    })
+    .state('checkout',{
+      url: '/checkout',
+      templateUrl: 'pages/checkout.html'
+    })
+  
     .state('search',{
       url: '/search',
       templateUrl: 'pages/search-engine.html'

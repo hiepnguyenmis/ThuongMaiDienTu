@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="css/material-design-iconic-font.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="css/font-awesome.min.css">
-    
+
     <!-- Font Awesome Stars-->
     <link rel="stylesheet" href="css/fontawesome-stars.css">
     <!-- Meanmenu CSS -->
@@ -49,7 +49,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.23/angular-ui-router.min.js"></script>
 
     <link rel="stylesheet" href="//cdn.jsdelivr.net/flexslider/2.2.2/flexslider.css">
-    
+
     <link rel="stylesheet" href="css/flexslider.css" />
 
 </head>
@@ -92,7 +92,8 @@
                                     <!-- Currency Area End Here -->
                                     <!-- Begin Language Area -->
                                     <li>
-                                        <a href="#!login" class="language-selector-wrapper" style="color: black;"><i class="fa fa-sign-in-alt"></i> Đăng
+                                        <a href="#!login" class="language-selector-wrapper" style="color: black;"><i
+                                                class="fa fa-sign-in-alt"></i> Đăng
                                             nhập</a>
 
                                     </li>
@@ -190,10 +191,10 @@
                                             <div class="minicart-button">
                                                 <a href="shopping-cart.html"
                                                     class="li-button li-button-fullwidth li-button-dark">
-                                                    <span>View Full Cart</span>
+                                                    <span>Xem Giỏ Hàng</span>
                                                 </a>
                                                 <a href="checkout.html" class="li-button li-button-fullwidth">
-                                                    <span>Checkout</span>
+                                                    <span>Thanh Toán</span>
                                                 </a>
                                             </div>
                                         </div>
@@ -217,15 +218,19 @@
                             <div class="hb-menu">
                                 <nav>
                                     <ul>
-                                        <li class="dropdown-holder"><a href="index.html">Apple</a></li>
-                                        <li class="megamenu-holder"><a href="shop-left-sidebar.html">Dell</a></li>
-                                        <li class="dropdown-holder"><a href="blog-left-sidebar.html">Asus</a></li>
-                                        <li class="megamenu-static-holder"><a href="index.html">Lenovo</a></li>
-                                        <li><a href="about-us.html">HP</a></li>
-                                        <li><a href="contact.html">LG</a></li>
-                                        <li><a href="./pages/login-register.html">MSI</a></li>
-                                        <li><a href="shop-left-sidebar.html">Huawie</a></li>
-                                        <li><a href="shop-left-sidebar.html">Xiaomi</a></li>
+                                        <li class="dropdown-holder"><a href="#">Trang chủ</a></li>
+
+                                        <li class="dropdown-holder sub-dropdown-holde"><a href="#">Sản phẩm</a>
+                                            <ul class="hb-dropdown">
+                                                <li class=""><a href="#">Dell</a></li>
+                                                <li class=""><a href="blog-list-left-sidebar.html">Asus</a> </li>
+                                                <li class=""><a href="blog-details-left-sidebar.html">Acer</a> </li>
+                                                <li class=""><a href="blog-gallery-format.html">MSI</a></li>
+                                            </ul>
+                                        </li>
+
+                                        <li><a href="about-us.html">Tin Công Nghệ</a></li>
+                                        <li><a href="contact.html">Khuyến Mãi</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -650,8 +655,22 @@
     <script src="js/main.js"></script>
 
     <script src="js/controllers/single_product_controllers.js"></script>
-    
 
+    <!-- Subiz -->
+    <script>
+        (function (s, u, b, i, z) {
+            u[i] = u[i] || function () {
+                u[i].t = +new Date();
+                (u[i].q = u[i].q || []).push(arguments);
+            };
+            z = s.createElement('script');
+            var zz = s.getElementsByTagName('script')[0];
+            z.async = 1; z.src = b; z.id = 'subiz-script';
+            zz.parentNode.insertBefore(z, zz);
+        })(document, window, 'https://widgetv4.subiz.com/static/js/app.js', 'subiz');
+        subiz('setAccount', 'acqmpqdfszzflcfxuomo');
+    </script>
+    <!-- End Subiz -->
 
 </body>
 

@@ -2,10 +2,10 @@
 (function(module){
 	module.controller('single_product_controllers', function($scope) {
 		$scope.image=[
-			{id:"1",img:"/images/si1.jpg"},
-			{id:"2",img:"/images/si1.jpg"},
-			{id:"3",img:"/images/si1.jpg"},
-			{id:"4",img:"/images/si1.jpg"}
+			{id:"1",img:"/images/product/laptopnew-asus--vivobook-a512-6.jpg"},
+			{id:"2",img:"/images/product/laptopnew-asus--vivobook-a512-6.jpg"},
+			{id:"3",img:"/images/product/laptopnew-asus--vivobook-a512-6.jpg"},
+			{id:"4",img:"/images/product/laptopnew-asus--vivobook-a512-6.jpg"}
 		];
 		$scope.url_image=$scope.image[0].img;
 
