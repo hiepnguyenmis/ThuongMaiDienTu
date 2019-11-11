@@ -12,6 +12,5 @@
               entities: false
             }
           };
-      
         }]);
 }(angular.module('myApp')));
