@@ -81,7 +81,4 @@ public class CategoryRest {
 		return categoryService.findById(category.getId());
 	}
 	
-	
-	
-
 }

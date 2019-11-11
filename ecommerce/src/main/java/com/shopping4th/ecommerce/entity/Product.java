@@ -1,5 +1,6 @@
 package com.shopping4th.ecommerce.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -234,8 +235,12 @@ public class Product implements Serializable{
 	public void setImages(List<Images> images) {
 		this.images = images;
 	}
+	
+	public void add(Images imageList) {
+	        if (images == null) {
+	            images = new ArrayList<Images>();
+	        }
+	        images.add(imageList);
+	    }
 
-	
-	
-	
 }
