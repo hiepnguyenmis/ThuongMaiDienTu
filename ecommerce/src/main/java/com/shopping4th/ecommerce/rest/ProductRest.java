@@ -49,8 +49,8 @@ public class ProductRest {
 	}
 	
 	@GetMapping("/categories/{categoryId}/products")
-	public List<Product> getProductByCategoryId(@PathVariable Long categoryId){
-		return this.productService.findByCategoryId(categoryId);
+	public List<Product> getProductByCategoryId(@PathVariable Long categoryId, Pageable pageable){
+		return this.productService.findByCategoryId(categoryId, pageable);
 	}
 	
 	@DeleteMapping("/products/{id}")

@@ -13,5 +13,5 @@ import com.shopping4th.ecommerce.entity.Product;
 public interface IProductRepo extends JpaRepository<Product, Long> {
 
 	public Page<Product> findAll(Pageable pageable);
-	public List<Product> findByCategoryId(Long categoryId);
+	public Page<Product> findByCategoryId(Long categoryId, Pageable pageable);
 }

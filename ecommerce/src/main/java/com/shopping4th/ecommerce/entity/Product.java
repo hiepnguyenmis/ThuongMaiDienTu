@@ -26,8 +26,6 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 
 
 @Entity
@@ -56,6 +54,20 @@ public class Product implements Serializable{
 	@Column(name="stock")
 	private int stock;
 	
+	@Column(name="cpu")
+	private String cpu;
+	
+	
+	@Column(name="ram")
+	private String ram;
+	
+	@Column(name="hard_disk")
+	private String hardDisk;
+	
+	@Column(name="screen")
+	private String screen;
+	
+	
 	
 	@Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at", updatable = false)
@@ -67,10 +79,10 @@ public class Product implements Serializable{
     private Date updatedAt;
 	
 	
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
+  
 	//@JsonIgnore
 	@JoinColumn(name="category_id", nullable = false)
 	
@@ -91,14 +103,21 @@ public class Product implements Serializable{
 		super();
 	}
 
-	public Product(String productCode, String name, String price, String thumbnail, int stock, Category category) {
+
+	public Product(String productCode, String name, String price, String thumbnail, int stock, String cpu, String ram,
+			String hardDisk, String screen, Category category) {
 		super();
 		this.productCode = productCode;
 		this.name = name;
 		this.price = price;
 		this.thumbnail = thumbnail;
 		this.stock = stock;
+		this.cpu = cpu;
+		this.ram = ram;
+		this.hardDisk = hardDisk;
+		this.screen = screen;
 		this.category = category;
+		
 	}
 
 	public Long getId() {
@@ -147,6 +166,38 @@ public class Product implements Serializable{
 
 	public void setStock(int stock) {
 		this.stock = stock;
+	}
+
+	public String getCpu() {
+		return cpu;
+	}
+
+	public void setCpu(String cpu) {
+		this.cpu = cpu;
+	}
+
+	public String getRam() {
+		return ram;
+	}
+
+	public void setRam(String ram) {
+		this.ram = ram;
+	}
+
+	public String getHardDisk() {
+		return hardDisk;
+	}
+
+	public void setHardDisk(String hardDisk) {
+		this.hardDisk = hardDisk;
+	}
+
+	public String getScreen() {
+		return screen;
+	}
+
+	public void setScreen(String screen) {
+		this.screen = screen;
 	}
 
 	public Date getCreatedAt() {

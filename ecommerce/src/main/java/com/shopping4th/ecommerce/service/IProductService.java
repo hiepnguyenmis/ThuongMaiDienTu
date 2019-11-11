@@ -8,7 +8,7 @@ import org.springframework.data.domain.Pageable;
 
 import com.shopping4th.ecommerce.entity.Product;
 
-public interface ProductService {
+public interface IProductService {
 
 	public List<Product> findAll();
 	
@@ -20,8 +20,6 @@ public interface ProductService {
 	
 	public boolean existsById(Long id);
 	
-	public List<Product> findAll(Pageable pageable);
-	
-	public List<Product> findByCategoryId(Long categoryId, Pageable pageable);
 	//public Page<Product> findAllByPage(Pageable pageable);
+	public List<Product> findAll(Pageable pageable);
 }

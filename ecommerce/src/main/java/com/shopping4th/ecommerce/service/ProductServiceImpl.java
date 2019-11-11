@@ -66,8 +66,9 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<Product> findByCategoryId(Long categoryId) {
-		return this.productRepo.findByCategoryId(categoryId);
+	public List<Product> findByCategoryId(Long categoryId, Pageable pageable) {
+		Page<Product> products = this.productRepo.findByCategoryId(categoryId, pageable);
+		return products.getContent();
 	}
 
 }
