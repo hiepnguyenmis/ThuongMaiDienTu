@@ -33,8 +33,7 @@
                               <div class="form-group row">
                                 <label for="inputText" class="col-sm-5 col-form-label">Mã sản phẩm</label>
                                 <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="inputText"
-                                    placeholder="">
+                                  <input type="text" class="form-control" id="inputText" placeholder="">
                                 </div>
                               </div>
                               <div class="form-group row">
@@ -54,44 +53,38 @@
                               <div class="form-group row">
                                 <label for="inputText" class="col-sm-5 col-form-label">Hình ảnh</label>
                                 <div class="container">
-                                <div class="row">
-                                  <div class="col-md-3">
-                                    <div class="cot1">
-                                      <img src ="../img/avatar-1.jpg">
-                                    </div>
-                                  </div>
-                                  <div class="col-md-3">
-                                    <div class="cot2">
-                                          <img src ="../img/avatar-1.jpg">
+                                  <div class="row">
+                                    <div class="col-md-3">
+                                      <div class="cot1">
+                                        <img src="../img/avatar-1.jpg">
                                       </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="cot3">
-                                        <img src ="../img/avatar-1.jpg">
                                     </div>
-                              </div>
-                              <div class="col-md-3">
-                                  <div class="cot4">
-                                      <img src ="../img/avatar-1.jpg">
+                                    <div class="col-md-3">
+                                      <div class="cot2">
+                                        <img src="../img/avatar-1.jpg">
+                                      </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                      <div class="cot3">
+                                        <img src="../img/avatar-1.jpg">
+                                      </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                      <div class="cot4">
+                                        <img src="../img/avatar-1.jpg">
+                                      </div>
+                                    </div>
                                   </div>
-                            </div>
-                              
-                                 
-                          </div>
-
-                                  
-                                <form>
-                                  <div class="form-group">
-                                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                                  </div>
-                                </form>
+                                  <form>
+                                    <div class="form-group">
+                                      <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                    </div>
+                                  </form>
+                                </div>
                               </div>
-                            </div>
-                            
                           </div>
                           <div class="col-6">
                             <form>
-                          
                               <div class="form-group row">
                                 <label for="inputText" class="col-sm-6 col-form-label">Danh mục sản phẩm</label>
                                 <div class="col-sm-10">
@@ -99,14 +92,12 @@
                                     placeholder="Nhập danh mục sản phẩm">
                                 </div>
                               </div>
-
                               <div class="form-group row">
                                 <label for="inputText" class="col-sm-5 col-form-label">Ngày tạo</label>
                                 <div class="col-sm-10">
                                   <input type="date" class="form-control" id="inputDate" placeholder="nhap vao">
                                 </div>
                               </div>
-
                               <div class="form-group row">
                                 <label for="inputText" class="col-sm-5 col-form-label">Ngày cập nhật </label>
                                 <div class="col-sm-10">
@@ -151,11 +142,10 @@
                     <td>...</td>
                     <td>{{product.name}}</td>
                     <td>{{product.price}}</td>
-                    <td >...</th>
-                    <td >{{product.category.name}}</th>
-                    <td >{{product.createdAt}}</th>
-                    <td >{{product.updatedAt}}</th>
-                    
+                    <td>...</th>
+                    <td>{{product.category.name}}</th>
+                    <td>{{product.createdAt}}</th>
+                    <td>{{product.updatedAt}}</th>
                     <td>
                       <div class="dropdown">
                         <a class="btn btn-sm btn-icon-only text-secondary" role="button" data-toggle="dropdown"
@@ -183,11 +173,11 @@
                               </button>
                             </div>
                             <div class="modal-body">
-                              Bạn có muốn xóa danh mục <b>...</b> ?
+                              Bạn có muốn xóa danh mục <b>{{product.name}}</b> ?
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
-                              <button type="button" class="btn btn-primary">Đồng Ý</button>
+                              <button type="button" ng-click='deleteProduct(product.id)' class="btn btn-primary">Đồng Ý</button>
                             </div>
                           </div>
                         </div>
@@ -211,8 +201,7 @@
                                       <div class="form-group row">
                                         <label for="inputText" class="col-sm-5 col-form-label">Mã sản phẩm</label>
                                         <div class="col-sm-10">
-                                          <input type="text" class="form-control" id="inputText"
-                                            placeholder="">
+                                          <input type="text" class="form-control" id="inputText" placeholder="">
                                         </div>
                                       </div>
                                       <div class="form-group row">
@@ -232,41 +221,47 @@
                                       <div class="form-group row">
                                         <label for="inputText" class="col-sm-5 col-form-label">Hình ảnh</label>
                                         <div class="container">
-                                        <div class="row">
-                                          <div class="col-lg-3">
+                                          <div class="row">
+                                            <div class="col-lg-3">
                                               <div class="cot1">
-                                                  <img src ="../img/avatar-1.jpg">
-                                                </div>
-                                          </div>
-                                          <div class="col-lg-3">
-                                              <div class="cot2">
-                                                  <img src ="../img/avatar-1.jpg">
-                                                </div>
-                                          </div>
-                                          <div class="col-lg-3">
-                                              <div class="cot3">
-                                                  <img src ="../img/avatar-1.jpg">
-                                                </div>
-                                          </div>
-                                          <div class="col-lg-3">
-                                              <div class="cot4">
-                                                  <img src ="../img/avatar-1.jpg">
-                                                </div>
-                                          </div>
-                                           
-                                          <form>
-                                            <div class="form-group">
-                                              <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                                <img src="../img/avatar-1.jpg">
+                                              </div>
                                             </div>
-                                          </form>
+                                            <div class="col-lg-3">
+                                              <div class="cot2">
+                                                <img src="../img/avatar-1.jpg">
+                                              </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                              <div class="cot3">
+                                                <img src="../img/avatar-1.jpg">
+                                              </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                              <div class="cot4">
+                                                <img src="../img/avatar-1.jpg">
+                                              </div>
+                                            </div>
+                                            <div class="row">
+                                              <div class="col-12">
+                                                <div class="form-group">
+                                                  Ảnh mặt trước:<input type="file" class="form-control-file"
+                                                    id="exampleFormControlFile1">
+                                                  Ảnh mặt sau: <input type="file" class="form-control-file"
+                                                    id="exampleFormControlFile1">
+                                                  Ảnh mặt trái: <input type="file" class="form-control-file"
+                                                    id="exampleFormControlFile1">
+                                                  Ảnh mặt phải:<input type="file" class="form-control-file"
+                                                    id="exampleFormControlFile1">
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
                                         </div>
                                       </div>
-                                    </div>
-                                    
                                   </div>
                                   <div class="col-6">
                                     <form>
-                                  
                                       <div class="form-group row">
                                         <label for="inputText" class="col-sm-6 col-form-label">Danh mục sản phẩm</label>
                                         <div class="col-sm-10">
@@ -274,14 +269,14 @@
                                             placeholder="Nhập danh mục sản phẩm">
                                         </div>
                                       </div>
-        
+
                                       <div class="form-group row">
                                         <label for="inputText" class="col-sm-5 col-form-label">Ngày tạo</label>
                                         <div class="col-sm-10">
                                           <input type="date" class="form-control" id="inputDate" placeholder="nhap vao">
                                         </div>
                                       </div>
-        
+
                                       <div class="form-group row">
                                         <label for="inputText" class="col-sm-5 col-form-label">Ngày cập nhật </label>
                                         <div class="col-sm-10">
@@ -292,7 +287,6 @@
                                   </div>
                                 </div>
                               </div>
-                      
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
