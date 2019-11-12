@@ -40,6 +40,4 @@ app.config(function($stateProvider, $urlRouterProvider){
       url: '/search',
       templateUrl: 'pages/search-engine.html'
     });
-    
-
 });
