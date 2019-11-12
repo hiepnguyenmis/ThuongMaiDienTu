@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -83,6 +84,7 @@ public class Accounts {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+
 
 	public Accounts() {
 		super();

@@ -39,10 +39,12 @@ public class ProductRest {
 		return  this.productService.findAll(pageable);
 	}
 	
+	
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/products/{id}")
 	public Product getProduct(@PathVariable Long id) {
 		boolean isProduct = this.productService.existsById(id);
-		if(!isProduct) {
+		if(!isProduct) {                                       
 			throw new RuntimeException("Product "+ id + " is not found");
 		}
 		
