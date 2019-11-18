@@ -1,25 +1,57 @@
 package com.shopping4th.ecommerce.service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.shopping4th.ecommerce.dao.AccountRepo;
 import com.shopping4th.ecommerce.entity.Accounts;
+import com.shopping4th.ecommerce.entity.UserDto;
 
-@Service
-public class AccountServiceImpl implements IAccountService{
+@Service(value="userService")
+public class AccountServiceImpl implements IAccountService, UserDetailsService{
 
 	private AccountRepo accountRepo;
+	
 	@Autowired
 	public AccountServiceImpl(AccountRepo accountRepo) {
 		super();
 		this.accountRepo = accountRepo;
+	}
+	
+	@Autowired
+	private BCryptPasswordEncoder bcryptEncoder;
+
+	@Override
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+		Accounts user = accountRepo.findByEmail(email);
+		if(user == null){
+			throw new UsernameNotFoundException("Invalid username or password.");
+		}
+		return new org.springframework.security.core.userdetails.User(user.getEmail			(), user.getPassword(), getAuthority(user));
+	}
+	
+	private Set<SimpleGrantedAuthority> getAuthority(Accounts user) {
+        Set<SimpleGrantedAuthority> authorities = new HashSet<>();
+		user.getRoles().forEach(role -> {
+			//authorities.add(new SimpleGrantedAuthority(role.getName()));
+            authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getName()));
+		});
+		return authorities;
+		//return Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN"));
 	}
 
 	@Override
@@ -28,18 +60,21 @@ public class AccountServiceImpl implements IAccountService{
 	}
 
 	@Override
-	public void save(Accounts accounts) {
+	public void save(UserDto user) {
 		//String hashPassword = BCrypt.hashpw(accounts.getPassword(), BCrypt.gensalt(12));
-		
-		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-		String hash = bCryptPasswordEncoder.encode(accounts.getPassword());
-		accounts.setPassword(hash);
+		Accounts newUser= new Accounts();
+		bcryptEncoder = new BCryptPasswordEncoder();
+		String hash = bcryptEncoder.encode(user.getPassword());
 
-		accounts.setEmail(accounts.getEmail());
-		accounts.setRole_name(accounts.getRole_name());
+		//accounts.setRole_name(accounts.getRole_name());
 		//accounts.setPassword(hashPassword);
-	
-		this.accountRepo.save(accounts);
+		newUser.setEmail(user.getEmail());
+		newUser.setPassword(hash);
+		Date created = new Date();
+		
+		newUser.setCreatedAt(created);
+		
+		this.accountRepo.save(newUser);
 	}
 
 	@Override
@@ -68,6 +103,8 @@ public class AccountServiceImpl implements IAccountService{
 	public boolean existsByEmail(String email) {
 		return this.accountRepo.existsByEmail(email);
 	}
+
+	
 
 
 

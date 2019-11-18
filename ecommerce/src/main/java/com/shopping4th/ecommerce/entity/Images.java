@@ -3,6 +3,8 @@ package com.shopping4th.ecommerce.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -19,6 +21,7 @@ public class Images {
 
 	@Id
 	@Column(name= "id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
 	@Column(name="path")
@@ -70,10 +73,9 @@ public class Images {
 		super();
 	}
 
-	public Images(Long id, String path) {
-		super();
-		this.id = id;
-		this.path = path;
-	}
+	
+
+	
+	
 	
 }

@@ -6,7 +6,9 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.shopping4th.ecommerce.entity.Accounts;
+import com.shopping4th.ecommerce.entity.UserDto;
 import com.shopping4th.ecommerce.service.AccountServiceImpl;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api")
 public class AccountRest {
@@ -27,7 +31,7 @@ public class AccountRest {
 		this.accountService = accountService;
 	}
 
-	
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/accounts")
 	public List<Accounts> getAllAccounts(){
 		return this.accountService.findALl();
@@ -51,11 +55,10 @@ public class AccountRest {
 	}
 	
 	@PostMapping("/signup")
-	public Accounts createAccount(@Valid @RequestBody Accounts accounts) {
+	public Accounts createAccount(@Valid @RequestBody UserDto accounts) {
 		accounts.setCreatedAt(new Date());
 		this.accountService.save(accounts);
-		
-		return this.accountService.findById(accounts.getId());
+		return this.accountService.findByEmail(accounts.getEmail());
 
 	}
 	

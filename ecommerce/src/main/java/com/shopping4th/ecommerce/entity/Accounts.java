@@ -1,15 +1,24 @@
 package com.shopping4th.ecommerce.entity;
 
 import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.shopping4th.ecommerce.entity.Role;
 
 @Entity
 @Table(name="accounts")
@@ -26,12 +35,15 @@ public class Accounts {
 	@Column(name="password")
 	private String password;
 	
-	@Column(name="role_name")
-	private String role_name;
-
 	@Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at", updatable = false)
     private Date createdAt;
+	
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "account_roles", joinColumns = {
+            @JoinColumn(name = "account_id") }, inverseJoinColumns = {
+            @JoinColumn(name = "role_id") })
+    private Set<Role> roles;
 	
 	public Date getCreatedAt() {
 		return createdAt;
@@ -65,24 +77,20 @@ public class Accounts {
 		this.password = password;
 	}
 
-	public String getRole_name() {
-		return role_name;
-	}
+	public Set<Role> getRoles() {
+        return roles;
+    }
 
-	public void setRole_name(String role_name) {
-		this.role_name = role_name;
-	}
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
 
 	public Accounts() {
 		super();
 	}
 
-	public Accounts(String email, String password, String role_name) {
-		super();
-		this.email = email;
-		this.password = password;
-		this.role_name = role_name;
-	}
+	
 
 	public Accounts(String email, String password) {
 		super();
