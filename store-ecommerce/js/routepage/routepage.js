@@ -39,6 +39,14 @@ app.config(function($stateProvider, $urlRouterProvider){
     .state('search',{
       url: '/search',
       templateUrl: 'pages/search-engine.html'
+    })
+    .state('news',{
+      url: '/news',
+      templateUrl: 'pages/news.html'
+    })
+    .state('newsdetail',{
+      url:'/newsdetail',
+      templateUrl: 'pages/newsdetail.html'
     });
     
 

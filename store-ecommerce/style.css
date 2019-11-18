@@ -5495,5 +5495,21 @@ span.required {
 	padding-right:15px;
 }
 
+.row#container-product{
+	width: 1000px !important;
+}
+
+.cot1{
+	min-height: 80px;
+	margin-left: 20%;
+}
+.row#row1{
+	width: 350px;
+}
+body{
+	width: 1349px;
+}
+
+
 
 /*----------------------------------------------------------------------------------------------------*/

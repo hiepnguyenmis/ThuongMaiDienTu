@@ -16,18 +16,22 @@
     <div class="container">
         <div class="row single-product-area">
             <div class="col-lg-5 col-md-6">
-                <div class="container p-5">
+                <div class="container p-5" >
                    <div class="container">
-                       <div class="row">
+                       <div class="row" >
                             <img src="{{url_image}}" id="main_image_slider" alt="" style="width: 28em;
                             height: 28em;">
                        </div>
-                       <div class="row">
-                           <div class="col-md-3" ng-repeat= "item_img in image"  ng-click="change_image_slider(item_img.id,item_img.img)">
-                            <img src="{{item_img.img}}" class="img-thumbnail" alt="" >
+                    <div class="container" id="container-product">
+                       <div class="row" id="row1">
+                           <div class="col-xs-3" ng-repeat= "item_img in image"  ng-click="change_image_slider(item_img.id,item_img.img)">
+                            <div class="cot1">
+                               <img src="{{item_img.img}}" width="80px" height="80px" class="img-thumbnail" alt="" >
+                        </div>
                            </div>
                        </div>
                    </div>
+                </div>
                 </div>
             </div>
 

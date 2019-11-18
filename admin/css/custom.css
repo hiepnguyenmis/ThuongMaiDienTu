@@ -5,13 +5,31 @@
 }
 .cot2{
     min-height: 150px;
-    margin: 0 10px;
+   
 }
 .cot3{
     min-height: 150px;
-    margin-left: 20px;
+
 }
 .cot4{
     min-height: 150px;
-    margin-left: 29px;
+   
+}
+.sanpham{
+	float:left;
+	margin-left:1%;
+	padding-left:2%;
+}
+.row#row1{
+  width: 794px;
+}
+.container#container1{
+    width: 794px !important;
+}
+.form-group#upload{
+    width: 112px;
+    height: 30px;
+}
+.form-control-file#uploadimage{
+    width: 100px;
 }
