@@ -18,20 +18,25 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.shopping4th.ecommerce.dao.AccountRepo;
+import com.shopping4th.ecommerce.dao.RoleRepo;
 import com.shopping4th.ecommerce.entity.Accounts;
+import com.shopping4th.ecommerce.entity.Role;
 import com.shopping4th.ecommerce.entity.UserDto;
 
 @Service(value="userService")
 public class AccountServiceImpl implements IAccountService, UserDetailsService{
 
 	private AccountRepo accountRepo;
+	private RoleRepo roleRepo;
 	
 	@Autowired
-	public AccountServiceImpl(AccountRepo accountRepo) {
+	public AccountServiceImpl(AccountRepo accountRepo, RoleRepo roleRepo) {
 		super();
 		this.accountRepo = accountRepo;
+		this.roleRepo=roleRepo;
+		
 	}
-	
+
 	@Autowired
 	private BCryptPasswordEncoder bcryptEncoder;
 
@@ -41,7 +46,7 @@ public class AccountServiceImpl implements IAccountService, UserDetailsService{
 		if(user == null){
 			throw new UsernameNotFoundException("Invalid username or password.");
 		}
-		return new org.springframework.security.core.userdetails.User(user.getEmail			(), user.getPassword(), getAuthority(user));
+		return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), getAuthority(user));
 	}
 	
 	private Set<SimpleGrantedAuthority> getAuthority(Accounts user) {
@@ -60,7 +65,7 @@ public class AccountServiceImpl implements IAccountService, UserDetailsService{
 	}
 
 	@Override
-	public void save(UserDto user) {
+	public void save(Accounts user) {
 		//String hashPassword = BCrypt.hashpw(accounts.getPassword(), BCrypt.gensalt(12));
 		Accounts newUser= new Accounts();
 		bcryptEncoder = new BCryptPasswordEncoder();
@@ -74,6 +79,7 @@ public class AccountServiceImpl implements IAccountService, UserDetailsService{
 		
 		newUser.setCreatedAt(created);
 		
+		newUser.setRoles(this.roleRepo.findByName("USER"));
 		this.accountRepo.save(newUser);
 	}
 
@@ -103,9 +109,5 @@ public class AccountServiceImpl implements IAccountService, UserDetailsService{
 	public boolean existsByEmail(String email) {
 		return this.accountRepo.existsByEmail(email);
 	}
-
-	
-
-
 
 }

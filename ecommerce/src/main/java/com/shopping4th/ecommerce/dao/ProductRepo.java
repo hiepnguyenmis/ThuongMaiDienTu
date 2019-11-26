@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.shopping4th.ecommerce.entity.Product;
 
 @Repository
-public interface IProductRepo extends JpaRepository<Product, Long> {
+public interface ProductRepo extends JpaRepository<Product, Long> {
 
 	public Page<Product> findAll(Pageable pageable);
 	public Page<Product> findByCategoryId(Long categoryId, Pageable pageable);

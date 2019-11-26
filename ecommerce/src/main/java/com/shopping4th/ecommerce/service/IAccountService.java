@@ -9,7 +9,7 @@ public interface IAccountService {
 
 	public List<Accounts> findALl();
 	//public void save(Accounts accounts);
-	public void save(UserDto user);
+	public void save(Accounts user);
 	public boolean existsById(Long id);
 	public Accounts findById(Long id);
 	public Accounts findByEmail(String email);

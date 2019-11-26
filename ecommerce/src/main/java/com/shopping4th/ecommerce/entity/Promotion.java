@@ -38,12 +38,12 @@ public class Promotion {
 	@Column(name="description")
 	private String description;
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	//@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="start_date")
 	private Date startDate;
 	
 	@Column(name="end_date")
-	@Temporal(TemporalType.TIMESTAMP)
+	//@Temporal(TemporalType.TIMESTAMP)
 	private Date endDate;
 	
 	@Temporal(TemporalType.TIMESTAMP)
@@ -62,7 +62,6 @@ public class Promotion {
 			inverseJoinColumns = {@JoinColumn(name = "product_id")}
 	)
 	private Set<Product> products = new HashSet<>();
-
 
 	public Long getId() {
 		return id;

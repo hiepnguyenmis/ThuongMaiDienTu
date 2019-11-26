@@ -13,6 +13,6 @@ public interface PromotionService {
 	public Promotion findById(Long id);
 	public void save(Promotion promotion);
 	public void deleteById(Long id);
-	public boolean existById(Long id);
+	public boolean existsById(Long id);
 	
 }

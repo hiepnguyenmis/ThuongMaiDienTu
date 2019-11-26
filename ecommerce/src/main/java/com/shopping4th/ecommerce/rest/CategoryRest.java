@@ -7,6 +7,8 @@ import java.util.List;
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,6 +28,7 @@ import com.shopping4th.ecommerce.service.CategoryService;
 @CrossOrigin
 public class CategoryRest {
 	
+	public static final Logger logger = LoggerFactory.getLogger(CategoryRest.class);
 	private CategoryService categoryService;
 
 	@Autowired
@@ -41,8 +44,10 @@ public class CategoryRest {
 	
 	@GetMapping("/{id}")
 	public Category getCategory(@PathVariable Long id) {
+		logger.info("Fetching with id {}", id);
 		boolean isCategory = this.categoryService.existsById(id);
 		if(!isCategory) {
+			logger.error("Product with id {} not found.", id);
 			throw new RuntimeException("Category "+ id + " is not found");
 		}
 		

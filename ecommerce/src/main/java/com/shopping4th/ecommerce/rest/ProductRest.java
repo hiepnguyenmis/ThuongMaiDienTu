@@ -36,11 +36,11 @@ public class ProductRest {
 
 	@GetMapping("/products")
 	public List<Product> getAllProduct(Pageable pageable){
-		return  this.productService.findAll(pageable);
+		return this.productService.findAll(pageable);
 	}
 	
 	
-	@PreAuthorize("hasRole('ADMIN')")
+	//@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/products/{id}")
 	public Product getProduct(@PathVariable Long id) {
 		boolean isProduct = this.productService.existsById(id);
@@ -56,16 +56,16 @@ public class ProductRest {
 		return this.productService.findByCategoryId(categoryId, pageable);
 	}
 
-	@PreAuthorize("hasRole('ADMIN')")
+	//@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/products/{id}")
-	public String deleteProduct(@PathVariable Long id) {
+	public void deleteProduct(@PathVariable Long id) {
 		boolean isProduct = this.productService.existsById(id);
 		if(!isProduct) {
 			throw new RuntimeException("Product "+ id + " is not found");
 		}
 		
 		productService.deletedById(id);
-		return "Deleted Product id "+ id;
+		
 	}
 	
 	@PutMapping("/products/{id}")
