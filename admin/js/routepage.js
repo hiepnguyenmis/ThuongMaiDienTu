@@ -51,5 +51,9 @@ app.config(function($stateProvider, $urlRouterProvider){
     url:'/reports',
     templateUrl:'pages/reports.html',
     controller:'reportsControllers'
+  })
+  .state('orders',{
+    url:'/orders',
+    templateUrl:'pages/orders.html'
   });
 });
