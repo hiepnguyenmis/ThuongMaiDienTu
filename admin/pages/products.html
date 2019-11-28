@@ -19,28 +19,42 @@
               <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                   <div class="modal-content">
-                    <div class="modal-header bg-light">
-                      <h5 class="modal-title" id="deleteProductLabel">Thêm Sản Phẩm</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <div class="container">
-                        <div class="row">
-                          <div class="col-6">
-                            <form>
+                    <form>
+                      <div class="modal-header bg-light">
+                        <h5 class="modal-title" id="deleteProductLabel">Thêm Sản Phẩm</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="container">
+                          <div class="row">
+                            <h6>Thông tin sản phẩm</h6>
+                          </div>
+                          <div class="row">
+                            <div class="col-6">
                               <div class="form-group row">
                                 <label for="inputText" class="col-sm-5 col-form-label">Mã sản phẩm</label>
                                 <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="inputText" placeholder="">
+                                  <input type="text" class="form-control" id="inputText" placeholder="D01">
                                 </div>
                               </div>
                               <div class="form-group row">
                                 <label for="inputText" class="col-sm-5 col-form-label">Tên sản phẩm</label>
                                 <div class="col-sm-10">
                                   <input type="text" class="form-control" id="inputText"
-                                    placeholder="Nhập tên sản phẩm">
+                                    placeholder="Laptop HP 15s du0054TU i3 7020U/4GB/1TB/Win10 (6ZF60PA)">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-6">
+                              <div class="form-group row">
+                                <label for="inputText" class="col-sm-5 col-form-label">Thương Hiệu</label>
+                                <div class="col-sm-10">
+                                  <select class="form-control" id="inputText" placeholder="">
+                                    <option ng-repeat="category in categories" value="{{category.id}}">{{category.name}}
+                                    </option>
+                                  </select>
                                 </div>
                               </div>
                               <div class="form-group row">
@@ -51,69 +65,101 @@
                                 </div>
                               </div>
                               <div class="form-group row">
-                                <label for="inputText" class="col-sm-5 col-form-label">Hình ảnh</label>
-                                <div class="container">
-                                  <div class="row">
-                                    <div class="col-md-3">
-                                      <div class="cot1">
-                                        <img src="../img/avatar-1.jpg">
-                                      </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                      <div class="cot2">
-                                        <img src="../img/avatar-1.jpg">
-                                      </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                      <div class="cot3">
-                                        <img src="../img/avatar-1.jpg">
-                                      </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                      <div class="cot4">
-                                        <img src="../img/avatar-1.jpg">
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <form>
-                                    <div class="form-group">
-                                      <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                                    </div>
-                                  </form>
+                                <label for="inputText" class="col-sm-5 col-form-label">Số lượng nhập</label>
+                                <div class="col-sm-10">
+                                  <input type="text" class="form-control" id="inputText" placeholder="20">
                                 </div>
                               </div>
+                            </div>
                           </div>
-                          <div class="col-6">
-                            <form>
+                          <div class="row">
+                            <label for="inputText" class="col-sm-5 col-form-label">Hình Ảnh(Click chọn 1 ảnh để làm ảnh
+                              thu nhỏ)</label>
+                          </div>
+                          <div class="row">
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                              <label class="btn btn-default active">
+                                <input type="radio" name="options" id="option1" autocomplete="off" checked>
+                                <div class="col-md-2">
+                                  <img src="../img/avatar-1.jpg">
+                                </div>
+                              </label>
+                              <label class="btn btn-default">
+                                <input type="radio" name="options" id="option2" autocomplete="off">
+                                <div class="col-md-2">
+                                  <img src="../img/avatar-1.jpg">
+                                </div>
+                              </label>
+                              <label class="btn btn-default">
+                                <input type="radio" name="options" id="option3" autocomplete="off">
+                                <div class="col-md-2">
+                                  <img src="../img/avatar-1.jpg">
+                                </div>
+                              </label>
+                              <label class="btn btn-default">
+                                <input type="radio" name="options" id="option3" autocomplete="off">
+                                <div class="col-md-2">
+                                  <img src="../img/avatar-1.jpg">
+                                </div>
+                              </label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-6">
+                              <label>Ảnh mặt trước</label>
+                              <input type="file" class="form-control-file" id="exampleFormControlFile1" accept="" file-model="customer.file">
+                              <label>Ảnh mặt sau</label>
+                              <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                            </div>
+                            <div class="col-6">
+                              <label>Ảnh mặt phải</label>
+                              <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                              <label>Ảnh mặt trái</label>
+                              <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                            </div>
+                          </div>
+                          <div class="row mt-3">
+                            <h6>Thông tin cấu hình</h6>
+                          </div>
+                          <div class="row">
+                            <div class="col-6">
+
                               <div class="form-group row">
-                                <label for="inputText" class="col-sm-6 col-form-label">Danh mục sản phẩm</label>
+                                <label for="inputText" class="col-sm-5 col-form-label">Thông tin chipset</label>
                                 <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="inputText"
-                                    placeholder="Nhập danh mục sản phẩm">
+                                  <input type="text" class="form-control" id="inputText" placeholder="i3 7020U">
                                 </div>
                               </div>
                               <div class="form-group row">
-                                <label for="inputText" class="col-sm-5 col-form-label">Ngày tạo</label>
+                                <label for="inputText" class="col-sm-5 col-form-label">Thông tin bộ nhớ ram(GB)</label>
                                 <div class="col-sm-10">
-                                  <input type="date" class="form-control" id="inputDate" placeholder="nhap vao">
+                                  <input type="text" class="form-control" id="inputText" placeholder="4">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-6">
+                              <div class="form-group row">
+                                <label for="inputText" class="col-sm-5 col-form-label">Thông tin bộ nhớ
+                                  trong(GB)</label>
+                                <div class="col-sm-10">
+                                  <input type="text" class="form-control" id="inputText" placeholder="1024">
                                 </div>
                               </div>
                               <div class="form-group row">
-                                <label for="inputText" class="col-sm-5 col-form-label">Ngày cập nhật </label>
+                                <label for="inputText" class="col-sm-5 col-form-label">Thông tin màn hình(inch)</label>
                                 <div class="col-sm-10">
-                                  <input type="date" class="form-control" id="inputDate" placeholder="nhap vao">
+                                  <input type="text" class="form-control" id="inputText" placeholder="15.6">
                                 </div>
                               </div>
-                            </form>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
-                      <button type="button" class="btn btn-primary">Đồng Ý</button>
-                      </form>
-                    </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+                        <button type="submit" class="btn btn-primary">Đồng Ý</button>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
@@ -177,7 +223,8 @@
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
-                              <button type="button" ng-click='deleteProduct(product.id)' class="btn btn-primary">Đồng Ý</button>
+                              <button type="button" ng-click='deleteProduct(product.id)' class="btn btn-primary">Đồng
+                                Ý</button>
                             </div>
                           </div>
                         </div>
@@ -187,28 +234,42 @@
                         aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content">
-                            <div class="modal-header bg-light">
-                              <h5 class="modal-title" id="deleteProductLabel">Cập Nhật Thông Tin Danh Mục</h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body">
-                              <div class="container">
-                                <div class="row">
-                                  <div class="col-6">
-                                    <form>
+                            <form>
+                              <div class="modal-header bg-light">
+                                <h5 class="modal-title" id="deleteProductLabel">Thêm Sản Phẩm</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="container">
+                                  <div class="row">
+                                    <h6>Thông tin sản phẩm</h6>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-6">
                                       <div class="form-group row">
                                         <label for="inputText" class="col-sm-5 col-form-label">Mã sản phẩm</label>
                                         <div class="col-sm-10">
-                                          <input type="text" class="form-control" id="inputText" placeholder="">
+                                          <input type="text" class="form-control" id="inputText" placeholder="D01">
                                         </div>
                                       </div>
                                       <div class="form-group row">
                                         <label for="inputText" class="col-sm-5 col-form-label">Tên sản phẩm</label>
                                         <div class="col-sm-10">
                                           <input type="text" class="form-control" id="inputText"
-                                            placeholder="Nhập tên sản phẩm">
+                                            placeholder="Laptop HP 15s du0054TU i3 7020U/4GB/1TB/Win10 (6ZF60PA)">
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-6">
+                                      <div class="form-group row">
+                                        <label for="inputText" class="col-sm-5 col-form-label">Thương Hiệu</label>
+                                        <div class="col-sm-10">
+                                          <select class="form-control" id="inputText" placeholder="">
+                                            <option ng-repeat="category in categories" value="{{category.id}}">
+                                              {{category.name}}</option>
+                                          </select>
                                         </div>
                                       </div>
                                       <div class="form-group row">
@@ -219,79 +280,104 @@
                                         </div>
                                       </div>
                                       <div class="form-group row">
-                                        <label for="inputText" class="col-sm-5 col-form-label">Hình ảnh</label>
-                                        <div class="container">
-                                          <div class="row">
-                                            <div class="col-lg-3">
-                                              <div class="cot1">
-                                                <img src="../img/avatar-1.jpg">
-                                              </div>
-                                            </div>
-                                            <div class="col-lg-3">
-                                              <div class="cot2">
-                                                <img src="../img/avatar-1.jpg">
-                                              </div>
-                                            </div>
-                                            <div class="col-lg-3">
-                                              <div class="cot3">
-                                                <img src="../img/avatar-1.jpg">
-                                              </div>
-                                            </div>
-                                            <div class="col-lg-3">
-                                              <div class="cot4">
-                                                <img src="../img/avatar-1.jpg">
-                                              </div>
-                                            </div>
-                                            <div class="row">
-                                              <div class="col-12">
-                                                <div class="form-group">
-                                                  Ảnh mặt trước:<input type="file" class="form-control-file"
-                                                    id="exampleFormControlFile1">
-                                                  Ảnh mặt sau: <input type="file" class="form-control-file"
-                                                    id="exampleFormControlFile1">
-                                                  Ảnh mặt trái: <input type="file" class="form-control-file"
-                                                    id="exampleFormControlFile1">
-                                                  Ảnh mặt phải:<input type="file" class="form-control-file"
-                                                    id="exampleFormControlFile1">
-                                                </div>
-                                              </div>
-                                            </div>
-                                          </div>
+                                        <label for="inputText" class="col-sm-5 col-form-label">Số lượng nhập</label>
+                                        <div class="col-sm-10">
+                                          <input type="text" class="form-control" id="inputText" placeholder="20">
                                         </div>
                                       </div>
+                                    </div>
                                   </div>
-                                  <div class="col-6">
-                                    <form>
-                                      <div class="form-group row">
-                                        <label for="inputText" class="col-sm-6 col-form-label">Danh mục sản phẩm</label>
-                                        <div class="col-sm-10">
-                                          <input type="text" class="form-control" id="inputText"
-                                            placeholder="Nhập danh mục sản phẩm">
+                                  <div class="row">
+                                    <label for="inputText" class="col-sm-5 col-form-label">Hình Ảnh(Click chọn 1 ảnh để
+                                      làm ảnh
+                                      thu nhỏ)</label>
+                                  </div>
+                                  <div class="row">
+                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                      <label class="btn btn-default active">
+                                        <input type="radio" name="options" id="option1" autocomplete="off" checked>
+                                        <div class="col-md-2">
+                                          <img src="../img/avatar-1.jpg">
                                         </div>
-                                      </div>
+                                      </label>
+                                      <label class="btn btn-default">
+                                        <input type="radio" name="options" id="option2" autocomplete="off">
+                                        <div class="col-md-2">
+                                          <img src="../img/avatar-1.jpg">
+                                        </div>
+                                      </label>
+                                      <label class="btn btn-default">
+                                        <input type="radio" name="options" id="option3" autocomplete="off">
+                                        <div class="col-md-2">
+                                          <img src="../img/avatar-1.jpg">
+                                        </div>
+                                      </label>
+                                      <label class="btn btn-default">
+                                        <input type="radio" name="options" id="option3" autocomplete="off">
+                                        <div class="col-md-2">
+                                          <img src="../img/avatar-1.jpg">
+                                        </div>
+                                      </label>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-6">
+                                      <label>Ảnh mặt trước</label>
+                                      <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                      <label>Ảnh mặt sau</label>
+                                      <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                    </div>
+                                    <div class="col-6">
+                                      <label>Ảnh mặt phải</label>
+                                      <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                      <label>Ảnh mặt trái</label>
+                                      <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                    </div>
+                                  </div>
+                                  <div class="row mt-3">
+                                    <h6>Thông tin cấu hình</h6>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-6">
 
                                       <div class="form-group row">
-                                        <label for="inputText" class="col-sm-5 col-form-label">Ngày tạo</label>
+                                        <label for="inputText" class="col-sm-5 col-form-label">Thông tin chipset</label>
                                         <div class="col-sm-10">
-                                          <input type="date" class="form-control" id="inputDate" placeholder="nhap vao">
+                                          <input type="text" class="form-control" id="inputText" placeholder="i3 7020U">
                                         </div>
                                       </div>
-
                                       <div class="form-group row">
-                                        <label for="inputText" class="col-sm-5 col-form-label">Ngày cập nhật </label>
+                                        <label for="inputText" class="col-sm-5 col-form-label">Thông tin bộ nhớ
+                                          ram(GB)</label>
                                         <div class="col-sm-10">
-                                          <input type="date" class="form-control" id="inputDate" placeholder="nhap vao">
+                                          <input type="text" class="form-control" id="inputText" placeholder="4">
                                         </div>
                                       </div>
-                                    </form>
+                                    </div>
+                                    <div class="col-6">
+                                      <div class="form-group row">
+                                        <label for="inputText" class="col-sm-5 col-form-label">Thông tin bộ nhớ
+                                          trong(GB)</label>
+                                        <div class="col-sm-10">
+                                          <input type="text" class="form-control" id="inputText" placeholder="1024">
+                                        </div>
+                                      </div>
+                                      <div class="form-group row">
+                                        <label for="inputText" class="col-sm-5 col-form-label">Thông tin màn
+                                          hình(inch)</label>
+                                        <div class="col-sm-10">
+                                          <input type="text" class="form-control" id="inputText" placeholder="15.6">
+                                        </div>
+                                      </div>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
-                              <button type="button" class="btn btn-primary">Đồng Ý</button>
-                            </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+                                <button type="submit" class="btn btn-primary">Đồng Ý</button>
+                              </div>
+                            </form> 
                           </div>
                         </div>
                       </div>

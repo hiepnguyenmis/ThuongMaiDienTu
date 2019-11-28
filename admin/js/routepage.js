@@ -1,9 +1,9 @@
 var app = angular.module("myApp", ['ui.router','ckeditor', 'chart.js']);
 app.config(function($stateProvider, $urlRouterProvider){
-  $urlRouterProvider.otherwise('/home');
+  $urlRouterProvider.otherwise('/');
     $stateProvider
     .state('home', {
-      url: '/home',
+      url: '/',
       templateUrl: 'pages/main.html'
   })
   .state('categories', {
@@ -23,7 +23,8 @@ app.config(function($stateProvider, $urlRouterProvider){
   .state('login',{
     url:'/login',
     templateUrl:'pages/login.html',
-    controller:'loginContronller'
+    controller:'loginController',
+    controllerAs: "vm"
   })
   .state('products',{
     url:'/products',
@@ -48,3 +49,5 @@ app.config(function($stateProvider, $urlRouterProvider){
     controller:'reportsControllers'
   });
 });
+
+// 
