@@ -100,6 +100,10 @@ public class Product implements Serializable{
     @JoinColumn(name = "product_id")
     private List<Images> images;
 	
+    
+//    @ManyToMany(mappedBy = "products")
+//    Set<Vouchers> vouchers;
+    
 	public Product() {
 		super();
 	}

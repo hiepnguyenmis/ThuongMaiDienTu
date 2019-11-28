@@ -47,7 +47,7 @@ public class PromotionServiceImpl implements PromotionService {
 	}
 
 	@Override
-	public boolean existById(Long id) {
+	public boolean existsById(Long id) {
 		return this.promotionRepo.existsById(id);
 	}
 

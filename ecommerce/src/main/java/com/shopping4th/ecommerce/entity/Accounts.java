@@ -39,11 +39,15 @@ public class Accounts {
     @Column(name = "created_at", updatable = false)
     private Date createdAt;
 	
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinTable(name = "account_roles", joinColumns = {
             @JoinColumn(name = "account_id") }, inverseJoinColumns = {
             @JoinColumn(name = "role_id") })
     private Set<Role> roles;
+	
+	@OneToOne( cascade=CascadeType.PERSIST)
+	@JoinColumn(name="customer_id")
+	private Customer customer;
 	
 	public Date getCreatedAt() {
 		return createdAt;
@@ -86,20 +90,32 @@ public class Accounts {
     }
 
 
+    public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+    
 	public Accounts() {
 		super();
 	}
 
-	
 
 	public Accounts(String email, String password) {
 		super();
 		this.email = email;
 		this.password = password;
 	}
-	
-	
-	
-	
+
+	public Accounts(String email, String password, Set<Role> roles, Customer customer) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.roles = roles;
+		this.customer=customer;
+	}
 	
 }

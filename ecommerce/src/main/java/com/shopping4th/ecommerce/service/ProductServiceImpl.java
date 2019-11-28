@@ -11,17 +11,16 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.shopping4th.ecommerce.dao.IProductRepo;
-
+import com.shopping4th.ecommerce.dao.ProductRepo;
 import com.shopping4th.ecommerce.entity.Product;
 
 @Service
 public class ProductServiceImpl implements ProductService {
 	
 	@Autowired
-	private IProductRepo productRepo;
+	private ProductRepo productRepo;
 	
-	public ProductServiceImpl(IProductRepo productRepo) {
+	public ProductServiceImpl(ProductRepo productRepo) {
 		super();
 		this.productRepo = productRepo;
 	}

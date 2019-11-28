@@ -18,20 +18,21 @@ import org.springframework.web.bind.annotation.RestController;
 import com.shopping4th.ecommerce.entity.Accounts;
 import com.shopping4th.ecommerce.entity.UserDto;
 import com.shopping4th.ecommerce.service.AccountServiceImpl;
+import com.shopping4th.ecommerce.service.IAccountService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api")
 public class AccountRest {
 
-	private AccountServiceImpl accountService;
+	private IAccountService accountService;
 	@Autowired
 	public AccountRest(AccountServiceImpl accountService) {
 		super();
 		this.accountService = accountService;
 	}
 
-	@PreAuthorize("hasRole('ADMIN')")
+	//@PreAuthorize("hasRole('USER')")
 	@GetMapping("/accounts")
 	public List<Accounts> getAllAccounts(){
 		return this.accountService.findALl();
@@ -55,7 +56,7 @@ public class AccountRest {
 	}
 	
 	@PostMapping("/signup")
-	public Accounts createAccount(@Valid @RequestBody UserDto accounts) {
+	public Accounts createAccount(@Valid @RequestBody Accounts accounts) {
 		accounts.setCreatedAt(new Date());
 		this.accountService.save(accounts);
 		return this.accountService.findByEmail(accounts.getEmail());

@@ -16,6 +16,11 @@ app.config(function($stateProvider, $urlRouterProvider){
     templateUrl: 'pages/addposts.html',
     controller: 'postsControllers'
   })
+  .state('editpost',{
+    url: '/editpost',
+    templateUrl: 'pages/editpost.html',
+    cont: 'postsControllers'
+  })
   .state('posts', {
     url: '/posts',
     templateUrl: 'pages/posts.html',
@@ -47,6 +52,10 @@ app.config(function($stateProvider, $urlRouterProvider){
     url:'/reports',
     templateUrl:'pages/reports.html',
     controller:'reportsControllers'
+  })
+  .state('orders',{
+    url:'/orders',
+    templateUrl:'pages/orders.html'
   });
 });
 
