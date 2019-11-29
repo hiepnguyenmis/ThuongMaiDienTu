@@ -1,7 +1,7 @@
 (function(module){
     module.controller('categoriesControllers',function($scope,$http){
         //$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-        var baseUrl='http://localhost:8080/api/categories/';
+        var baseUrl='https://ecommerce-tdmu.herokuapp.com/api/categories/';
         this.$onInit = function(){
             $scope.getdataCategory();
         }
@@ -11,6 +11,8 @@
                 url:baseUrl
             }).then(function mySuccess(response){
                 $scope.categories=response.data;
+                console.log(response);
+                
             });
         }
         $scope.createCategory = function(){

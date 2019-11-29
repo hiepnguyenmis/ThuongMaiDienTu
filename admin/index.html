@@ -41,7 +41,7 @@
   <script src="/node_modules/angular-chart.js/dist/angular-chart.js"></script>
 
 </head>
-<body ng-app="myApp">
+<body ng-app="myApp" ">
   <div class="page">
     <!-- Main Navbar-->
     <header class="header sticky">
@@ -160,7 +160,7 @@
         <div class="sidebar-header d-flex align-items-center">
           <div class="avatar"><img src="img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
           <div class="title">
-            <h1 class="h4">Mark Stephen</h1>
+            <h1 class="h4">{{username}}</h1>
             <p>Quản trị viên</p>
           </div>
         </div>
@@ -215,11 +215,14 @@
   <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
   <script src="js/charts-home.js"></script>
   <script src="js/controllers/categoriesControllers.js"></script>
-  <script src="js/controllers/accountControllers.js"></script>
   <script src="js/controllers/authen.js"></script>
+  <script src="js/controllers/accountControllers.js"></script>
+
   <script src="js/controllers/postsControllers.js"></script>
   <script src="js/controllers/reportsControllers.js"></script>
   <script src="js/controllers/productsControllers.js"></script>
+  <script src="js/controllers/index.js"></script>
+  <script src="node_modules/ngstorage/ngStorage.js"></script>
   <script src="js/sidebar.js"></script>
   <!-- Main File-->
   <script src="js/front.js"></script>

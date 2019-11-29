@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app')
+        .module('myApp')
         .factory('AuthenticationService', Service);
 
     function Service($http, $localStorage) {
@@ -13,17 +13,15 @@
 
         return service;
 
-        function Login(username, password, callback) {
-            $http.post('http://localhost:8080/api/token/generate-token', { email: email, password: password })
-                .success(function (response) {
+        function Login(email, password, callback) {
+            $http.post('https://ecommerce-tdmu.herokuapp.com/api/token/generate-token', { email: email, password: password })
+                .then(function (response) {
                     // login successful if there's a token in the response
-                    if (response.token) {
+                    if (response.data.token) {
                         // store username and token in local storage to keep user logged in between page refreshes
-                        $localStorage.currentUser = { email: email, token: response.token };
-
+                        $localStorage.currentUser = { email: email, token: response.data.token };
                         // add jwt token to auth header for all requests made by the $http service
-                        $http.defaults.headers.common.Authorization = 'Bearer ' + response.token;
-
+                        $http.defaults.headers.common.Authorization = 'Bearer ' + response.data.token;
                         // execute callback with true to indicate successful login
                         callback(true);
                     } else {
@@ -39,4 +37,5 @@
             $http.defaults.headers.common.Authorization = '';
         }
     }
+    
 })();

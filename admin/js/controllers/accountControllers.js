@@ -3,7 +3,7 @@
 
     angular
         .module('myApp')
-        .controller('loginController', Controller);
+        .controller('LoginController', Controller);
 
     function Controller($location, AuthenticationService) {
         var vm = this;
@@ -20,11 +20,13 @@
         function login() {
             vm.loading = true;
             AuthenticationService.Login(vm.email, vm.password, function (result) {
-                if (result === true) {
-                    $location.path('/');
-                } else {
-                    vm.error = 'Username or password is incorrect';
+                if (result == true) {
                     vm.loading = false;
+                    $location.path('/');
+                } if(result==false) {
+                    alert(vm.error);
+                    vm.error = 'Username or password is incorrect';
+                    
                 }
             });
         };
