@@ -1,6 +1,6 @@
 (function(module){
     module.controller('productsControllers',function($scope,$http){
-        $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+        //$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
         var baseUrl='https://ecommerce-tdmu.herokuapp.com/api/products/';
         this.$onInit = function(){
             $scope.getdataProducts();

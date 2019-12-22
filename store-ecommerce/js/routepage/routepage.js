@@ -1,4 +1,4 @@
-var app = angular.module("myApp", ['ui.router']);
+var app = angular.module("myApp", ['ui.router','ngStorage']);
 app.config(function($stateProvider, $urlRouterProvider){
   $urlRouterProvider.otherwise('/home');
     $stateProvider
@@ -16,7 +16,9 @@ app.config(function($stateProvider, $urlRouterProvider){
     })
     .state('login',{
       url:'/login',
-      templateUrl:'pages/login-register.html'
+      templateUrl:'pages/login-register.html',
+      controller:'LoginController',
+      controllerAs:'vm'
     })
     .state('contact',{
       url: '/contact',

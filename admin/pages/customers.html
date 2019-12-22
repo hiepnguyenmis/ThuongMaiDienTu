@@ -18,20 +18,20 @@
                 <thead>
                   <tr>
                     <th scope="col">Stt</th>
-                    <th scope="col">Mã Khách Hàng</th>
+                    <th scope="col">Họ Khách Hàng</th>
                     <th scope="col">Tên Khách Hàng</th>
-                    <th scope="col">Tên Đăng Nhập</th>
-                    <th scope="col">Mật Khẩu</th>
+                    <th scope="col">Số điện thoại</th>
+                    <th scope="col">Địa chỉ</th>
                     <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="clickable text-center" onclick="window.location='#!profile'">
+                  <tr class="clickable text-center" onclick="window.location='#!profile'" ng-repeat="customer in customers">
                     <th scope="row">1</th>
-                    <td>KH001</td>
-                    <td>Nguyễn Văn Hiệp</td>
-                    <td>Tên Đăng Nhập</td>
-                    <td>10a4cdfe7253d13f40f7c2b9364ab2f7</td>
+                    <td>{{customer.first_name }}</td>
+                    <td>{{customer.last_name }}</td>
+                    <td>{{customer.last_name }}</td>
+                    <td>{{customer.address }}</td>
                     <td></td>
                   </tr>
                 </tbody>

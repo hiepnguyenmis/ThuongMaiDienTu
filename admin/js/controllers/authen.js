@@ -14,7 +14,7 @@
         return service;
 
         function Login(email, password, callback) {
-            $http.post('https://ecommerce-tdmu.herokuapp.com/api/token/generate-token', { email: email, password: password })
+            $http.post('https://ecommerce-tdmu.herokuapp.com/api/token/admin/generate-token', { email: email, password: password })
                 .then(function (response) {
                     // login successful if there's a token in the response
                     if (response.data.token) {
@@ -28,14 +28,13 @@
                         // execute callback with false to indicate failed login
                         callback(false);
                     }
+                    
                 });
         }
-
         function Logout() {
             // remove user from local storage and clear http auth header
             delete $localStorage.currentUser;
             $http.defaults.headers.common.Authorization = '';
-        }
+        }   
     }
-    
 })();

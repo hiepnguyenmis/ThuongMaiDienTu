@@ -39,7 +39,8 @@ app.config(function($stateProvider, $urlRouterProvider){
   })
   .state('customers',{
     url:'/customers',
-    templateUrl:'pages/customers.html'
+    templateUrl:'pages/customers.html',
+    controller:'customersController'
   })
   .state('profiles',{
     url:'/profiles',
