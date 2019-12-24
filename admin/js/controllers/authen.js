@@ -14,7 +14,7 @@
         return service;
 
         function Login(email, password, callback) {
-            $http.post('https://ecommerce-tdmu.herokuapp.com/api/token/admin/generate-token', { email: email, password: password })
+            $http.post('https://aqueous-retreat-01787.herokuapp.com/api/token/admin/generate-token', { email: email, password: password })
                 .then(function (response) {
                     // login successful if there's a token in the response
                     if (response.data.token) {

@@ -36,14 +36,14 @@
                               <div class="form-group row">
                                 <label for="inputText" class="col-sm-5 col-form-label">Mã sản phẩm</label>
                                 <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="inputText" placeholder="D01">
+                                  <input type="text" class="form-control" ng-model="productCode" id="inputText" placeholder="D01">
                                 </div>
                               </div>
                               <div class="form-group row">
                                 <label for="inputText" class="col-sm-5 col-form-label">Tên sản phẩm</label>
                                 <div class="col-sm-10">
                                   <input type="text" class="form-control" id="inputText"
-                                    placeholder="Laptop HP 15s du0054TU i3 7020U/4GB/1TB/Win10 (6ZF60PA)">
+                                    placeholder="Laptop HP 15s du0054TU i3 7020U/4GB/1TB/Win10 (6ZF60PA)" ng-model="Name">
                                 </div>
                               </div>
                             </div>
@@ -51,7 +51,7 @@
                               <div class="form-group row">
                                 <label for="inputText" class="col-sm-5 col-form-label">Thương Hiệu</label>
                                 <div class="col-sm-10">
-                                  <select class="form-control" id="inputText" placeholder="">
+                                  <select class="form-control" id="inputText" ng-model="selectedCategory" ng-change="getCategoryById(selectedCategory)">
                                     <option ng-repeat="category in categories" value="{{category.id}}">{{category.name}}
                                     </option>
                                   </select>
@@ -61,14 +61,14 @@
                                 <label for="inputText" class="col-sm-5 col-form-label">Giá sản phẩm</label>
                                 <div class="col-sm-10">
                                   <input type="text" class="form-control" id="inputText"
-                                    placeholder="Nhập giá sản phẩm">
+                                    placeholder="Nhập giá sản phẩm" ng-model='Price'>
                                 </div>
                               </div>
                               <div class="form-group row">
                                 <label for="inputText" class="col-sm-5 col-form-label">Số lượng
                                   nhập</label>
                                   <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputText" placeholder="20">
+                                    <input type="text" class="form-control" ng-model='Stock' id="inputText" placeholder="20">
                                   </div>
                               </div>
                             </div>
@@ -130,13 +130,13 @@
                               <div class="form-group row">
                                 <label for="inputText" class="col-sm-5 col-form-label">Thông tin chipset</label>
                                 <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="inputText" placeholder="i3 7020U">
+                                  <input type="text" ng-model="cpu" class="form-control" id="inputText" placeholder="i3 7020U">
                                 </div>
                               </div>
                               <div class="form-group row">
                                 <label for="inputText" class="col-sm-5 col-form-label">Thông tin bộ nhớ ram(GB)</label>
                                 <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="inputText" placeholder="4">
+                                  <input type="text" ng-model="ram" class="form-control" id="inputText" placeholder="4">
                                 </div>
                               </div>
                             </div>
@@ -145,13 +145,13 @@
                                 <label for="inputText" class="col-sm-5 col-form-label">Thông tin bộ nhớ
                                   trong(GB)</label>
                                 <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="inputText" placeholder="1024">
+                                  <input type="text" ng-model='hardDisk' class="form-control" id="inputText" placeholder="1024">
                                 </div>
                               </div>
                               <div class="form-group row">
                                 <label for="inputText" class="col-sm-5 col-form-label">Thông tin màn hình(inch)</label>
                                 <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="inputText" placeholder="15.6">
+                                  <input type="text" ng-model='screen' class="form-control" id="inputText" placeholder="15.6">
                                 </div>
                               </div>
                             </div>
@@ -160,7 +160,7 @@
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
-                        <button type="submit" class="btn btn-primary">Đồng Ý</button>
+                        <button type="submit" class="btn btn-primary" ng-click="createProduct()">Đồng Ý</button>
                       </div>
                     </form>
                   </div>
@@ -237,7 +237,7 @@
                         aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content">
-                            <form>
+                            <form enctype="multipart/form-data">
                               <div class="modal-header bg-light">
                                 <h5 class="modal-title" id="deleteProductLabel">Thêm Sản Phẩm</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -360,15 +360,17 @@
                                       <div class="row">
                                         <div class="col-6">
                                           <label>Ảnh mặt trước</label>
-                                          <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                          <!-- <input type="file" class="form-control-file" id="exampleFormControlFile1"> -->
+                                          <div class="button" ngf-select ng-model="files" ngf-multiple="true">Select</div>
                                           <label>Ảnh mặt sau</label>
-                                          <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                          <!-- <input type="file" class="form-control-file" id="exampleFormControlFile1"> -->
+                                          <div class="button" ngf-select ng-model="files" ngf-multiple="true">Select</div>
                                         </div>
                                         <div class="col-6">
                                           <label>Ảnh mặt phải</label>
-                                          <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                          <div class="button" ngf-select ng-model="files" ngf-multiple="true">Select</div>
                                           <label>Ảnh mặt trái</label>
-                                          <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                          <div class="button" ngf-select ng-model="files" ngf-multiple="true">Select</div>
                                         </div>
                                       </div>
                                       <div class="row mt-3">

@@ -1,4 +1,4 @@
-var app = angular.module("myApp", ['ui.router','ckeditor', 'chart.js',"ngStorage"]);
+var app = angular.module("myApp", ['ui.router','ckeditor', 'chart.js',"ngStorage",'ngFileUpload']);
 app.config(function($stateProvider, $urlRouterProvider){
   $urlRouterProvider.otherwise('/');
     $stateProvider
@@ -67,7 +67,6 @@ app.run(
     // keep user logged in after page refresh
     if ($localStorage.currentUser) {
         $http.defaults.headers.common.Authorization = 'Bearer ' + $localStorage.currentUser.token;
-        
     }
 
     // redirect to login page if not logged in and trying to access a restricted page

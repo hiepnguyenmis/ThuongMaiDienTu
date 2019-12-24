@@ -1,15 +1,18 @@
 (function(module){
     module.controller('productsControllers',function($scope,$http){
         //$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-        var baseUrl='https://ecommerce-tdmu.herokuapp.com/api/products/';
+        var baseUrl='https://aqueous-retreat-01787.herokuapp.com/api/';
+        $scope.selectedCategory=-1;
+        $scope.category={};
         this.$onInit = function(){
+           
             $scope.getdataProducts();
             $scope.getdataCategory();
         }
         $scope.getdataProducts=function(){
             $http({
                 method: "GET",
-                url:baseUrl
+                url:baseUrl+'products'
             }).then(function mySuccess(response){
                 $scope.products=response.data;
             });
@@ -17,79 +20,91 @@
         $scope.getdataCategory=function(){
             $http({
                 method: "GET",
-                url:'https://ecommerce-tdmu.herokuapp.com/api/categories/'
+                url:baseUrl+'categories'
             }).then(function mySuccess(response){
                 $scope.categories=response.data;
             });
         }
+
+        $scope.getCategoryById= function(id){
+            $http.get(baseUrl+'categories/'+id).then(function success(res){
+                $scope.category = res.data;
+                console.log($scope.category);
+                
+            })
+        }
         $scope.createProduct= function(){
-            $scope.images=[
-                {path:$scope.image_back},
-                {path:$scope.image_front},
-                {path:$scope.image_left},
-                {path:$scope.image_right}
-            ]
+            
+            // $scope.images=[
+            //     {path:$scope.image_back},
+            //     {path:$scope.image_front},
+            //     {path:$scope.image_left},
+            //     {path:$scope.image_right}
+            // ]
+
+            
             var data={
                 productCode:$scope.productCode,
                 name:$scope.Name,
                 price: $scope.Price,
-                thumbnail: $scope.Thumbnail,
+                thumbnail: 'null',
                 stock: $scope.Stock,
                 cpu:$scope.cpu,
                 ram: $scope.ram,
                 hardDisk: $scope.hardDisk,
                 screen: $scope.screen,
-                category: $scope.idCategory,
-                images:images
+                category: $scope.category,
+                images:null
             };
-            $http.post(baseUrl, data).then((response)=>{
-                $scope.getdataProducts();
-                $scope.Name='';
-                //$scope.Thumbnail=""
-                $scope.Stock='';
-                $scope.cpu='';
-                $scope.ram='';
-                $scope.hardDisk='';
-                $scope.screen='';
-            }, (err)=>{
-                alert('Thêm thất bại');
-            });
+
+
+
+           
+
+            console.info(data);
+            // $http.post(baseUrl+'products', data).then((response)=>{
+            //     console.info(data);
+                
+            //     $scope.getdataProducts();
+            //     $scope.Name='';
+            //     //$scope.Thumbnail=""
+            //     $scope.Stock='';
+            //     $scope.cpu='';
+            //     $scope.ram='';
+            //     $scope.hardDisk='';
+            //     $scope.screen='';
+            //     alert('Thành công')
+            // }, (err)=>{
+            //     alert('Thêm thất bại');
+            // });
         }
         $scope.deleteProduct=function(id){
             $http.delete(baseUrl+id).then((res)=>{
                 $scope.getdataCategory();
             }, (err)=>{
-                alert('xóa thất bại')
+                alert('xóa thất bại');
             })
         }
 
+        // $scope.submit = function() {
+        //     if ($scope.form.file.$valid && $scope.file) {
+        //       $scope.upload($scope.file);
+        //     }
+        //   };
+        // $scope.uploadFiles=function(files){
+        //     if(files && files.length){
+        //         for(i=0; i<files.length;i++){
+        //             Upload.upload({
+        //                 url:'upload/url',
+        //                 data:{files:files[i]}
+        //             }).then(function(resp){
+        //                 console.log('success')
+        //             });
+        //         }
+        //     }https://medium.com/@salonimalhotra1ind/ng-file-upload-angular-js-a96e740b45fc
+        // }
     });
-    // 
-    module.directive('file',['$parse',function($parse){
-        return{
-            restrict:'A',
-            link: function(scope, element,attrs){
-                var model= $parse(attrs.fileModel);
-                var medelSetter=model.assign;
+    
 
-                element.bind('change',function(){
-                    scope.$apply(function(){
-                        modelSetter(scope,element[0].file[0]);
-                    })
-                })
-            }
-        }
-    }])
 
-    module.service('multipartFrom',['$http', function($http){
-      this.post=function(uploadUrl,data){
-        var fd= new FormData();
-        for (var key in data)
-            fd.append(key,data[key]);
-        $http.post(uploadUrl,fd,{
-            transformRequest:angular.identity,
-            headers:{'Content-Type':underfile}
-        })
-      }  
-    }])
-}(angular.module('myApp')));
+    }(angular.module('myApp')));
