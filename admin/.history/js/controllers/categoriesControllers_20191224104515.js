@@ -1,7 +1,7 @@
 (function(module){
     module.controller('categoriesControllers',function($scope,$http){
         //$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-        var baseUrl='https://aqueous-retreat-01787.herokuapp.com/api/categories/';
+        var baseUrl='https://ecommerce-tdmu.herokuapp.com/api/categories/';
         this.$onInit = function(){
             $scope.getdataCategory();
         }
@@ -10,7 +10,7 @@
                 method: "GET",
                 url:baseUrl
             }).then(function mySuccess(response){
-                console.log('fetching data');
+                console.log('');
                 
                 $scope.categories=response.data;
                 console.log(response);

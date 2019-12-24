@@ -17,7 +17,7 @@
         $scope.getdataCategory=function(){
             $http({
                 method: "GET",
-                url:'https://aqueous-retreat-01787.herokuapp.com/api/categories/'
+                url:'https://ecommerce-tdmu.herokuapp.com/api/categories/'
             }).then(function mySuccess(response){
                 $scope.categories=response.data;
             });
