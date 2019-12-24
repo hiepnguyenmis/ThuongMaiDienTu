@@ -75,7 +75,10 @@ app.run(
         var restrictedPage = publicPages.indexOf($location.path()) === -1;
         if (restrictedPage && !$localStorage.currentUser) {
             $location.path('/login');
+           
         }
+        
+
     });
 }
 );
