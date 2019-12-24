@@ -14,7 +14,7 @@
                 console.log('fetching data');
                 
                 $scope.categories=response.data;
-                $scope.loading=false;
+                
                 console.log(response);
                 
             });

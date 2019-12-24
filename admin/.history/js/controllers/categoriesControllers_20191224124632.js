@@ -3,7 +3,6 @@
         //$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
         var baseUrl='https://aqueous-retreat-01787.herokuapp.com/api/categories/';
         this.$onInit = function(){
-            $scope.loading = true;
             $scope.getdataCategory();
         }
         $scope.getdataCategory=function(){
@@ -14,7 +13,6 @@
                 console.log('fetching data');
                 
                 $scope.categories=response.data;
-                $scope.loading=false;
                 console.log(response);
                 
             });
