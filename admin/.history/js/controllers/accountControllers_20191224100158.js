@@ -11,7 +11,6 @@
         vm.login = login;
 
         initController();
-        vm.loading=false;
 
         function initController() {
             // reset login status
@@ -33,6 +32,9 @@
             });
         };
 
-       
+        logout = () =>{
+            AuthenticationService.Logout();
+            $location.path('')
+        }
     }
 })();

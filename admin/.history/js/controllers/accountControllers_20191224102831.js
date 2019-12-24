@@ -11,7 +11,6 @@
         vm.login = login;
 
         initController();
-        vm.loading=false;
 
         function initController() {
             // reset login status
@@ -21,7 +20,7 @@
         function login() {
             vm.loading = true;
             AuthenticationService.Login(vm.email, vm.password, function (result) {
-                vm.loading = false;
+                vm.loading = true;
                 if (result === true) {
       
                     $location.path('/');

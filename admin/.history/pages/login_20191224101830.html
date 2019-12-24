@@ -50,25 +50,23 @@
           <div class="col-lg-6 bg-white">
             <div class="form d-flex align-items-center">
               <div class="content">
-                <form  class="form-validate" name="userForm" novalidate>
+                <form  class="form-validate" name="userForm">
                   <div class="form-group" ng-class="{ 'has-error': form.$submitted && form.email.$invalid }">
-                    <input id="login-email" type="email" name="email" ng-model="vm.email" required
+                    <input id="login-email" type="text" name="loginUsername" ng-model="vm.email" required
                       placeholder="Email" class="input-material">
-                    <div ng-class="{ 'text-danger' : userForm.email.$invalid && !userForm.email.$pristine }">
-                      
-                      <p ng-show="userForm.email.$invalid && !userForm.email.$pristine">Nhập email hợp lệ.</p>
+                    <div >
+                      <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
                     </div>
                   </div>
                   <div class="form-group" ng-class="{ 'has-error': form.$submitted && form.password.$invalid }">
-                    <input id="login-password" type="password" name="password" ng-model="vm.password" required
+                    <input id="login-password" type="password" name="loginPassword" ng-model="vm.password" required
                       placeholder="Mật khẩu" class="input-material">
-                      <div ng-class="{ 'text-danger' : userForm.password.$invalid && !userForm.password.$pristine }">
-                      
-                        <p ng-show="userForm.password.$invalid && !userForm.password.$pristine">Không bỏ trống.</p>
-                      </div>
+                    <div ng-messages="form.$submitted && form.password.$error" class="help-block">
+                      <div ng-message="required">Password is required</div>
+                    </div>
                   </div>
                   <div class="g-recaptcha mb-3" data-sitekey="6LdMebwUAAAAALqgz2YUV1RJGUO4ZBoW8n-DKNjA"></div>
-                  <button type="submit" id="login" class="btn btn-primary" ng-click="vm.login()" ng-disabled="vm.loading; userForm.$invalid">Đăng Nhập</button>
+                  <button type="submit" id="login" class="btn btn-primary" ng-click="vm.login()" ng-disabled="vm.loading">Đăng Nhập</button>
                   <img ng-if="vm.loading"
                     src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
                   <!-- This should be submit button but I replaced it with <a> for demo purposes-->

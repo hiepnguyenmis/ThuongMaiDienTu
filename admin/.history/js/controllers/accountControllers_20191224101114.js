@@ -11,7 +11,6 @@
         vm.login = login;
 
         initController();
-        vm.loading=false;
 
         function initController() {
             // reset login status
