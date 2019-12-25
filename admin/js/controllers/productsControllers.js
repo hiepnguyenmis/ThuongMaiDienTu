@@ -61,25 +61,25 @@
 
            
 
-            console.info(data);
-            // $http.post(baseUrl+'products', data).then((response)=>{
-            //     console.info(data);
+            //console.info(data);
+            $http.post(baseUrl+'products', data).then((response)=>{
+                console.info(data);
                 
-            //     $scope.getdataProducts();
-            //     $scope.Name='';
-            //     //$scope.Thumbnail=""
-            //     $scope.Stock='';
-            //     $scope.cpu='';
-            //     $scope.ram='';
-            //     $scope.hardDisk='';
-            //     $scope.screen='';
-            //     alert('Thành công')
-            // }, (err)=>{
-            //     alert('Thêm thất bại');
-            // });
+                $scope.getdataProducts();
+                $scope.Name='';
+                //$scope.Thumbnail=""
+                $scope.Stock='';
+                $scope.cpu='';
+                $scope.ram='';
+                $scope.hardDisk='';
+                $scope.screen='';
+                alert('Thành công')
+            }, (err)=>{
+                alert('Thêm thất bại');
+            });
         }
         $scope.deleteProduct=function(id){
-            $http.delete(baseUrl+id).then((res)=>{
+            $http.delete(baseUrl+'products/'+id).then((res)=>{
                 $scope.getdataCategory();
             }, (err)=>{
                 alert('xóa thất bại');
