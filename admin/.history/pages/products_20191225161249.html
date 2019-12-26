@@ -1,0 +1,423 @@
+<div class="breadcrumb-holder container-fluid">
+  <ul class="breadcrumb">
+    <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+    <li class="breadcrumb-item active">Sản Phẩm</li>
+  </ul>
+</div>
+
+<section class="tables">
+  <div class="container-fluid">
+    <div class="alert alert-success alert-dismissible m-2" ng-if="sucMessage" role="alert" id="success-alert">
+      <strong>{{sucMessage}}</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          <span class="sr-only">Close</span>
+      </button>
+    </div>
+    <div class="alert alert-danger alert-dismissible m-2" ng-if="errMessage" role="alert" id="danger-alert">
+      <strong>{{errMessage}}</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          <span class="sr-only">Close</span>
+      </button>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header d-flex align-items-center">
+            <h3 class="h4 col-md-10 float-left">Bảng Sản Phẩm</h3>
+            <button type="button" class="btn btn-success col-md-2" data-toggle="modal" data-target=".addProduct"><i
+                class="fas fa-plus-circle"></i> Thêm
+              Mới</button>
+            <div class="modal fade addProduct" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog modal-lg" style="min-width: 90%;">
+                
+                  <div class="modal-content">
+                    <form>
+                      <div class="modal-header bg-light">
+                        <h5 class="modal-title" id="deleteProductLabel">Thêm Sản Phẩm</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="container">
+                          <div class="row">
+                            <h6>Thông tin sản phẩm</h6>
+                          </div>
+                          <div class="row">
+                            <div class="col-6">
+                              <div class="form-group row">
+                                <label for="inputText" class="col-sm-5 col-form-label">Mã sản phẩm</label>
+                                <div class="col-sm-10">
+                                  <input type="text" class="form-control" ng-model="productCode" id="inputText" placeholder="D01">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="inputText" class="col-sm-5 col-form-label">Tên sản phẩm</label>
+                                <div class="col-sm-10">
+                                  <input type="text" class="form-control"
+                                    placeholder="Laptop HP 15s du0054TU i3 7020U/4GB/1TB/Win10 (6ZF60PA)" ng-model="Name">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-6">
+                              <div class="form-group row">
+                                <label for="inputText" class="col-sm-5 col-form-label">Thương Hiệu</label>
+                                <div class="col-sm-10">
+                                  <select class="form-control" ng-model="selectedCategory" ng-change="getCategoryById(selectedCategory)">
+                                    <option ng-repeat="category in categories" value="{{category.id}}">{{category.name}}
+                                    </option>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="inputText" class="col-sm-5 col-form-label">Giá sản phẩm</label>
+                                <div class="col-sm-10">
+                                  <input type="text" class="form-control" id="inputText"
+                                    placeholder="Nhập giá sản phẩm" ng-model='Price'>
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="inputText" class="col-sm-5 col-form-label">Số lượng
+                                  nhập</label>
+                                  <div class="col-sm-10">
+                                    <input type="text" class="form-control" ng-model='Stock' id="inputText" placeholder="20">
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <label for="file">Select File</label>
+        <input type="file" ng-model="file" name="file" base-sixty-four-input required onload="onLoad" maxsize="500" accept="image/*">
+                            <label for="inputText" class="col-sm-5 col-form-label">Hình Ảnh(Click chọn 1 ảnh để làm ảnh
+                              thu nhỏ)</label>
+                          </div>
+                          <div class="row">
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                              <label class="btn btn-default active">
+                                <input type="radio" name="options" id="option1" autocomplete="off" checked>
+                                <div class="col-md-2">
+                                  <img src="../img/avatar-1.jpg">
+                                </div>
+                              </label>
+                              <label class="btn btn-default">
+                                <input type="radio" name="options" id="option2" autocomplete="off">
+                                <div class="col-md-2">
+                                  <img src="../img/avatar-1.jpg">
+                                </div>
+                              </label>
+                              <label class="btn btn-default">
+                                <input type="radio" name="options" id="option3" autocomplete="off">
+                                <div class="col-md-2">
+                                  <img src="../img/avatar-1.jpg">
+                                </div>
+                              </label>
+                              <label class="btn btn-default">
+                                <input type="radio" name="options" id="option3" autocomplete="off">
+                                <div class="col-md-2">
+                                  <img src="../img/avatar-1.jpg">
+                                </div>
+                              </label>
+
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-6">
+                              <label>Ảnh mặt trước</label>
+                              <input type="file" class="form-control-file" id="exampleFormControlFile1" accept=""
+                                file-model="customer.file">
+                              <label>Ảnh mặt sau</label>
+                              <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                            </div>
+                            <div class="col-6">
+                              <label>Ảnh mặt phải</label>
+                              <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                              <label>Ảnh mặt trái</label>
+                              <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                            </div>
+                          </div>
+                          <div class="row mt-3">
+                            <h6>Thông tin cấu hình</h6>
+                          </div>
+                          <div class="row">
+                            <div class="col-6">
+
+                              <div class="form-group row">
+                                <label for="inputText" class="col-sm-5 col-form-label">Thông tin chipset</label>
+                                <div class="col-sm-10">
+                                  <input type="text" ng-model="cpu" class="form-control" placeholder="i3 7020U">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="inputText" class="col-sm-5 col-form-label">Thông tin bộ nhớ ram(GB)</label>
+                                <div class="col-sm-10">
+                                  <input type="text" ng-model="ram" class="form-control" placeholder="4">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-6">
+                              <div class="form-group row">
+                                <label for="inputText" class="col-sm-5 col-form-label">Thông tin bộ nhớ
+                                  trong(GB)</label>
+                                <div class="col-sm-10">
+                                  <input type="text" ng-model='hardDisk' class="form-control" placeholder="1024">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="inputText" class="col-sm-5 col-form-label">Thông tin màn hình(inch)</label>
+                                <div class="col-sm-10">
+                                  <input type="text" ng-model='screen' class="form-control" placeholder="15.6">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+                        <button type="submit" class="btn btn-primary" ng-click="createProduct()">Đồng Ý</button>
+                      </div>
+                    </form>
+                  </div>
+                
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover text-center">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Mã</th>
+                    <th scope="col">Tên</th>
+                    <th scope="col">Giá</th>
+                    <th scope="col">Hình Ảnh</th>
+                    <th scope="col">Danh Mục</th>
+                    <!-- <th scope="col">Khuyến Mãi</th> -->
+                    <th scope="col">Ngày tạo</th>
+                    <th scope="col">Ngày cập nhật</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr >
+                    <td ng-if="loading" colspan="9">
+                      <img 
+                      src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                    </td>
+                    
+                  </tr>
+                  <tr class="clickable text-center" ng-repeat="product in products">
+                    <th scope="row">{{$index+1}}</th>
+                    
+                    <td>{{product.productCode}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.price}}</td>
+                    <td>...</td>
+                    <td>{{product.category.name}}</td>
+                    <td>{{product.createdAt}}</td>
+                    <td>{{product.updatedAt}}</td>
+                    <td>
+                      <div class="dropdown">
+                        <a class="btn btn-sm btn-icon-only text-secondary" role="button" data-toggle="dropdown"
+                          aria-haspopup="true" aria-expanded="false">
+                          <i class="fas fa-ellipsis-v"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                          <!-- item update -->
+                          <a class="dropdown-item" data-toggle="modal" ng-click="getSelected(product.category.id)" data-target="#updateProduct{{product.id}}"><i
+                              class="fas fa-pen text-success"></i> Cập nhật</a>
+                          <!-- item delete -->
+                          <a class="dropdown-item" data-toggle="modal" data-target="#deleteProduct"><i
+                              class="fas fa-trash-alt text-danger"></i> Xóa</a>
+                        </div>
+                      </div>
+                      <!-- modal-delete -->
+                      <div class="modal fade" id="deleteProduct" tabindex="-1" role="dialog"
+                        aria-labelledby="deleteProductLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header bg-light">
+                              <h5 class="modal-title" id="deleteProductLabel">Xác Nhận Xóa Danh Mục</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              Bạn có muốn xóa sản phẩm <b>{{product.name}}</b> ?
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+                              <button type="button" ng-click="deleteProduct(product.id)" class="btn btn-primary">Đồng
+                                Ý</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- modal-update -->
+                      <div class="modal fade updateProduct" id="updateProduct{{product.id}}" tabindex="-1" role="dialog"
+                        aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" style="min-width: 90%;">
+                          <div class="modal-content">
+                            <form>
+                              <div class="modal-header bg-light">
+                                <h5 class="modal-title">Cập Nhật Thông Tin Sản Phẩm</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="container">
+                                  <div class="row">
+                                    <h6>Thông tin sản phẩm</h6>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-6">
+                                      <div class="form-group row">
+                                        <label for="inputText" class="col-sm-5 col-form-label">Mã sản phẩm</label>
+                                        <div class="col-sm-10">
+                                          <input type="text" class="form-control" ng-model="product.productCode" placeholder="D01">
+                                        </div>
+                                      </div>
+                                      <div class="form-group row">
+                                        <label for="inputText" class="col-sm-5 col-form-label">Tên sản phẩm</label>
+                                        <div class="col-sm-10">
+                                          <input type="text" class="form-control"
+                                            placeholder="Laptop HP 15s du0054TU i3 7020U/4GB/1TB/Win10 (6ZF60PA)" ng-model="product.name">
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-6">
+                                      <div class="form-group row">
+                                        <label for="inputText" class="col-sm-5 col-form-label">Thương Hiệu</label>
+                                        <div class="col-sm-10">
+                                          <select class="form-control" ng-model="updatedCategory" ng-change="getCategoryById(updatedCategory)">                                         
+                                              <option ng-repeat="category in categories" ng-selected="updatedCategory==category.id" value="{{category.id}}">{{category.name}}
+                                             
+                                              </option>
+                                          </select>
+                                        </div>
+                                      </div>
+                                      <div class="form-group row">
+                                        <label for="inputText" class="col-sm-5 col-form-label">Giá sản phẩm</label>
+                                        <div class="col-sm-10">
+                                          <input type="text" class="form-control"
+                                            placeholder="Nhập giá sản phẩm" ng-model="product.price">
+                                        </div>
+                                      </div>
+                                      <div class="form-group row">
+                                        <label for="inputText" class="col-sm-5 col-form-label">Số lượng
+                                          nhập</label>
+                                          <div class="col-sm-10">
+                                            <input type="text" class="form-control" ng-model="product.stock" placeholder="20">
+                                          </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <label for="inputText" class="col-sm-5 col-form-label">Hình Ảnh(Click chọn 1 ảnh để làm ảnh
+                                      thu nhỏ)</label>
+                                  </div>
+                                  <div class="row">
+                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                      <label class="btn btn-default active">
+                                        <input type="radio" name="options" id="option1" autocomplete="off" checked>
+                                        <div class="col-md-2">
+                                          <img src="../img/avatar-1.jpg">
+                                        </div>
+                                      </label>
+                                      <label class="btn btn-default">
+                                        <input type="radio" name="options" id="option2" autocomplete="off">
+                                        <div class="col-md-2">
+                                          <img src="../img/avatar-1.jpg">
+                                        </div>
+                                      </label>
+                                      <label class="btn btn-default">
+                                        <input type="radio" name="options" id="option3" autocomplete="off">
+                                        <div class="col-md-2">
+                                          <img src="../img/avatar-1.jpg">
+                                        </div>
+                                      </label>
+                                      <label class="btn btn-default">
+                                        <input type="radio" name="options" id="option4" autocomplete="off">
+                                        <div class="col-md-2">
+                                          <img src="../img/avatar-1.jpg">
+                                        </div>
+                                      </label>
+        
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-6">
+                                      <label>Ảnh mặt trước</label>
+                                      <input type="file" class="form-control-file" id="exampleFormControlFile1" accept=""
+                                        file-model="customer.file">
+                                      <label>Ảnh mặt sau</label>
+                                      <input type="file" class="form-control-file" id="exampleFormControlFile2">
+                                    </div>
+                                    <div class="col-6">
+                                      <label>Ảnh mặt phải</label>
+                                      <input type="file" class="form-control-file" id="exampleFormControlFile3">
+                                      <label>Ảnh mặt trái</label>
+                                      <input type="file" class="form-control-file" id="exampleFormControlFile4">
+                                    </div>
+                                  </div>
+                                  <div class="row mt-3">
+                                    <h6>Thông tin cấu hình</h6>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-6">
+        
+                                      <div class="form-group row">
+                                        <label for="inputText" class="col-sm-5 col-form-label">Thông tin chipset</label>
+                                        <div class="col-sm-10">
+                                          <input type="text" ng-model="product.cpu" class="form-control" id="inputText" placeholder="i3 7020U">
+                                        </div>
+                                      </div>
+                                      <div class="form-group row">
+                                        <label for="inputText" class="col-sm-5 col-form-label">Thông tin bộ nhớ ram(GB)</label>
+                                        <div class="col-sm-10">
+                                          <input type="text" ng-model="product.ram" class="form-control" id="inputText" placeholder="4">
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-6">
+                                      <div class="form-group row">
+                                        <label for="inputText" class="col-sm-5 col-form-label">Thông tin bộ nhớ
+                                          trong(GB)</label>
+                                        <div class="col-sm-10">
+                                          <input type="text" ng-model="product.hardDisk" class="form-control" placeholder="1024">
+                                        </div>
+                                      </div>
+                                      <div class="form-group row">
+                                        <label for="inputText" class="col-sm-5 col-form-label">Thông tin màn hình(inch)</label>
+                                        <div class="col-sm-10">
+                                          <input type="text" ng-model="product.screen" class="form-control" placeholder="15.6">
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" id="closeUpdateModal{{product.id}}" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+                                <button type="submit" class="btn btn-primary" ng-click="updateProduct(product)">Đồng Ý</button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
