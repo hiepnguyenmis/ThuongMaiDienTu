@@ -56,7 +56,7 @@
             //     {path:$scope.image_left},
             //     {path:$scope.image_right}
             // ]
-            console.log($scope.im);
+            console.log($scope.image1);
             
             let image1 = {
                 path: $scope.image1.base64

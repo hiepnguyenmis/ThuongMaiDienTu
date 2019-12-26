@@ -91,27 +91,26 @@
 
                           <div class="row">
                             <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                            <label class="btn btn-default active"  ng-show="image1.length !==0">
-                             
+                            <label class="btn btn-default active" ng-show="image1.length>0">
                                 <input type="radio" name="options" id="option1" autocomplete="off" checked>
                                 <div class="col-md-2">
                                   <img src="data:{{image1.filetype}};base64,{{image1.base64}}" width="100px" height="100px">
                                 </div>
                               </label>
                               
-                              <label class="btn btn-default" ng-show="image2.length !==0">
+                              <label class="btn btn-default" ng-show="image2.length>0">
                                 <input type="radio" name="options" id="option2" autocomplete="off">
                                 <div class="col-md-2">
                                   <img src="data:{{image2.filetype}};base64,{{image2.base64}}" width="100px" height="100px">
                                 </div>
                               </label>
-                              <label class="btn btn-default" ng-show="image3.length !==0">
+                              <label class="btn btn-default" ng-show="image3.length>0">
                                 <input type="radio" name="options" id="option3" autocomplete="off">
                                 <div class="col-md-2">
                                   <img src="data:{{image3.filetype}};base64,{{image3.base64}}" width="100px" height="100px">
                                 </div>
                               </label>
-                              <label class="btn btn-default"  ng-show="image4.length !==0">
+                              <label class="btn btn-default" ng-show="image4.length>0">
                                 <input type="radio" name="options" autocomplete="off">
                                 <div class="col-md-2">
                                   <img src="data:{{image4.filetype}};base64,{{image4.base64}}" width="100px" height="100px">
@@ -173,7 +172,7 @@
                         </div>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" id="addProduct" data-dismiss="modal">Hủy</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
                         <button type="submit" class="btn btn-primary" ng-click="createProduct()">Đồng Ý</button>
                       </div>
                     </form>

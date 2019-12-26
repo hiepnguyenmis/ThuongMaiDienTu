@@ -76,7 +76,7 @@
                 fileType: $scope.image4.filetype,
                 path: $scope.image4.base64
             }
-            $scope.images=[img1, img2, img3, img4];
+            $scope.images.push(img1, img2, img3, img4);
             console.log($scope.images);
             var data={
                 productCode:$scope.productCode,
@@ -104,7 +104,6 @@
                 $scope.ram='';
                 $scope.hardDisk='';
                 $scope.screen='';
-                document.getElementById('addProduct').click();
                
             }, (err)=>{
                 alert('Thêm thất bại');

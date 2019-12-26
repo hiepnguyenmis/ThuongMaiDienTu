@@ -91,30 +91,29 @@
 
                           <div class="row">
                             <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                            <label class="btn btn-default active"  ng-show="image1.length !==0">
-                             
+                              <label class="btn btn-default active">
                                 <input type="radio" name="options" id="option1" autocomplete="off" checked>
                                 <div class="col-md-2">
                                   <img src="data:{{image1.filetype}};base64,{{image1.base64}}" width="100px" height="100px">
                                 </div>
                               </label>
                               
-                              <label class="btn btn-default" ng-show="image2.length !==0">
+                              <label class="btn btn-default">
                                 <input type="radio" name="options" id="option2" autocomplete="off">
                                 <div class="col-md-2">
                                   <img src="data:{{image2.filetype}};base64,{{image2.base64}}" width="100px" height="100px">
                                 </div>
                               </label>
-                              <label class="btn btn-default" ng-show="image3.length !==0">
+                              <label class="btn btn-default">
                                 <input type="radio" name="options" id="option3" autocomplete="off">
                                 <div class="col-md-2">
-                                  <img src="data:{{image3.filetype}};base64,{{image3.base64}}" width="100px" height="100px">
+                                  <img src="../img/avatar-1.jpg">
                                 </div>
                               </label>
-                              <label class="btn btn-default"  ng-show="image4.length !==0">
-                                <input type="radio" name="options" autocomplete="off">
+                              <label class="btn btn-default">
+                                <input type="radio" name="options" id="option3" autocomplete="off">
                                 <div class="col-md-2">
-                                  <img src="data:{{image4.filetype}};base64,{{image4.base64}}" width="100px" height="100px">
+                                  <img src="../img/avatar-1.jpg">
                                 </div>
                               </label>
 
@@ -123,16 +122,16 @@
                           <div class="row">
                             <div class="col-6">
                               
-                              <label class="d-block">Ảnh mặt trước</label>
+                              <label class="">Ảnh mặt trước</label>
                               <input type="file" ng-model="image1" name="file" base-sixty-four-input required onload="onLoad" maxsize="500" accept="image/*">
-                              <label class="d-block">Ảnh mặt sau</label>
+                              <label>Ảnh mặt sau</label>
                               <input type="file" ng-model="image2" name="file" base-sixty-four-input required onload="onLoad" maxsize="500" accept="image/*">
                             </div>
                             <div class="col-6">
-                              <label class="d-block">Ảnh mặt phải</label>
-                              <input type="file" ng-model="image3" name="file" base-sixty-four-input required onload="onLoad" maxsize="500" accept="image/*">
-                              <label class="d-block">Ảnh mặt trái</label>
-                              <input type="file" ng-model="image4" name="file" base-sixty-four-input required onload="onLoad" maxsize="500" accept="image/*">
+                              <label>Ảnh mặt phải</label>
+                              <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                              <label>Ảnh mặt trái</label>
+                              <input type="file" class="form-control-file" id="exampleFormControlFile1">
                             </div>
                           </div>
                           <div class="row mt-3">
@@ -173,7 +172,7 @@
                         </div>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" id="addProduct" data-dismiss="modal">Hủy</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
                         <button type="submit" class="btn btn-primary" ng-click="createProduct()">Đồng Ý</button>
                       </div>
                     </form>

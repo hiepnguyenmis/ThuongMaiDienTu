@@ -58,38 +58,29 @@
             //     {path:$scope.image_left},
             //     {path:$scope.image_right}
             // ]
- 
+            console.log($scope.image1);
+            console.log($scope.image2);
+            console.log($scope.image3);
+            console.log($scope.image4);
             
             let img1 = {
-                fileType: $scope.image1.filetype,
                 path: $scope.image1.base64
             }
-            let img2 = {
-                fileType: $scope.image2.filetype,
-                path: $scope.image2.base64
-            }
-             let img3 = {
-                fileType: $scope.image3.filetype,
-                path: $scope.image3.base64
-            }
-            let img4 = {
-                fileType: $scope.image4.filetype,
-                path: $scope.image4.base64
-            }
-            $scope.images=[img1, img2, img3, img4];
+            let img2
+            $scope.images.push(img1)
             console.log($scope.images);
             var data={
                 productCode:$scope.productCode,
                 name:$scope.Name,
                 price: $scope.Price,
-           
+                thumbnail: $scope.thumbnail.base64,
                 stock: $scope.Stock,
                 cpu:$scope.cpu,
                 ram: $scope.ram,
                 hardDisk: $scope.hardDisk,
                 screen: $scope.screen,
                 category: $scope.category,
-                images: $scope.images
+                images:null
             };
 
             console.log(data);
@@ -104,7 +95,6 @@
                 $scope.ram='';
                 $scope.hardDisk='';
                 $scope.screen='';
-                document.getElementById('addProduct').click();
                
             }, (err)=>{
                 alert('Thêm thất bại');

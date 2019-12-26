@@ -104,7 +104,7 @@
                 $scope.ram='';
                 $scope.hardDisk='';
                 $scope.screen='';
-                document.getElementById('addProduct').click();
+                document.getElementById('addProduct')
                
             }, (err)=>{
                 alert('Thêm thất bại');

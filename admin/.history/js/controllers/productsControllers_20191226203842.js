@@ -76,7 +76,7 @@
                 fileType: $scope.image4.filetype,
                 path: $scope.image4.base64
             }
-            $scope.images=[img1, img2, img3, img4];
+            $scope.images.push(img1, img2, img3, img4);
             console.log($scope.images);
             var data={
                 productCode:$scope.productCode,
@@ -94,21 +94,20 @@
 
             console.log(data);
             
-            $http.post(baseUrl+'products', data).then((response)=>{
+            // $http.post(baseUrl+'products', data).then((response)=>{
                 
-                $scope.getdataProducts();
-                $scope.Name='';
-                //$scope.Thumbnail=""
-                $scope.Stock='';
-                $scope.cpu='';
-                $scope.ram='';
-                $scope.hardDisk='';
-                $scope.screen='';
-                document.getElementById('addProduct').click();
+            //     $scope.getdataProducts();
+            //     $scope.Name='';
+            //     //$scope.Thumbnail=""
+            //     $scope.Stock='';
+            //     $scope.cpu='';
+            //     $scope.ram='';
+            //     $scope.hardDisk='';
+            //     $scope.screen='';
                
-            }, (err)=>{
-                alert('Thêm thất bại');
-            });
+            // }, (err)=>{
+            //     alert('Thêm thất bại');
+            // });
         }
 
         $scope.updateProduct = function(product){
