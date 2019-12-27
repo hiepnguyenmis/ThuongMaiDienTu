@@ -6,6 +6,8 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -78,12 +80,18 @@ public class AccountRest {
 		
 	}
 	
+	
 	@PostMapping("/signup")
-	public Accounts createAccount(@Valid @RequestBody Accounts accounts) {
-		accounts.setCreatedAt(new Date());
-		this.accountService.save(accounts);
-		return this.accountService.findByEmail(accounts.getEmail());
-
+	public ResponseEntity<Accounts> createAccount(@Valid @RequestBody Accounts accounts) {
+		boolean isAccount = this.accountService.existsByEmail(accounts.getEmail());
+		if(isAccount) 
+			return ResponseEntity.status(HttpStatus.CONFLICT).build();
+		else {
+			accounts.setCreatedAt(new Date());
+			this.accountService.save(accounts);
+			return ResponseEntity.status(HttpStatus.OK).build();
+		}
+		
 	}
 	
 	public boolean checkHashPasswd(String passwd, String hashPasswd) {
