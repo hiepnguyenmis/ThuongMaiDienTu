@@ -30,13 +30,13 @@ import com.shopping4th.ecommerce.service.ProductService;
 @CrossOrigin
 public class ProductRest {
 
-	
+	@Autowired
 	private ProductService productService;
 	
-	@Autowired
-	public ProductRest(ProductService productService) {
-		this.productService = productService;
-	}
+//	@Autowired
+//	public ProductRest(ProductService productService) {
+//		this.productService = productService;
+//	}
 
 	@GetMapping("/products")
 	public List<Product> getAllProduct(Pageable pageable){
