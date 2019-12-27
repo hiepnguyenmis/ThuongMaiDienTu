@@ -85,9 +85,9 @@
                 category: $scope.category,
                 images: $scope.images
             };
-            resetMessage();
+            
             $http.post(baseUrl+'products', data).then((response)=>{
-                
+                resetMessage();
                 $scope.getdataProducts();
                 $scope.Name='';
                 //$scope.Thumbnail=""
@@ -98,10 +98,9 @@
                 $scope.screen='';
                 document.getElementById('closeModalAddProduct').click();
 
-               $scope.sucMessage = 'Thêm sản phẩm thành công!';
+               $scope.sucMessage = 'Cập nhật thông tin thành công!';
             }, (err)=>{
                 alert('Thêm thất bại');
-                $scope.errMessage = 'Thêm sản phẩm thất bại!';
             });
         }
         function resetMessage(){

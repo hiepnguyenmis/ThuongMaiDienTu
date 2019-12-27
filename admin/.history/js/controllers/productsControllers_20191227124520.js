@@ -11,7 +11,7 @@
         $scope.image2 = [];
         $scope.image3 = [];
         $scope.image4 = [];
-       
+        $scope.pImage1 = 
         this.$onInit = function(){
             $scope.loading= true;
            
@@ -52,7 +52,15 @@
         }
 
         $scope.createProduct= function(){
-
+            
+            // $scope.images=[
+            //     {path:$scope.image_back},
+            //     {path:$scope.image_front},
+            //     {path:$scope.image_left},
+            //     {path:$scope.image_right}
+            // ]
+ 
+            
             let img1 = {
                 fileType: $scope.image1.filetype,
                 path: $scope.image1.base64
@@ -69,9 +77,8 @@
                 fileType: $scope.image4.filetype,
                 path: $scope.image4.base64
             }
-
             $scope.images=[img1, img2, img3, img4];
-          
+            console.log($scope.images);
             var data={
                 productCode:$scope.productCode,
                 name:$scope.Name,
@@ -85,7 +92,9 @@
                 category: $scope.category,
                 images: $scope.images
             };
-            resetMessage();
+
+            console.log(data);
+            
             $http.post(baseUrl+'products', data).then((response)=>{
                 
                 $scope.getdataProducts();
@@ -97,21 +106,18 @@
                 $scope.hardDisk='';
                 $scope.screen='';
                 document.getElementById('closeModalAddProduct').click();
-
-               $scope.sucMessage = 'Thêm sản phẩm thành công!';
+               
             }, (err)=>{
                 alert('Thêm thất bại');
-                $scope.errMessage = 'Thêm sản phẩm thất bại!';
             });
         }
         function resetMessage(){
             $scope.sucMessage='';
             $scope.errMessage='';
         }
-
         $scope.updateProduct = function(product){
             product.category=$scope.category;
-            resetMessage();
+            resetMessage
             $http.put(baseUrl+'products/'+product.id, product).then((res)=>{
                 $scope.getdataProducts();
                 document.getElementById('closeUpdateModal'+product.id).click();
@@ -125,18 +131,16 @@
         }
 
         $scope.deleteProduct=function(id){
-            resetMessage();
             $http.delete(baseUrl+'products/'+id).then((res)=>{
                 $scope.getdataProducts();
                 document.getElementById('closeDeleteModal'+ id).click();
-                $scope.sucMessage = 'Xoá thành công!';
-                //resetMessage();
             }, (err)=>{
-                $scope.errMessage = 'Xoá thất bại!';
                 alert('xóa thất bại');
             })
         }
 
     });
+    
 
-}(angular.module('myApp')));
+
+    }(angular.module('myApp')));

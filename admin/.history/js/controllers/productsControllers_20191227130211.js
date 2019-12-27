@@ -85,9 +85,9 @@
                 category: $scope.category,
                 images: $scope.images
             };
-            resetMessage();
+            
             $http.post(baseUrl+'products', data).then((response)=>{
-                
+                resetMessage();
                 $scope.getdataProducts();
                 $scope.Name='';
                 //$scope.Thumbnail=""
