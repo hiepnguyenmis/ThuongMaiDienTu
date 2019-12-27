@@ -133,7 +133,7 @@
         $scope.deleteProduct=function(id){
             $http.delete(baseUrl+'products/'+id).then((res)=>{
                 $scope.getdataProducts();
-                document.getElementById('deleteModalProduct').click();
+                document.getElementById('deleteModalProduct').click()
             }, (err)=>{
                 alert('xóa thất bại');
             })

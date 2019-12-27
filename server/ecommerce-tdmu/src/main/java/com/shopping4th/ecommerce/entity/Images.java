@@ -24,7 +24,12 @@ public class Images {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name="path")
+	@Column(name="file_type")
+	private String fileType;
+	
+
+
+	@Column(name="path", columnDefinition="LONGTEXT")
 	private String path;
 	
 //	@ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -48,7 +53,14 @@ public class Images {
 	public void setPath(String path) {
 		this.path = path;
 	}
+	
+	public String getFileType() {
+		return fileType;
+	}
 
+	public void setFileType(String fileType) {
+		this.fileType = fileType;
+	}
 //	public Product getProduct() {
 //		return product;
 //	}
@@ -64,18 +76,20 @@ public class Images {
 //		this.product = product;
 //	}
 
-	public Images(String path) {
-		super();
-		this.path = path;
-	}
 
 	public Images() {
 		super();
 	}
 
-	
+	public Images(String fileType, String path) {
+		super();
+		this.fileType = fileType;
+		this.path = path;
+	}
 
-	
-	
-	
+	@Override
+	public String toString() {
+		return "Images [id=" + id + ", fileType=" + fileType + ", path=" + path + "]";
+	}
+
 }

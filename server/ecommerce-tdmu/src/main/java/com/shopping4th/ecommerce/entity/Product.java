@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.io.Serializable;
+import java.sql.Blob;
 import java.sql.Timestamp;
 
 import javax.persistence.CascadeType;
@@ -16,6 +16,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -31,9 +32,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name = "products")
-public class Product implements Serializable{
+public class Product{
 
-	private static final long serialVersionUID = 1L;
+	
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -49,8 +50,6 @@ public class Product implements Serializable{
 	@Column(name="price")
 	private String price;
 	
-	@Column(name="thumbnail")
-	private String thumbnail;
 	
 	@Column(name="stock")
 	private int stock;
@@ -109,13 +108,13 @@ public class Product implements Serializable{
 	}
 
 
-	public Product(String productCode, String name, String price, String thumbnail, int stock, String cpu, String ram,
+	public Product(String productCode, String name, String price, int stock, String cpu, String ram,
 			String hardDisk, String screen, Categories category) {
 		super();
 		this.productCode = productCode;
 		this.name = name;
 		this.price = price;
-		this.thumbnail = thumbnail;
+	
 		this.stock = stock;
 		this.cpu = cpu;
 		this.ram = ram;
@@ -157,13 +156,6 @@ public class Product implements Serializable{
 		this.price = price;
 	}
 
-	public String getThumbnail() {
-		return thumbnail;
-	}
-
-	public void setThumbnail(String thumbnail) {
-		this.thumbnail = thumbnail;
-	}
 
 	public int getStock() {
 		return stock;
