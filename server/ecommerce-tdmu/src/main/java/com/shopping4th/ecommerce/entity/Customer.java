@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -41,8 +42,6 @@ public class Customer {
 	@Column(name="address")
 	private String address;
 	
-	
-
 	public Long getId() {
 		return id;
 	}
@@ -102,6 +101,7 @@ public class Customer {
 	}
 
 	
+
 	public Customer() {
 		super();
 	}
@@ -115,6 +115,7 @@ public class Customer {
 		this.image_url = image_url;
 		this.address=address;
 	}
+
 	
 	
 }

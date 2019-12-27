@@ -45,7 +45,8 @@ public class Accounts {
             @JoinColumn(name = "role_id") })
     private Set<Role> roles;
 	
-	@OneToOne( cascade=CascadeType.PERSIST)
+    @OneToOne(fetch = FetchType.LAZY,
+            cascade =  CascadeType.ALL)
 	@JoinColumn(name="customer_id")
 	private Customer customer;
 	
@@ -89,8 +90,8 @@ public class Accounts {
         this.roles = roles;
     }
 
-
-    public Customer getCustomer() {
+    
+	public Customer getCustomer() {
 		return customer;
 	}
 
@@ -98,7 +99,6 @@ public class Accounts {
 		this.customer = customer;
 	}
 
-    
 	public Accounts() {
 		super();
 	}
@@ -110,12 +110,20 @@ public class Accounts {
 		this.password = password;
 	}
 
+	public Accounts(String email, String password, Set<Role> roles) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.roles = roles;
+		
+	}
+
 	public Accounts(String email, String password, Set<Role> roles, Customer customer) {
 		super();
 		this.email = email;
 		this.password = password;
 		this.roles = roles;
-		this.customer=customer;
+		this.customer = customer;
 	}
 	
 }
