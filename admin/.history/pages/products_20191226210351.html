@@ -315,9 +315,9 @@
                                     </div>
                                   </div>
                                   
-                                
-                                    <div class="row btn-group btn-group-toggle" data-toggle="buttons">
-                                    <label class="btn btn-default active col-xs-6 col-md-3"  ng-show="product.images[0].length !==0">
+                                  <div class="row">
+                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label class="btn btn-default active"  ng-show="product.images[0].length !==0">
                                      
                                         <input type="radio" name="options" autocomplete="off" checked>
                                         <div class="col-md-2">
@@ -326,19 +326,19 @@
                                      
                                       </label>
                                       
-                                      <label class="btn btn-default col-xs-6 col-md-3" ng-show="product.images[1].length !==0">
+                                      <label class="btn btn-default" ng-show="product.images[1].length !==0">
                                         <input type="radio" name="options" autocomplete="off">
                                         <div class="col-md-2">
                                           <img src="data:{{product.images[1].fileType}};base64,{{product.images[1].path}}" width="100px" height="100px">
                                         </div>
                                       </label>
-                                      <label class="btn btn-default col-xs-6 col-md-3" ng-show="product.images[2].length !==0">
+                                      <label class="btn btn-default" ng-show="product.images[2].length !==0">
                                         <input type="radio" name="options" autocomplete="off">
                                         <div class="col-md-2">
                                           <img src="data:{{product.images[2].fileType}};base64,{{product.images[2].path}}" width="100px" height="100px">
                                         </div>
                                       </label>
-                                      <label class="btn btn-default col-xs-6 col-md-3"  ng-show="product.images[3].length !==0">
+                                      <label class="btn btn-default"  ng-show="product.images[3].length !==0">
                                         <input type="radio" name="options" autocomplete="off">
                                         <div class="col-md-2">
                                           <img src="data:{{product.images[3].fileType}};base64,{{product.images[3].path}}" width="100px" height="100px">
@@ -346,19 +346,20 @@
                                       </label>
         
                                     </div>
-                                 
+                                  </div>
                                   <div class="row text-left">
-                                    <div class="col-md-6 col-xs-12">
+                                    <div class="col-6">
+                                      
                                       <label class="d-block">Ảnh mặt trước</label>
-                                      <input type="file" ng-model="product.images[0]" name="file" base-sixty-four-input required onload="onLoad" maxsize="500" accept="image/*">
+                                      <input type="file" ng-model="image1" name="file" base-sixty-four-input required onload="onLoad" maxsize="500" accept="image/*">
                                       <label class="d-block">Ảnh mặt sau</label>
-                                      <input type="file" ng-model="product.images[1]" name="file" base-sixty-four-input required onload="onLoad" maxsize="500" accept="image/*">
+                                      <input type="file" ng-model="image2" name="file" base-sixty-four-input required onload="onLoad" maxsize="500" accept="image/*">
                                     </div>
-                                    <div class="col-md-6 col-xs-12">
+                                    <div class="col-6">
                                       <label class="d-block">Ảnh mặt phải</label>
-                                      <input type="file" ng-model="product.images[2]" name="file" base-sixty-four-input required onload="onLoad" maxsize="500" accept="image/*">
+                                      <input type="file" ng-model="image3" name="file" base-sixty-four-input required onload="onLoad" maxsize="500" accept="image/*">
                                       <label class="d-block">Ảnh mặt trái</label>
-                                      <input type="file" ng-model="product.images[3]" name="file" base-sixty-four-input required onload="onLoad" maxsize="500" accept="image/*">
+                                      <input type="file" ng-model="image4" name="file" base-sixty-four-input required onload="onLoad" maxsize="500" accept="image/*">
                                     </div>
                                   </div>
                                   <div class="row mt-3">
