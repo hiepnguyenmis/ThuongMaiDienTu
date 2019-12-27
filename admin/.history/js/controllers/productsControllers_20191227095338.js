@@ -11,7 +11,7 @@
         $scope.image2 = [];
         $scope.image3 = [];
         $scope.image4 = [];
-        $scope.pImage1 = 
+        $scope.
         this.$onInit = function(){
             $scope.loading= true;
            
