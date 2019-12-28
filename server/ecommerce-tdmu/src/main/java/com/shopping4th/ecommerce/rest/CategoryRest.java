@@ -37,7 +37,7 @@ public class CategoryRest {
 		this.categoryService = categoryService;
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+	//@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping
 	public List<Categories> getAllCategory(){
 		return this.categoryService.findAll();

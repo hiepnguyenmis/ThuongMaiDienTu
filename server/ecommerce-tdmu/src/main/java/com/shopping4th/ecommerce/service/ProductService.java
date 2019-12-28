@@ -21,7 +21,11 @@ public interface ProductService {
 	public boolean existsById(Long id);
 	
 	public List<Product> findAll(Pageable pageable);
-	
+		
 	public List<Product> findByCategoryId(Long categoryId, Pageable pageable);
-	//public Page<Product> findAllByPage(Pageable pageable);
+	
+	public List<Product> findByCategoryIdAndPriceLessThanEqual(Long categoryId, String price, Pageable pageable);
+	
+	public List<Product> findByCategoryIdAndPriceBetween(Long categoryId, String minPrice, String maxPrice, Pageable pageable);
+	
 }
