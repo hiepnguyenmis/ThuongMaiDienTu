@@ -70,4 +70,22 @@ public class ProductServiceImpl implements ProductService {
 		return products.getContent();
 	}
 
+
+	@Override
+	public List<Product> findByCategoryIdAndPriceLessThanEqual(Long categoryId, String price, Pageable pageable) {
+		Page<Product> searchProducts = this.productRepo.findByCategoryIdAndPriceLessThanEqual(categoryId, price, pageable);
+		return searchProducts.getContent();
+	}
+
+	@Override
+	public List<Product> findByCategoryIdAndPriceBetween(Long categoryId, String minPrice, String maxPrice,
+			Pageable pageable) {
+		Page<Product> searchProducts = this.productRepo.findByCategoryIdAndPriceBetween(categoryId ,minPrice, maxPrice, pageable);
+		return searchProducts.getContent();
+		
+	}
+	
+	
+
+
 }

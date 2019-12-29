@@ -79,6 +79,7 @@ public class AccountServiceImpl implements AccountService, UserDetailsService{
 		newUser.setCreatedAt(created);
 		
 		newUser.setRoles(this.roleRepo.findByName("USER"));
+		newUser.setCustomer(user.getCustomer());
 		this.accountRepo.save(newUser);
 	}
 
