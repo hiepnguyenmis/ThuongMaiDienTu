@@ -13,7 +13,7 @@
         return service;
 
         function Login(email, password, callback) {
-            $http.post('https://ecommerce-tdmu.herokuapp.com/api/token/generate-token', { email: email, password: password })
+            $http.post('http://localhost:8080/api/token/generate-token', { email: email, password: password })
                 .then(function (response) {
                     // login successful if there's a token in the response
                     if (response.data.token) {

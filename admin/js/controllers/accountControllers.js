@@ -6,12 +6,18 @@
         .controller('LoginController', Controller);
 
     function Controller($location, AuthenticationService) {
+        
         var vm = this;
 
         vm.login = login;
 
         initController();
         vm.loading=false;
+        
+        Object.$onInit = function($http,$localStorage){
+            delete $localStorage.currentUser;
+            $http.defaults.headers.common.Authorization = '';
+        }
 
         function initController() {
             // reset login status
@@ -23,16 +29,12 @@
             AuthenticationService.Login(vm.email, vm.password, function (result) {
                 vm.loading = false;
                 if (result === true) {
-      
                     $location.path('/');
                 } 
                 else {             
                     vm.error = 'Đăng nhập thất bại. Vui lòng kiểm tra thông tin.';
-                    
                 }
             });
         };
-
-       
     }
 })();
