@@ -45,7 +45,7 @@ public class Accounts {
             @JoinColumn(name = "role_id") })
     private Set<Role> roles;
 	
-    @OneToOne(fetch = FetchType.LAZY,
+    @OneToOne(fetch = FetchType.EAGER,
             cascade =  CascadeType.ALL)
 	@JoinColumn(name="customer_id")
 	private Customer customer;

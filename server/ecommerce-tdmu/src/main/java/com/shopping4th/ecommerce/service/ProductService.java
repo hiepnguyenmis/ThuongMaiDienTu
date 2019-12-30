@@ -28,4 +28,5 @@ public interface ProductService {
 	
 	public List<Product> findByCategoryIdAndPriceBetween(Long categoryId, String minPrice, String maxPrice, Pageable pageable);
 	
+	public List<Product> findByCategoryIdAndNameContaining(Long categoryId, String keyword, Pageable pageable);
 }

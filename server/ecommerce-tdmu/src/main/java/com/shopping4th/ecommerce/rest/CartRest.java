@@ -8,6 +8,8 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,8 +20,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.shopping4th.ecommerce.entity.CartDto;
-import com.shopping4th.ecommerce.entity.Carts;
+import com.shopping4th.ecommerce.entity.Accounts;
+import com.shopping4th.ecommerce.entity.CartItems;
+import com.shopping4th.ecommerce.service.AccountService;
 import com.shopping4th.ecommerce.service.CartService;
 import com.shopping4th.ecommerce.utilities.CartStatus;
 
@@ -36,15 +39,18 @@ public class CartRest {
 	public CartRest(CartService cartService) {
 		this.cartService = cartService;
 	}
+	
+	@Autowired
+	private AccountService accountService;
 
 	@GetMapping(value="/carts")
-	public List<Carts> getAllCarts(){
+	public List<CartItems> getAllCarts(){
 		
 		return this.cartService.findAll();
 	}
 	
 	@GetMapping(value = "/carts/{id}")
-	public Carts getCart(@PathVariable Long id) {
+	public CartItems getCart(@PathVariable Long id) {
 		logger.info("Fetching with id {}", id);
 		boolean isCart = this.cartService.existsById(id);
 		if(!isCart) {
@@ -68,43 +74,47 @@ public class CartRest {
 	
 	@DeleteMapping(value="/accounts/{accountId}/carts")
 	public void removeCart(@PathVariable Long accountId) {
-		try {
+		Accounts acc = this.accountService.findById(accountId);
+		if(!acc.equals(null)) {
 			this.cartService.deleteAll(accountId);
 			logger.info("Deleted cart accountId {} successfully", accountId);
+			
 		}
-		catch(EntityNotFoundException ex) {
-			logger.error("Failed for deleting cart accountId {}", accountId);
-		}
+		logger.error("Failed for deleting cart accountId {}", accountId);
+	
 	}
 	
 	@PostMapping(value = "/carts")
-	public Carts createCart(@Valid @RequestBody Carts carts) {
-		Carts existsCart = this.cartService.findByAccountIdAndProductId(carts.getAccount().getId(), carts.getProduct().getId());
+	public ResponseEntity<CartItems> addItem(@Valid @RequestBody CartItems carts) {
+		CartItems existsCart = this.cartService.findByAccountIdAndProductId(carts.getAccount().getId(), carts.getProduct().getId());
 		if(!existsCart.equals(null)) {
 			
 			existsCart.setQuantity(carts.getQuantity()+existsCart.getQuantity());
-			//existsCart.setId(oldCart.getId());
+			
 			this.cartService.save(existsCart);
-			return this.cartService.findById(existsCart.getId());
+			return ResponseEntity.status(HttpStatus.OK).build();
+			//return this.cartService.findById(existsCart.getId());
 		}
 		else {
 			carts.setStatus(CartStatus.NOT_PURCHASED.toString());
 			this.cartService.save(carts);
-			return this.cartService.findById(carts.getId());
+			return ResponseEntity.status(HttpStatus.OK).build();
+			//return this.cartService.findById(carts.getId());
 		}
 
 	}
 	
 	@PutMapping(value="/carts/{id}")
-	public Carts updateCart(@PathVariable Long id,@Valid @RequestBody Carts carts) {
-		Carts existsCart = this.cartService.findById(id);
+	public ResponseEntity<CartItems> updateCart(@PathVariable Long id,@Valid @RequestBody CartItems carts) {
+		CartItems existsCart = this.cartService.findById(id);
 		if(!existsCart.equals(null)) {
 			
 			existsCart.setQuantity(carts.getQuantity());
 			existsCart.setId(id);
 			this.cartService.save(existsCart);
-			return this.cartService.findById(existsCart.getId());
+			return ResponseEntity.status(HttpStatus.OK).build();
+			//return this.cartService.findById(existsCart.getId());
 		}
-		else throw new EntityNotFoundException("The item doesn't exist");
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 	}
 }

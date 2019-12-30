@@ -23,8 +23,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import net.bytebuddy.dynamic.TypeResolutionStrategy.Lazy;
 
 @Entity
-@Table(name="carts")
-public class Carts {
+@Table(name="cart_items")
+public class CartItems {
 	
 	@Id
 	@Column(name="id")
@@ -87,17 +87,19 @@ public class Carts {
 		this.account = account;
 	}
 
-	public Carts() {
+	public CartItems() {
 		super();
 	}
 
-	public Carts(int quantity, String status, Product product, Accounts account) {
+	public CartItems(int quantity, String status, Product product, Accounts account) {
 		super();
 		this.quantity = quantity;
 		this.status = status;
 		this.product = product;
 		this.account = account;
 	}
+
+	
 
 
 }

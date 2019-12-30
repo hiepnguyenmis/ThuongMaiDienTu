@@ -2,16 +2,17 @@ package com.shopping4th.ecommerce.service;
 
 import java.util.List;
 
-import com.shopping4th.ecommerce.entity.Carts;
+import com.shopping4th.ecommerce.entity.CartItems;
+
 
 
 public interface CartService {
 	
-	public List<Carts> findAll();
+	public List<CartItems> findAll();
 	
-	public Carts findById(Long id);
+	public CartItems findById(Long id);
 	
-	public void save(Carts carts);
+	public void save(CartItems carts);
 	
 	public void deletedById(Long id);
 	
@@ -19,5 +20,6 @@ public interface CartService {
 	
 	public void deleteAll(Long accountId);
 	
-	public Carts findByAccountIdAndProductId(Long accountId, Long productId);
+	public CartItems findByAccountIdAndProductId(Long accountId, Long productId);
+	
 }
