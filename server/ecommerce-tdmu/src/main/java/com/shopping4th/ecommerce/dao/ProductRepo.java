@@ -16,5 +16,5 @@ public interface ProductRepo extends JpaRepository<Product, Long> {
 	public Page<Product> findByCategoryId(Long categoryId, Pageable pageable);
 	public Page<Product> findByCategoryIdAndPriceLessThanEqual(Long categoryId, String price, Pageable pageable);
 	public Page<Product> findByCategoryIdAndPriceBetween(Long categoryId, String minPrice, String maxPrice, Pageable pageable);
-
+	public Page<Product> findByCategoryIdAndNameContaining(Long categoryId, String keyword, Pageable pageable);
 }

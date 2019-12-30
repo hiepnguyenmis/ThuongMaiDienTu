@@ -2,6 +2,7 @@ package com.shopping4th.ecommerce.rest;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
@@ -31,6 +32,8 @@ import org.springframework.web.bind.annotation.RestController;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import com.shopping4th.ecommerce.entity.Product;
 import com.shopping4th.ecommerce.service.ProductService;
+
+import ch.qos.logback.core.net.SyslogOutputStream;
 
 @RestController
 @RequestMapping("/api")
@@ -101,8 +104,8 @@ public class ProductRest {
 	}
 	
 	//Search
-	@GetMapping(value="/product/search-by-range")
-	public List<Product> search(@RequestParam Long categoryId ,@RequestParam int type, Pageable pageable){
+	@GetMapping(value="/products/search-by-range")
+	public List<Product> searchByCategoryAndPrice(@RequestParam Long categoryId ,@RequestParam int type, Pageable pageable){
 		List<Product> searchList= null;
 		switch(type) {
 			case 1:{
@@ -121,6 +124,16 @@ public class ProductRest {
 		
 		}
 		return searchList;
+	}
+	
+	@GetMapping(value = "/products/search-by-name")
+	public ResponseEntity<List<Product>> searchByCategoryAndName(@RequestParam Long categoryId, @RequestParam String name, Pageable pageable){
+		List<Product> searchList = this.productService.findByCategoryIdAndNameContaining(categoryId, name, pageable);
+		if(searchList==null) {
+			
+			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(searchList);
 	}
 	
 }
