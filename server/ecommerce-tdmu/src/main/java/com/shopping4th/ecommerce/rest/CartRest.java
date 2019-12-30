@@ -17,9 +17,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.shopping4th.ecommerce.entity.CartDto;
-import com.shopping4th.ecommerce.entity.Carts;
+import com.shopping4th.ecommerce.entity.CartItems;
 import com.shopping4th.ecommerce.service.CartService;
 import com.shopping4th.ecommerce.utilities.CartStatus;
 
@@ -38,13 +36,13 @@ public class CartRest {
 	}
 
 	@GetMapping(value="/carts")
-	public List<Carts> getAllCarts(){
+	public List<CartItems> getAllCarts(){
 		
 		return this.cartService.findAll();
 	}
 	
 	@GetMapping(value = "/carts/{id}")
-	public Carts getCart(@PathVariable Long id) {
+	public CartItems getCart(@PathVariable Long id) {
 		logger.info("Fetching with id {}", id);
 		boolean isCart = this.cartService.existsById(id);
 		if(!isCart) {
@@ -78,8 +76,8 @@ public class CartRest {
 	}
 	
 	@PostMapping(value = "/carts")
-	public Carts createCart(@Valid @RequestBody Carts carts) {
-		Carts existsCart = this.cartService.findByAccountIdAndProductId(carts.getAccount().getId(), carts.getProduct().getId());
+	public CartItems createCart(@Valid @RequestBody CartItems carts) {
+		CartItems existsCart = this.cartService.findByAccountIdAndProductId(carts.getAccount().getId(), carts.getProduct().getId());
 		if(!existsCart.equals(null)) {
 			
 			existsCart.setQuantity(carts.getQuantity()+existsCart.getQuantity());
@@ -96,8 +94,8 @@ public class CartRest {
 	}
 	
 	@PutMapping(value="/carts/{id}")
-	public Carts updateCart(@PathVariable Long id,@Valid @RequestBody Carts carts) {
-		Carts existsCart = this.cartService.findById(id);
+	public CartItems updateCart(@PathVariable Long id,@Valid @RequestBody CartItems carts) {
+		CartItems existsCart = this.cartService.findById(id);
 		if(!existsCart.equals(null)) {
 			
 			existsCart.setQuantity(carts.getQuantity());

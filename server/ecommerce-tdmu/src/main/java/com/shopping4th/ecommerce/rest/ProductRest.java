@@ -32,6 +32,7 @@ import org.springframework.web.bind.annotation.RestController;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import com.shopping4th.ecommerce.entity.Product;
 import com.shopping4th.ecommerce.service.ProductService;
+import io.swagger.annotations.ApiResponse;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
 

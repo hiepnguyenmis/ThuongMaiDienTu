@@ -12,8 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.shopping4th.ecommerce.dao.CartRepo;
 import com.shopping4th.ecommerce.dao.ProductRepo;
 import com.shopping4th.ecommerce.entity.Accounts;
-import com.shopping4th.ecommerce.entity.CartDto;
-import com.shopping4th.ecommerce.entity.Carts;
+import com.shopping4th.ecommerce.entity.CartItems;
 import com.shopping4th.ecommerce.entity.Product;
 import com.shopping4th.ecommerce.utilities.CartStatus;
 
@@ -34,26 +33,11 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public List<Carts> findAll() {
-		//return this.cartRepo.findAll();
-		
+	public List<CartItems> findAll() {
 		return this.cartRepo.findByStatus(CartStatus.NOT_PURCHASED.toString());
 	}
 
-	@Override
-	public Carts findById(Long id) {
-		Optional<Carts> cart = this.cartRepo.findById(id);
-		if(!cart.isPresent()) {
-			throw new EntityNotFoundException("Not found cart with id: "+ id);
-		}
-		return cart.get();
-	}
 
-	@Override
-	public void save(Carts carts) {
-		
-		this.cartRepo.save(carts);
-	}
 
 	@Override
 	public void deletedById(Long id) {
@@ -75,8 +59,23 @@ public class CartServiceImpl implements CartService {
 		
 	}
 
+
 	@Override
-	public Carts findByAccountIdAndProductId(Long accountId, Long productId) {
+	public CartItems findById(Long id) {
+		Optional<CartItems> cart = this.cartRepo.findById(id);
+		if(!cart.isPresent()) {
+			throw new EntityNotFoundException("Not found cart with id: "+ id);
+		}
+		return cart.get();
+	}
+
+	@Override
+	public void save(CartItems carts) {
+		this.cartRepo.save(carts);
+	}
+
+	@Override
+	public CartItems findByAccountIdAndProductId(Long accountId, Long productId) {
 		return this.cartRepo.findByAccountIdAndProductId(accountId, productId);
 	}
 
