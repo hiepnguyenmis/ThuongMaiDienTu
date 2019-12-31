@@ -33,8 +33,8 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public List<CartItems> findAll() {
-		return this.cartRepo.findByStatus(CartStatus.NOT_PURCHASED.toString());
+	public List<CartItems> findCartByAccount(Long accountId) {
+		return this.cartRepo.findByAccountIdAndStatus(accountId, CartStatus.NOT_PURCHASED.toString());
 	}
 
 

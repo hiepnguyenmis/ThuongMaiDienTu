@@ -35,7 +35,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 public class Product{
 
 	
-
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name= "id")
@@ -57,6 +56,8 @@ public class Product{
 	@Column(name="cpu")
 	private String cpu;
 	
+	@Column(name="description")
+	private String description;
 	
 	@Column(name="ram")
 	private String ram;

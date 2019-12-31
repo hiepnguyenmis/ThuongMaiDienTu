@@ -12,7 +12,8 @@ import com.shopping4th.ecommerce.entity.CartItems;
 public interface CartRepo extends JpaRepository<CartItems, Long> {
 
 	public List<CartItems> findByStatus(String status);
-	public List<CartItems> findByAccountId(Long id);
+	public List<CartItems> findByAccountId(Long accountId);
+	public List<CartItems> findByAccountIdAndStatus(Long accountId, String status);
 	public boolean existsByAccountId(Long accountId);
 	public CartItems findByAccountIdAndProductId(Long accountId, Long productId);
 	public void deleteById(Long cartItemId);
