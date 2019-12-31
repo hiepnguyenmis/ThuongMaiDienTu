@@ -27,7 +27,7 @@
                 if (result == true) {
                     vm.loading = false;
                     $location.path('/home');
-                    $window.location.reload();
+                    //$window.location.reload();
                 }else if(result==false) { 
                     vm.error = 'Username or password is incorrect';
                     alert(a);
@@ -74,8 +74,7 @@
             }else{
                 $scope.errorConfirm='Mật khẩu không trùng khớp';
                 console.log($scope.errorConfirm);
-            }
-            
+            } 
         }
     }
 })();

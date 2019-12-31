@@ -16,29 +16,32 @@
     <div class="container">
         <div class="row single-product-area">
             <div class="col-lg-5 col-md-6">
-                <div class="container p-5" >
-                   <div class="container">
-                       <div class="row" >
-                            <img src="{{url_image}}" id="main_image_slider" alt="" style="width: 28em;
+                <div class="container p-5">
+                    <div class="container">
+                        <div class="row">
+                            <img src="data:{{defaultImage.fileType}};base64,{{defaultImage.path}}" id="main_image_slider" alt="" style="width: 28em;
                             height: 28em;">
-                       </div>
-                    <div class="container" id="container-product">
-                       <div class="row" id="row1">
-                           <div class="col-xs-3" ng-repeat= "item_img in image"  ng-click="change_image_slider(item_img.id,item_img.img)">
-                            <div class="cot1">
-                               <img src="{{item_img.img}}" width="80px" height="80px" class="img-thumbnail" alt="" >
                         </div>
-                           </div>
-                       </div>
-                   </div>
-                </div>
+                        <div class="container" id="container-product">
+                            <div class="row" id="row1">
+                                <div class="col-xs-3" ng-repeat="item_img in images"
+                                    ng-click="change_image_slider(item_img.id)">
+                                    <div class="cot1">
+                                        <img src="data:{{item_img.fileType}};base64,{{item_img.path}}" width="80px" height="80px" class="img-thumbnail"
+                                            alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="col-lg-7 col-md-6">
                 <div class="product-details-view-content sp-affiliate-content pt-60">
                     <div class="product-info">
-                        <h2>Laptop ASUS VivoBook 15 A512FA-EJ202T (15" FHD/i5-8265U/8GB/1TB HDD/UHD 620/Win10/1.7 kg)</h2>
+                        <h2>{{singleProducts.name}}
+                        </h2>
                         <span class="product-details-ref">Reference: demo_15</span>
                         <div class="rating-box pt-20">
                             <ul class="rating rating-with-review-item">
@@ -52,7 +55,7 @@
                             </ul>
                         </div>
                         <div class="price-box pt-20">
-                            <span class="new-price new-price-2">$57.98</span>
+                            <span class="new-price new-price-2">{{singleProducts.price}}</span>
                         </div>
                         <div class="product-desc">
                             <p>
@@ -82,7 +85,8 @@
             <div class="col-lg-12">
                 <div class="li-product-tab">
                     <ul class="nav li-product-menu">
-                        <li><a class="active" data-toggle="tab" href="#description" _target="self"><span>Đánh giá</span></a></li>
+                        <li><a class="active" data-toggle="tab" href="#description" _target="self"><span>Đánh
+                                    giá</span></a></li>
                         <li><a data-toggle="tab" href="#product-details" _target="self"><span>Thông Số</span></a></li>
                         <!-- <li><a data-toggle="tab" href="#reviews" _target="self"><span>Reviews</span></a></li> -->
                     </ul>
@@ -260,7 +264,8 @@
                                                     </ul>
                                                 </div>
                                             </div>
-                                            <h4><a class="product_name" href="single-product.html">Accusantium dolorem1</a>
+                                            <h4><a class="product_name" href="single-product.html">Accusantium
+                                                    dolorem1</a>
                                             </h4>
                                             <div class="price-box">
                                                 <span class="new-price">$46.80</span>
@@ -271,8 +276,9 @@
                                                 <li class="add-cart active"><a href="#">Thêm Vào Giỏ</a></li>
                                                 <li><a class="links-details" href="wishlist.html"><i
                                                             class="fa fa-heart-o"></i></a></li>
-                                                <li><a href="#" title="Xem Nhanh" class="quick-view-btn" data-toggle="modal"
-                                                        data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
+                                                <li><a href="#" title="Xem Nhanh" class="quick-view-btn"
+                                                        data-toggle="modal" data-target="#exampleModalCenter"><i
+                                                            class="fa fa-eye"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -318,8 +324,9 @@
                                                 <li class="add-cart active"><a href="#">Thêm Vào Giỏ</a></li>
                                                 <li><a class="links-details" href="wishlist.html"><i
                                                             class="fa fa-heart-o"></i></a></li>
-                                                <li><a href="#" title="Xem Nhanh" class="quick-view-btn" data-toggle="modal"
-                                                        data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
+                                                <li><a href="#" title="Xem Nhanh" class="quick-view-btn"
+                                                        data-toggle="modal" data-target="#exampleModalCenter"><i
+                                                            class="fa fa-eye"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -352,7 +359,8 @@
                                                     </ul>
                                                 </div>
                                             </div>
-                                            <h4><a class="product_name" href="single-product.html">Accusantium dolorem1</a>
+                                            <h4><a class="product_name" href="single-product.html">Accusantium
+                                                    dolorem1</a>
                                             </h4>
                                             <div class="price-box">
                                                 <span class="new-price">$46.80</span>
@@ -363,8 +371,9 @@
                                                 <li class="add-cart active"><a href="#">Thêm Vào Giỏ</a></li>
                                                 <li><a class="links-details" href="wishlist.html"><i
                                                             class="fa fa-heart-o"></i></a></li>
-                                                <li><a href="#" title="Xem Nhanh" class="quick-view-btn" data-toggle="modal"
-                                                        data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
+                                                <li><a href="#" title="Xem Nhanh" class="quick-view-btn"
+                                                        data-toggle="modal" data-target="#exampleModalCenter"><i
+                                                            class="fa fa-eye"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -397,7 +406,8 @@
                                                     </ul>
                                                 </div>
                                             </div>
-                                            <h4><a class="product_name" href="single-product.html">Accusantium dolorem1</a>
+                                            <h4><a class="product_name" href="single-product.html">Accusantium
+                                                    dolorem1</a>
                                             </h4>
                                             <div class="price-box">
                                                 <span class="new-price">$46.80</span>
@@ -408,8 +418,9 @@
                                                 <li class="add-cart active"><a href="#">Thêm Vào Giỏ</a></li>
                                                 <li><a class="links-details" href="wishlist.html"><i
                                                             class="fa fa-heart-o"></i></a></li>
-                                                <li><a href="#" title="Xem Nhanh" class="quick-view-btn" data-toggle="modal"
-                                                        data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
+                                                <li><a href="#" title="Xem Nhanh" class="quick-view-btn"
+                                                        data-toggle="modal" data-target="#exampleModalCenter"><i
+                                                            class="fa fa-eye"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
