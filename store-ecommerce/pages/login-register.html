@@ -15,23 +15,26 @@
                     <div class="row">
                         <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb-30">
                             <!-- Login Form s-->
-                            <form >
+                            <form name='login'>
                                 <div class="login-form">
                                     <h4 class="login-title">Đăng nhập</h4>
                                     <div class="row">
                                         <div class="col-md-12 col-12 mb-20" ng-class="{ 'has-error': form.$submitted && form.email.$invalid }">
                                             <label>Địa chỉ Email *</label>
-                                            <input class="mb-0" type="email" placeholder="Email Address" ng-model="vm.email" required  >
-                                            <div ng-messages="form.$submitted && form.email.$error" class="help-block">
+                                            <input class="mb-0" name='username' type="email" placeholder="Địa chỉ Email" ng-model="vm.email" required  >
+                                            <!-- <div ng-messages="form.$submitted && form.email.$error" class="help-block">
                                                 <div ng-message="required">Username is required</div>
-                                            </div>
+                                            </div> -->
+                                            <span ng-if='login.username.$error.required' class='text-success'>Trường này là bắt buộc</span>
+
                                         </div>
                                         <div class="col-12 mb-20" ng-class="{ 'has-error': form.$submitted && form.password.$invalid }">
                                             <label>Mật khẩu *</label>
-                                            <input class="mb-0" type="password" placeholder="Password" ng-model="vm.password" required >
-                                            <div ng-messages="form.$submitted && form.password.$error" class="help-block">
+                                            <input class="mb-0" name='password' type="password" placeholder="Mật Khẩu" ng-model="vm.password" required >
+                                            <!-- <div ng-messages="form.$submitted && form.password.$error" class="help-block">
                                                 <div ng-message="required">Password is required</div>
-                                            </div>
+                                            </div> -->
+                                            <span ng-if='login.password.$error.required' class='text-success'>Trường này là bắt buộc</span>
                                         </div>
                                         <div class="col-12">
                                                 <div class="g-recaptcha mb-3" data-sitekey="6LdMebwUAAAAALqgz2YUV1RJGUO4ZBoW8n-DKNjA"></div> 
@@ -78,33 +81,58 @@
                             </form>
                         </div>
                         <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
-                            <form >
+                            <form name='register'>
                                 <div class="login-form">
                                     <h4 class="login-title">Đăng ký</h4>
                                     <div class="row">
                                         <div class="col-md-6 col-12 mb-20">
                                             <label>Họ & tên lót</label>
-                                            <input class="mb-0" type="text" placeholder="First Name">
+                                            <input class="mb-0" type="text" name='last_name' ng-model='last_name' placeholder="Nguyễn Văn " required>
+                                            <span ng-if='register.last_name.$error.required' class='text-success'>Trường này là bắt buộc</span>
                                         </div>
                                         <div class="col-md-6 col-12 mb-20">
                                             <label>Tên</label>
-                                            <input class="mb-0" type="text" placeholder="Last Name">
+                                            <input class="mb-0" type="text" name='fist_name' ng-model='fist_name' placeholder="An" required>
+                                            <span ng-if='register.fist_name.$error.required' class='text-success'>Trường này là bắt buộc</span>
+
                                         </div>
                                         <div class="col-md-12 mb-20">
                                             <label>Địa chỉ email *</label>
-                                            <input class="mb-0" type="email" ng-model="email" placeholder="Email Address">
-                                            <label >{{error}}</label>
+                                            <input class="mb-0" type="email" name='email'  ng-model="email" placeholder="abc@gmail.com" required>
+                                            <span ng-if='register.email.$error.required' class='text-success'>Trường này là bắt buộc</span>
+                                        </div>
+                                        <div class="col-md-12 mb-20">
+                                            <label>Địa chỉ *</label>
+                                            <input class="mb-0" type="text" name='address'  ng-model="address" placeholder="Số 32, Đường Nguyễn Chí Thanh, Tp.Thủ Dầu Một, Bình Dương" required>
+                                            <span ng-if='register.address.$error.required' class='text-success'>Trường này là bắt buộc</span>
+
+                                        </div>
+                                        <div class="col-md-12 mb-20">
+                                            <label>Số điện thoại *</label>
+                                            <input class="mb-0" name='phone' type="text" ng-pattern='/^\d{10,}$/' ng-model="phone" placeholder="0986796745" required>
+                                            <span ng-show='register.phone.$error.pattern' class='text-danger'>Số điện thoại không đúng!</span>
+                                            <span ng-if='register.password.$error.required' class='text-success'>Trường này là bắt buộc</span>
+
                                         </div>
                                         <div class="col-md-6 mb-20">
                                             <label>Mật khẩu *</label>
-                                            <input class="mb-0" type="password" ng-model="password" placeholder="Password">
+                                            <input class="mb-0" type="password" name='password' ng-pattern='/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/' ng-model="password" placeholder="Mật khẩu" required>
+                                            <span ng-show='register.password.$error.pattern' class='text-danger'>Tối thiểu tám ký tự, ít nhất một chữ cái viết hoa, một chữ cái viết thường và một số</span>
+                                            <span ng-if='register.password.$error.required' class='text-success'>Trường này là bắt buộc</span>
                                         </div>
                                         <div class="col-md-6 mb-20">
                                             <label>Xác nhận mật khẩu *</label>
-                                            <input class="mb-0" type="password" placeholder="Confirm Password">
+                                            <input class="mb-0" type="password"  ng-model='confirmPass' placeholder="Nhập lại mật khẩu">
+                                            <span class="text-danger">{{errorConfirm}}</span>
                                         </div>
                                         <div class="col-12">
-                                                <div class="g-recaptcha mb-3" data-sitekey="6LdMebwUAAAAALqgz2YUV1RJGUO4ZBoW8n-DKNjA"></div> 
+                                            <div class="g-recaptcha mb-3" data-sitekey="6LdMebwUAAAAALqgz2YUV1RJGUO4ZBoW8n-DKNjA"></div> 
+                                        </div>
+                                        
+                                        <div class="col-12">
+                                            <div ng-if='errorEmail' class="alert alert-primary mt-1" role="alert">
+                                                <span class="text-danger">{{errorEmail}}</span>
+                                            </div> 
                                         </div>
                                         <div class="col-12">
                                             <button type="submit" ng-click="vm.signup()" class="register-button mt-0">Đăng ký</button>

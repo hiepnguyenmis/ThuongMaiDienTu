@@ -65,20 +65,30 @@ app.config(function($stateProvider, $urlRouterProvider){
 app.run(
   function run($rootScope, $http, $location, $localStorage) {
     // keep user logged in after page refresh
+    $rootScope.finish=false;
     if ($localStorage.currentUser) {
         $http.defaults.headers.common.Authorization = 'Bearer ' + $localStorage.currentUser.token;
     }
-
     // redirect to login page if not logged in and trying to access a restricted page
     $rootScope.$on('$locationChangeStart', function (event, next, current) {
         var publicPages = ['/login'];
         var restrictedPage = publicPages.indexOf($location.path()) === -1;
         if (restrictedPage && !$localStorage.currentUser) {
             $location.path('/login');
-           
         }
         
 
+    if($localStorage.currentUser!=null){
+      $rootScope.finish=true;
+      
+    }else{
+      $rootScope.finish=false;
+    }
+    $rootScope.Logout=function(){
+      delete $localStorage.currentUser;
+            $http.defaults.headers.common.Authorization = '';
+    }
+    console.log($rootScope.finish);
     });
-}
+  }
 );
