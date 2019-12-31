@@ -108,7 +108,7 @@ public class Product{
 
 
 	public Product(String productCode, String name, String price, int stock, String cpu, String ram,
-			String hardDisk, String screen, Categories category) {
+			String hardDisk, String screen, Categories category, String description) {
 		super();
 		this.productCode = productCode;
 		this.name = name;
@@ -120,6 +120,7 @@ public class Product{
 		this.hardDisk = hardDisk;
 		this.screen = screen;
 		this.category = category;
+		this.description=description;
 		
 	}
 
@@ -231,6 +232,16 @@ public class Product{
 		this.images = images;
 	}
 	
+	public String getDescription() {
+		return description;
+	}
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
 	public void add(Images imageList) {
 	        if (images == null) {
 	            images = new ArrayList<Images>();
