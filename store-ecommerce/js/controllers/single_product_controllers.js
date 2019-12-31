@@ -4,6 +4,7 @@
 		
 		this.$onInit = function () {
 			getdataSingleProducts();
+			$scope.getProduct();
 		}
 		$scope.images=[];
 		$scope.defaultImage={};
@@ -30,8 +31,8 @@
 			$http({
 				method:'GET',
 				url: baseUrl+'products'	
-			}).then({
-				
+			}).then(function mySucces(response){
+				$scope.products = response.data;
 			});
 		}
 	});
