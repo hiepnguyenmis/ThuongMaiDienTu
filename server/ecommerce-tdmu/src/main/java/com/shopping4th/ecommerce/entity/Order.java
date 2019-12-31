@@ -1,7 +1,9 @@
 package com.shopping4th.ecommerce.entity;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,12 +12,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="order")
+@Table(name="orders")
 public class Order {
 
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -28,10 +31,10 @@ public class Order {
 	private Accounts accounts;
 	
 	@Column(name="is_paid")
-	private boolean isPaid;
+	private String isPaid;
 	
 	@Column(name="order_status")
-	private boolean orderStatus;
+	private String orderStatus;
 	
 	@Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at", updatable = false)
@@ -55,6 +58,14 @@ public class Order {
 	
 	//voucher_id
 	
+	@OneToMany(
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL
+    )
+    
+    @JoinColumn(name = "product_id")
+    private List<OrderDetails> orderDetails;
+	
 	public Long getId() {
 		return id;
 	}
@@ -71,19 +82,19 @@ public class Order {
 		this.accounts = accounts;
 	}
 
-	public boolean isPaid() {
+	public String getIsPaid() {
 		return isPaid;
 	}
 
-	public void setPaid(boolean isPaid) {
+	public void setIsPaid(String isPaid) {
 		this.isPaid = isPaid;
 	}
 
-	public boolean isOrderStatus() {
+	public String getOrderStatus() {
 		return orderStatus;
 	}
 
-	public void setOrderStatus(boolean orderStatus) {
+	public void setOrderStatus(String orderStatus) {
 		this.orderStatus = orderStatus;
 	}
 
@@ -127,40 +138,29 @@ public class Order {
 		this.phone = phone;
 	}
 
+	public List<OrderDetails> getOrderDetails() {
+		return orderDetails;
+	}
+
+	public void setOrderDetails(List<OrderDetails> orderDetails) {
+		this.orderDetails = orderDetails;
+	}
+
 	public Order() {
 		super();
 	}
 
-	public Order(Long id, Accounts accounts, boolean isPaid, boolean orderStatus, Date createdAt, Date deliveriedDate,
-			String name, String address, String phone) {
-		super();
-		this.id = id;
-		this.accounts = accounts;
-		this.isPaid = isPaid;
-		this.orderStatus = orderStatus;
-		this.createdAt = createdAt;
-		this.deliveriedDate = deliveriedDate;
-		this.name = name;
-		this.address = address;
-		this.phone = phone;
-	}
-
-	public Order(Accounts accounts, boolean isPaid, boolean orderStatus, Date createdAt, Date deliveriedDate,
-			String name, String address, String phone) {
+	public Order(Accounts accounts, String isPaid, String orderStatus, Date deliveriedDate, String name, String address,
+			String phone, List<OrderDetails> orderDetails) {
 		super();
 		this.accounts = accounts;
 		this.isPaid = isPaid;
 		this.orderStatus = orderStatus;
-		this.createdAt = createdAt;
 		this.deliveriedDate = deliveriedDate;
 		this.name = name;
 		this.address = address;
 		this.phone = phone;
-	}
-
-	public Order(Date deliveriedDate) {
-		super();
-		this.deliveriedDate = deliveriedDate;
+		this.orderDetails = orderDetails;
 	}
 
 	

@@ -66,9 +66,7 @@ public class Product{
 	private String hardDisk;
 	
 	@Column(name="screen")
-	private String screen;
-	
-	
+	private String screen;	
 	
 	@Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at", updatable = false)
