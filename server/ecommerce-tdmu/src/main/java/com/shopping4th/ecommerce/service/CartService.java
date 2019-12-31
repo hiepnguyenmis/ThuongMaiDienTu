@@ -8,7 +8,7 @@ import com.shopping4th.ecommerce.entity.CartItems;
 
 public interface CartService {
 	
-	public List<CartItems> findAll();
+	public List<CartItems> findCartByAccount(Long accountId);
 	
 	public CartItems findById(Long id);
 	

@@ -21,10 +21,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.shopping4th.ecommerce.entity.Accounts;
+import com.shopping4th.ecommerce.entity.Cart;
 import com.shopping4th.ecommerce.entity.CartItems;
 import com.shopping4th.ecommerce.service.AccountService;
 import com.shopping4th.ecommerce.service.CartService;
 import com.shopping4th.ecommerce.utilities.CartStatus;
+
+import ch.qos.logback.core.net.SyslogOutputStream;
 
 @CrossOrigin
 @RestController
@@ -43,23 +46,19 @@ public class CartRest {
 	@Autowired
 	private AccountService accountService;
 
-	@GetMapping(value="/carts")
-	public List<CartItems> getAllCarts(){
-		
-		return this.cartService.findAll();
-	}
-	
-	@GetMapping(value = "/carts/{id}")
-	public CartItems getCart(@PathVariable Long id) {
-		logger.info("Fetching with id {}", id);
-		boolean isCart = this.cartService.existsById(id);
+
+	@GetMapping(value = "/accounts/{accountId}/carts")
+	public List<CartItems> getCartByAccount(@PathVariable Long accountId) {
+		logger.info("Fetching with cart for account id {}", accountId);
+		boolean isCart = this.accountService.existsById(accountId);
 		if(!isCart) {
-			logger.error("Cart with id {} not found.", id);
-			throw new RuntimeException("Cart "+ id + " is not found");
+			logger.error("Cart with id {} not found.", accountId);
+			throw new RuntimeException("Cart "+ accountId + " is not found");
 		}
 		
-		return cartService.findById(id);
+		return this.cartService.findCartByAccount(accountId);
 	}
+	
 	
 	@DeleteMapping(value="/carts/{id}")
 	public void removeCartItem(@PathVariable Long id) {
@@ -102,6 +101,23 @@ public class CartRest {
 			//return this.cartService.findById(carts.getId());
 		}
 
+	}
+	
+	@GetMapping("/accounts/{accountId}/subtotal")
+	public Cart GetSubTotal(@PathVariable Long accountId) {
+		Double subTotal=0.0;
+		List<CartItems> carts = this.cartService.findCartByAccount(accountId);
+		
+		if(!carts.equals(null)) {
+			for(CartItems item: carts) {
+				subTotal+=item.getQuantity()*Double.parseDouble(item.getProduct().getPrice());
+			}
+		}
+		Cart cart = new Cart();
+		cart.setItems(carts);
+		cart.setSubTotal();
+		
+		return cart;
 	}
 	
 	@PutMapping(value="/carts/{id}")
