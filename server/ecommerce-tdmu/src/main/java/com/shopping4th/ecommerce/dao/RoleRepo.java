@@ -1,5 +1,6 @@
 package com.shopping4th.ecommerce.dao;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,4 +12,5 @@ import com.shopping4th.ecommerce.entity.Role;
 public interface RoleRepo extends JpaRepository<Role, Long>{
 
 	public Set<Role> findByName(String name);
+	
 }
