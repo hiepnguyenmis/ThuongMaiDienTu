@@ -68,7 +68,7 @@
                         </div>
                         <div class="single-add-to-cart">
                             <form action="#" class="cart-quantity">
-                                <button class="add-to-cart" type="submit">Thêm Vào Giỏ Hàng</button>
+                                <button class="add-to-cart" type="submit" ng-click="AddToCart()">Thêm Vào Giỏ Hàng</button>
                             </form>
                         </div>
                     </div>
@@ -273,7 +273,7 @@
                                         </div>
                                         <div class="add-actions">
                                             <ul class="add-actions-link">
-                                                <li class="add-cart active"><a href="#">Thêm Vào Giỏ</a></li>
+                                                <li class="add-cart active"><a href="#" _target='self' ng-click="AddToCart()">Thêm Vào Giỏ</a></li>
                                                 <li><a class="links-details" href="wishlist.html"><i
                                                             class="fa fa-heart-o"></i></a></li>
                                                 <li><a href="#" title="Xem Nhanh" class="quick-view-btn"

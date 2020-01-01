@@ -74,28 +74,13 @@ app.run(
     if ($localStorage.currentUser != null) {
       var baseUrl = 'http://localhost:8080/api/';
       $rootScope.finish = true;
-      $rootScope.mgLogout = "Đăng xuất";
-      // $rootScope.getdataAccounts=function(){
-      //   $http({
-      //       method: "GET",
-      //       url:baseUrl+'accounts'
-      //   }).then(function mySuccess(response){
 
-      //       $scope.accounts=response.data;
-
-      //   });
-
-      //   angular.forEach(accounts,function(value,key){
-      //     console.log(value);
-      //     console.log('a');
-
-      //   });
-      //}
 
     } else {
       $rootScope.finish = false;
-      // $rootScope.mgLogout = "Đăng nhập";
+      
     }
+
 
     console.log($localStorage.currentUser);
     console.log($rootScope.finish);
