@@ -102,6 +102,13 @@ public class CartItems {
 		this.account = account;
 	}
 
+	public CartItems(Product product) {
+		super();
+		this.product = product;
+	}
+	
+	
+
 	
 
 

@@ -24,6 +24,10 @@ public class RoleRest {
 		this.roleService = roleService;
 	}
 
+	@GetMapping("/all")
+	public List<Role> getAll(){
+		return this.roleService.findAll();
+	}
 	@GetMapping
 	public Set<Role> getAllByName(@RequestParam String name){
 		return this.roleService.findByName(name);

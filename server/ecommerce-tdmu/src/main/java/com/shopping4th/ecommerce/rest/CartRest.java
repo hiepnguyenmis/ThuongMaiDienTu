@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.shopping4th.ecommerce.entity.Accounts;
 import com.shopping4th.ecommerce.entity.Cart;
 import com.shopping4th.ecommerce.entity.CartItems;
+import com.shopping4th.ecommerce.entity.Product;
 import com.shopping4th.ecommerce.service.AccountService;
 import com.shopping4th.ecommerce.service.CartService;
 import com.shopping4th.ecommerce.utilities.CartStatus;
@@ -36,12 +37,12 @@ public class CartRest {
 
 	public static final Logger logger = LoggerFactory.getLogger(CartRest.class);
 	
-
-	private CartService cartService;
 	@Autowired
-	public CartRest(CartService cartService) {
-		this.cartService = cartService;
-	}
+	private CartService cartService;
+	
+//	public CartRest(CartService cartService) {
+//		this.cartService = cartService;
+//	}
 	
 	@Autowired
 	private AccountService accountService;
@@ -83,24 +84,50 @@ public class CartRest {
 	
 	}
 	
-	@PostMapping(value = "/carts")
-	public ResponseEntity<CartItems> addItem(@Valid @RequestBody CartItems carts) {
-		CartItems existsCart = this.cartService.findByAccountIdAndProductId(carts.getAccount().getId(), carts.getProduct().getId());
-		if(!existsCart.equals(null)) {
-			
-			existsCart.setQuantity(carts.getQuantity()+existsCart.getQuantity());
-			
+//	@PostMapping(value = "/carts")
+//	public ResponseEntity<CartItems> addItem(@Valid @RequestBody CartItems carts) {
+//		CartItems existsCart = this.cartService.findByAccountIdAndProductId(carts.getAccount().getId(), carts.getProduct().getId());
+//		if(!existsCart.equals(null)) {
+//			
+//			existsCart.setQuantity(carts.getQuantity()+existsCart.getQuantity());
+//			
+//			this.cartService.save(existsCart);
+//			return ResponseEntity.status(HttpStatus.OK).build();
+//			//return this.cartService.findById(existsCart.getId());
+//		}
+//		else {
+//			carts.setStatus(CartStatus.NOT_PURCHASED.toString());
+//			this.cartService.save(carts);
+//			return ResponseEntity.status(HttpStatus.OK).build();
+//			//return this.cartService.findById(carts.getId());
+//		}
+//
+//	}
+	
+	@PostMapping(value="/accounts/{accountId}/carts")
+	public ResponseEntity<CartItems> addToCart(@Valid @RequestBody CartItems item, @PathVariable Long accountId){
+		Accounts acc = this.accountService.findById(accountId);
+		Product p = item.getProduct();
+		boolean isItem = this.cartService.existsByAccountIdAndProductIdAndStatus(accountId, p.getId(), CartStatus.NOT_PURCHASED.toString());
+		//CartItems existsCart = this.cartService.findByAccountIdAndProductId(accountId, p.getId());
+		if(isItem) {
+			CartItems existsCart = this.cartService.findByAccountIdAndProductIdAndStatus(accountId, p.getId(), CartStatus.NOT_PURCHASED.toString());
+			int quantity = existsCart.getQuantity()+1;
+			existsCart.setQuantity(quantity);
+			//existsCart.setAccount(acc);
 			this.cartService.save(existsCart);
 			return ResponseEntity.status(HttpStatus.OK).build();
 			//return this.cartService.findById(existsCart.getId());
 		}
 		else {
-			carts.setStatus(CartStatus.NOT_PURCHASED.toString());
-			this.cartService.save(carts);
+			item.setStatus(CartStatus.NOT_PURCHASED.toString());
+			item.setAccount(acc);
+			item.setProduct(p);
+			item.setQuantity(1);
+			this.cartService.save(item);
 			return ResponseEntity.status(HttpStatus.OK).build();
-			//return this.cartService.findById(carts.getId());
+			//return this.cartService.findById(item.getId());
 		}
-
 	}
 	
 	@GetMapping("/accounts/{accountId}/subtotal")
