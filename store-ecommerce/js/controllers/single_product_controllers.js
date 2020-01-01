@@ -48,33 +48,22 @@
 				
 			  })
 		}
-
-		
 		$scope.AddToCart=function(){
 			console.log('add cart');
+			
 			
 			if($localStorage.currentUser==null){
 			  $location.path('/login');
 			}else{
-			//   $http({
-			// 	method:'GET',
-			// 	url: baseUrl+'products'+idproduct	
-			//   }).then(function mySucces(response){
-			// 	$rootScope.products = response.data;
-			//   });
-	  
-			  
-			  var data={
-				account:$scope.user,
-				product:$scope.singleProducts,
-				quantity:1
-			  }
-			  console.log(data);
-			  
-			  $http.post(baseUrl+'carts', data).then(function mySucces(res){
+				let data ={
+					product:$scope.singleProducts
+				}
+			  $http.post(baseUrl+'accounts/'+$scope.user.id+'/carts', data)
+			  .then(function mySucces(res){
 				console.log('thêm ok');
-				
-			  })
+			  },(err)=>{
+				console.log('that bai');
+			  });
 	  
 			}
 		  }
