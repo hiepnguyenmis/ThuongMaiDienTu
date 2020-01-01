@@ -75,8 +75,13 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public CartItems findByAccountIdAndProductId(Long accountId, Long productId) {
-		return this.cartRepo.findByAccountIdAndProductId(accountId, productId);
+	public CartItems findByAccountIdAndProductIdAndStatus(Long accountId, Long productId, String status) {
+		return this.cartRepo.findByAccountIdAndProductIdAndStatus(accountId, productId, status);
+	}
+
+	@Override
+	public boolean existsByAccountIdAndProductIdAndStatus(Long accountId, Long productId, String status) {
+		return this.cartRepo.existsByAccountIdAndProductIdAndStatus(accountId, productId, status);
 	}
 
 	

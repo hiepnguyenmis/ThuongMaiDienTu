@@ -18,8 +18,10 @@ public interface CartService {
 	
 	public boolean existsById(Long id);
 	
+	public boolean existsByAccountIdAndProductIdAndStatus(Long accountId, Long productId, String status);
+	
 	public void deleteAll(Long accountId);
 	
-	public CartItems findByAccountIdAndProductId(Long accountId, Long productId);
+	public CartItems findByAccountIdAndProductIdAndStatus(Long accountId, Long productId, String status);
 	
 }
