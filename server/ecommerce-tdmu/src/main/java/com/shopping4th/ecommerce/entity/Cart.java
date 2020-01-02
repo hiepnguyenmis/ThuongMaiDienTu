@@ -31,11 +31,11 @@ public class Cart {
 	private String calculateSubTotal(List<CartItems> items) {
 		for(CartItems item: items) {
 			subTotal+=item.getQuantity()*Integer.valueOf(item.getProduct().getPrice());
+			
 		}
 		
 		String total= String.valueOf(subTotal);
-	
-		System.out.println("giá tiền"+subTotal);
+
 		return total;
 	}
 

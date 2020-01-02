@@ -63,7 +63,7 @@ public class Order {
             cascade = CascadeType.ALL
     )
     
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "order_id")
     private List<OrderDetails> orderDetails;
 	
 	public Long getId() {

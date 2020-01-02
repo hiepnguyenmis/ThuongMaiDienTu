@@ -1,6 +1,6 @@
 package com.shopping4th.ecommerce.entity;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,8 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,11 +23,9 @@ public class OrderDetails {
 	@Column(name="id")
 	private Long id;
 	
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-    @JoinTable(name = "order_items", joinColumns = {
-            @JoinColumn(name = "order_details_id") }, inverseJoinColumns = {
-            @JoinColumn(name = "product_id") })
-    private Set<Product> products;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "product_id")
+    private Product products;
 	
 	@Column(name="unit_price")
 	private float unitPrice;
@@ -43,11 +41,11 @@ public class OrderDetails {
 		this.id = id;
 	}
 
-	public Set<Product> getProducts() {
+	public Product getProducts() {
 		return products;
 	}
 
-	public void setProducts(Set<Product> products) {
+	public void setProducts(Product products) {
 		this.products = products;
 	}
 
@@ -71,14 +69,7 @@ public class OrderDetails {
 		super();
 	}
 
-	public OrderDetails(Set<Product> products, float unitPrice, int quantity) {
-		super();
-		this.products = products;
-		this.unitPrice = unitPrice;
-		this.quantity = quantity;
-	}
-
-	public OrderDetails(Long id, Set<Product> products, float unitPrice, int quantity) {
+	public OrderDetails(Long id, Product products, float unitPrice, int quantity) {
 		super();
 		this.id = id;
 		this.products = products;
@@ -86,5 +77,14 @@ public class OrderDetails {
 		this.quantity = quantity;
 	}
 
+	public OrderDetails(Product products, float unitPrice, int quantity) {
+		super();
+		this.products = products;
+		this.unitPrice = unitPrice;
+		this.quantity = quantity;
+	}
+
+	
+	
 	
 }

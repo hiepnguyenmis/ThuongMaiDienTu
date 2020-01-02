@@ -48,17 +48,17 @@ public class CartRest {
 	private AccountService accountService;
 
 
-	@GetMapping(value = "/accounts/{accountId}/carts")
-	public List<CartItems> getCartByAccount(@PathVariable Long accountId) {
-		logger.info("Fetching with cart for account id {}", accountId);
-		boolean isCart = this.accountService.existsById(accountId);
-		if(!isCart) {
-			logger.error("Cart with id {} not found.", accountId);
-			throw new RuntimeException("Cart "+ accountId + " is not found");
-		}
-		
-		return this.cartService.findCartByAccount(accountId);
-	}
+//	@GetMapping(value = "/accounts/{accountId}/carts")
+//	public List<CartItems> getCartByAccount(@PathVariable Long accountId) {
+//		logger.info("Fetching with cart for account id {}", accountId);
+//		boolean isCart = this.accountService.existsById(accountId);
+//		if(!isCart) {
+//			logger.error("Cart with id {} not found.", accountId);
+//			throw new RuntimeException("Cart "+ accountId + " is not found");
+//		}
+//		
+//		return this.cartService.findCartByAccount(accountId);
+//	}
 	
 	
 	@DeleteMapping(value="/carts/{id}")
@@ -130,7 +130,8 @@ public class CartRest {
 		}
 	}
 	
-	@GetMapping("/accounts/{accountId}/subtotal")
+	
+	@GetMapping("/accounts/{accountId}/carts")
 	public Cart GetSubTotal(@PathVariable Long accountId) {
 		Double subTotal=0.0;
 		List<CartItems> carts = this.cartService.findCartByAccount(accountId);
