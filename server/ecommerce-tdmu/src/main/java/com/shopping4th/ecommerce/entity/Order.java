@@ -52,6 +52,9 @@ public class Order {
 	
 	@Column(name="phone")
 	private String phone;
+	
+	@Column(name="notes")
+	private String notes;
 
 //	@Column(name="discount_rate")
 //	private int discountRate;
@@ -146,12 +149,20 @@ public class Order {
 		this.orderDetails = orderDetails;
 	}
 
+	public String getNotes() {
+		return notes;
+	}
+
+	public void setNotes(String notes) {
+		this.notes = notes;
+	}
+
 	public Order() {
 		super();
 	}
 
 	public Order(Accounts accounts, String isPaid, String orderStatus, Date deliveriedDate, String name, String address,
-			String phone, List<OrderDetails> orderDetails) {
+			String phone, List<OrderDetails> orderDetails, String notes) {
 		super();
 		this.accounts = accounts;
 		this.isPaid = isPaid;
@@ -161,6 +172,7 @@ public class Order {
 		this.address = address;
 		this.phone = phone;
 		this.orderDetails = orderDetails;
+		this.notes=notes;
 	}
 
 	

@@ -1,8 +1,9 @@
 package com.shopping4th.ecommerce.service;
 
-import org.springframework.stereotype.Service;
+import com.shopping4th.ecommerce.entity.Order;
+
 
 
 public interface OrderService {
-
+	public void save(Order order);
 }

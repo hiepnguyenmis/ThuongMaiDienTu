@@ -161,12 +161,12 @@
                                         <div class="minicart">
                                             <ul class="minicart-product-list">
                                                 <li ng-repeat="item in carts.items">
-                                                    <a href="#!single-product/{{item.product.id}}" class="minicart-product-image">
+                                                    <a href="#!single-product/{{product.id}}" class="minicart-product-image">
                                                        
                                                         <img src="data:{{item.product.images[0].fileType}};base64,{{item.product.images[0].path}}"  alt="cart products">
                                                     </a>
                                                     <div class="minicart-product-details">
-                                                        <h6><a href="#!single-product/{{item.product.id}}">{{item.product.name}}</a></h6>
+                                                        <h6><a href="single-product.html">{{item.product.name}}</a></h6>
                                                         <span>{{item.product.price}} x {{item.quantity}}</span>
                                                     </div>
                                                     <button class="close" ng-click="removeitem(item.id)" title="Remove">
