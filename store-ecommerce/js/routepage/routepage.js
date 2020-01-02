@@ -32,11 +32,14 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     })
     .state('shopping-cart', {
       url: '/shopping-cart',
-      templateUrl: 'pages/shopping-cart.html'
+      templateUrl: 'pages/shopping-cart.html',
+      controller: 'CartController'
     })
     .state('checkout', {
-      url: '/checkout',
-      templateUrl: 'pages/checkout.html'
+      url: '/checkout:',
+      templateUrl: 'pages/checkout.html',
+      controller: 'CartController'
+
     })
 
     .state('search', {
@@ -74,30 +77,40 @@ app.run(
     console.log($rootScope.finish);
 
     if ($localStorage.currentUser != null) {
-     
-      $rootScope.mgLogout=true;
+
+      $rootScope.mgLogout = true;
       var baseUrl = 'http://localhost:8080/api/';
       $rootScope.finish = true;
-   
+
+      $http({
+        method: 'GET',
+        url: baseUrl + 'users?email=' + $localStorage.currentUser.email
+      }).then(function mySucces(response) {
+        console.log('hello');
+        $rootScope.user = response.data;
+        console.log('user info' + response.data);
         $http({
-          method:'GET',
-          url: baseUrl+'users?email='+ $localStorage.currentUser.email
-          }).then(function mySucces(response){
-            console.log('hello');
-          $rootScope.user = response.data;
-          console.log('user info'+response.data);
-          $http({
-            method: "GET",
-            url: baseUrl+'accounts/'+$rootScope.user.id+'/carts'
-          }).then(function mySuccess(response) {
-            
-            $rootScope.carts = response.data;
-            $rootScope.amountOfProducts=$rootScope.carts.items.length;
-            
-            
-          });
-          })
-      
+          method: "GET",
+          url: baseUrl + 'accounts/' + $rootScope.user.id + '/carts'
+        }).then(function mySuccess(response) {
+
+          $rootScope.carts = response.data;
+          $rootScope.amountOfProducts = $rootScope.carts.items.length;
+        });
+      })
+      $rootScope.removeitem = function (id) {
+        console.log(id);
+        $http.delete(baseUrl + "carts/" + id).then(function mySucces(res) {
+          console.log("Thanhc cong");
+          // $rootScope.carts = res.data;
+          let i = $rootScope.carts.items.find(e => e.id == id);
+          $rootScope.carts.items.pop(i);
+          $rootScope.amountOfProducts = $rootScope.carts.items.length;
+
+        })
+
+      }
+
     } else {
       $rootScope.finish = false;
 
