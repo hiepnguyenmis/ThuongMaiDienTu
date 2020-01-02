@@ -32,8 +32,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     })
     .state('shopping-cart', {
       url: '/shopping-cart',
-      templateUrl: 'pages/shopping-cart.html',
-      controller: 'CartController'
+      templateUrl: 'pages/shopping-cart.html'
     })
     .state('checkout', {
       url: '/checkout',

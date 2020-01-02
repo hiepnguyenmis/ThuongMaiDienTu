@@ -7,5 +7,5 @@ import com.shopping4th.ecommerce.entity.Order;
 
 @Repository
 public interface OrderRepo extends JpaRepository<Order, Long> {
-
+	
 }
