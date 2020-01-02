@@ -11,7 +11,9 @@
         $scope.image2 = [];
         $scope.image3 = [];
         $scope.image4 = [];
-       
+        $scope.description='';
+        
+
         this.$onInit = function(){
             $scope.loading= true;
            

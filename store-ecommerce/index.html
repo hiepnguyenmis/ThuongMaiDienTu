@@ -159,7 +159,7 @@
                                         <div class="hm-minicart-trigger">
                                             <span class="item-icon"></span>
                                             <span class="item-text">£80.00
-                                                <span class="cart-item-count">2</span>
+                                                <span class="cart-item-count">{{countProduct}}</span>
                                             </span>
                                         </div>
                                         <span></span>
@@ -192,7 +192,7 @@
                                             </ul>
                                             <p class="minicart-total">SUBTOTAL: <span>£80.00</span></p>
                                             <div class="minicart-button">
-                                                <a href="shopping-cart.html"
+                                                <a href="#!shopping-cart"
                                                     class="li-button li-button-fullwidth li-button-dark">
                                                     <span>Xem Giỏ Hàng</span>
                                                 </a>
@@ -660,6 +660,7 @@
     <script src="node_modules/ngstorage/ngStorage.js"></script>
     <script src="js/main.js"></script>
     <script src="js/controllers/homeControllers.js"></script>
+    <script src="js/controllers/CartControllers.js"></script>
 
     <!-- Subiz -->
 

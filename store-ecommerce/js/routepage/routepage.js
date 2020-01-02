@@ -64,24 +64,53 @@ app.run(
       $rootScope.mgLogout = "Đăng nhập";
     }
 
-    this.$onInit = function () {
-      $rootScope.getdataAccounts();
+    // this.$onInit = function () {
+    //   $rootScope.getdataAccounts();
+    //   getAccount();
+    //   countProduct();
+    // }
 
-    }
 
     console.log($rootScope.finish);
 
     if ($localStorage.currentUser != null) {
+     
       var baseUrl = 'http://localhost:8080/api/';
       $rootScope.finish = true;
-
-
+      getAccount=function(){
+        $http({
+          method:'GET',
+          url: baseUrl+'users?email='+ $localStorage.currentUser.email
+          }).then(function mySucces(response){
+          $scope.user = response.data;
+          console.log('user info'response.data);
+          $http({
+            method: "GET",
+            url: baseUrl+'accounts/'+$rootScope.user.id+'/carts'
+          }).then(function mySuccess(response) {
+            
+            $rootScope.carts = response.data;
+            $rootScope.productinCart=$rootScope.carts.length;
+            console.log('length'+$rootScope.productinCart);
+          });
+          })
+      }
+      
+      // countProduct=function(){
+      //   $http({
+      //     method: "GET",
+      //     url: baseUrl+'accounts/'+$rootScope.user.id+'/carts'
+      //   }).then(function mySuccess(response) {
+          
+      //     $rootScope.carts = response.data;
+      //     $rootScope.productinCart=$rootScope.carts.length;
+      //     console.log('length'+$rootScope.productinCart);
+      //   });
+      // }
     } else {
       $rootScope.finish = false;
-      
+
     }
-
-
     console.log($localStorage.currentUser);
     console.log($rootScope.finish);
   }

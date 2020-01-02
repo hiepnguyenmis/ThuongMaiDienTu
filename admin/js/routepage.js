@@ -1,4 +1,4 @@
-var app = angular.module("myApp", ['ui.router','ckeditor', 'chart.js',"ngStorage",'ngFileUpload', 'naif.base64']);
+var app = angular.module("myApp", ['ui.router','ckeditor', 'chart.js',"ngStorage",'ngFileUpload', 'naif.base64', 'ui.tinymce']);
 app.config(function($stateProvider, $urlRouterProvider){
   $urlRouterProvider.otherwise('/');
     $stateProvider
