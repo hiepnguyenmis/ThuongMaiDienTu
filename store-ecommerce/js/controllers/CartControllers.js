@@ -19,6 +19,31 @@
             })
         }
 
+        $scope.increaseQ= function(item, id){
+           
+            console.log(id);
+            
+            item.quantity++;
+            updateCart(item, id);
+        }
+
+        $scope.decreaseQ = function(item, id){
+            item.quantity--;
+            updateCart(item, id);
+        }
+        
+        updateCart= function(item, id){
+            let data={
+                
+                    quantity: item.quantity
+             
+            }
+            console.log(item.quantity);
+            
+            $http.put(baseUrl+'carts/'+id,data ).then(function mySuccess(res){
+                getCart();                
+            })
+        }
         getCart = function () {
             console.log($scope.user.id);
             
@@ -27,13 +52,15 @@
                 url: baseUrl + 'accounts/' + $scope.user.id + '/carts'
             }).then(function mySuccess(response) {
                 $scope.carts = response.data;
+               console.log($scope.carts);
+               $scope.subTotal=$scope.carts.subTotal;
+               
+                
             });
-            // $http.get(baseUrl+'accounts/'+169+'/carts')
-			//   .then(function mySucces(res){
-			// 	console.log('thêm ok');
-			//   },(err)=>{
-			// 	console.log('that bai');
-			//   });
+        }
+
+        ConfirmOrder= function(){
+
         }
     });
 }(angular.module('myApp')));
