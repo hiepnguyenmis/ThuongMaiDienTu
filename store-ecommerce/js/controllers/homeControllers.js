@@ -4,6 +4,8 @@
         
         this.$onInit=function(){
             getdataProducts();
+            getdataTopSale();
+            getdataNewProducts();
         }
        getdataProducts=function(){
             $http({
@@ -13,6 +15,25 @@
                 $scope.products=response.data;
                 console.log( $scope.products);
                 
+            });
+        }
+        getdataNewProducts=function(){
+            $http({
+                method: "GET",
+                url:baseUrl+'products'
+            }).then(function mySuccess(response){
+                $scope.newproducts=response.data;
+                console.log( $scope.products);
+                
+            });
+        }
+        getdataTopSale=function(){
+            $http({
+                method: "GET",
+                url:baseUrl+'products'
+            }).then(function mySuccess(response){
+                $scope.topsale=response.data;
+                console.log( $scope.products);
             });
         }
     });

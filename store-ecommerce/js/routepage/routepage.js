@@ -60,7 +60,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     .state('listproduct', {
       url: '/listproduct/:id',
       templateUrl: 'pages/listproduct.html'
-
     });
 
 });
