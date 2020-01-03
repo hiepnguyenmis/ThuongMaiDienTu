@@ -21,10 +21,7 @@
             })
         }
         
-        doCheckout=function(){
-            console.log($scope.name);
-            
-        }
+        do
  
         $scope.increaseQ= function(item, id){
            

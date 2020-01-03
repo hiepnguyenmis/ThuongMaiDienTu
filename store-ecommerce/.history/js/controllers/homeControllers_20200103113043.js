@@ -20,7 +20,7 @@
         getdataNewProducts=function(){
             $http({
                 method: "GET",
-                url:baseUrl+'products/newest'
+                url:baseUrl+'products/m'
             }).then(function mySuccess(response){
                 $scope.newproducts=response.data;
                 console.log( $scope.products);
