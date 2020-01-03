@@ -57,7 +57,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       templateUrl: 'pages/newsdetail.html',
 
     })
-    .state('listproduct', {
+    .state('products-by-category', {
       url: '/products-by-category/:id',
       templateUrl: 'pages/listproduct.html',
       controller: 'ListProductController'

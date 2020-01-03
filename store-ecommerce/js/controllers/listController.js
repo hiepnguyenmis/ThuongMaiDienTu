@@ -1,8 +1,7 @@
 (function(module){
     module.controller('ListProductController', function($scope,$http, $stateParams){
         var baseUrl = 'http://localhost:8080/api/';
-     
-        
+
         this.$onInit=function(){
             getResult();
            
@@ -23,8 +22,8 @@
                     if($scope.result.length==0){
                         $scope.eror=false;
                     }
-                })
+                });
             }
-
+        }
     });
 }(angular.module('myApp')));
