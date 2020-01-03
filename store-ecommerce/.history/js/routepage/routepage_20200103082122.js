@@ -77,6 +77,8 @@ app.run(
 
     console.log($rootScope.finish);
 
+    $rootScope.toSearchPage(idCategory, key)
+
     if ($localStorage.currentUser != null) {
 
       $rootScope.mgLogout = true;

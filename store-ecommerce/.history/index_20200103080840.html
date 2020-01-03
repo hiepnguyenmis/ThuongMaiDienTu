@@ -123,17 +123,16 @@
                         </div>
                         <!-- Header Logo Area End Here -->
                         <!-- Begin Header Middle Right Area -->
-                    
+                        <p ng-rep></p>
                         <div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15">
-                          
                             <!-- Begin Header Middle Searchbox Area -->
-                            <form class="hm-searchbox">
-                                <select class="select-search-category" ng-model="idCategory">
+                            <form  class="hm-searchbox">
+                                <select class="nice-select select-search-category" ng-model="idCategory">
                                    
                                     <option ng-repeat="c in listCategories" value="{{c.id}}">{{c.name}}</option>
                                 </select>
                                 <input type="text" placeholder="Bạn muốn tìm gì ?" ng-model='key'>
-                                <button class="li-btn"><a  ng-href="#!search?id={{idCategory}}&key={{key}}" ><i class="fa fa-search"></i ></a></button>
+                                <button class="li-btn"><a  ng-href="#!search?id=61&key={{key}}" ><i class="fa fa-search"></i ></a></button>
                             </form>
                             <!-- Header Middle Searchbox Area End Here -->
                             <!-- Begin Header Middle Right Area -->

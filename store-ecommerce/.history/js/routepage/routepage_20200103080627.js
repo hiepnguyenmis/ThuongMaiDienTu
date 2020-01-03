@@ -90,14 +90,7 @@ app.run(
         console.log('hello');
         $rootScope.user = response.data;
         console.log('user info' + response.data);
-        $http({
-          method: "GET",
-          url: baseUrl + 'accounts/' + $rootScope.user.id + '/carts'
-        }).then(function mySuccess(response) {
-
-          $rootScope.carts = response.data;
-          $rootScope.amountOfProducts = $rootScope.carts.items.length;
-        });
+       
       })
       $rootScope.removeitem = function (id) {
         console.log(id);

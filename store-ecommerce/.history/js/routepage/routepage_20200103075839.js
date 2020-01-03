@@ -117,12 +117,7 @@ app.run(
         console.log(response);
         
           $rootScope.categories = response.data;
-          $rootScope.listCategories = [];
-          $rootScope.categories.forEach((item)=>{
-            $rootScope.listCategories.push(item);
-          })
-          console.log($rootScope.categories[0].name);
-          
+          //console.log($rootScope.categories);
        
       });
       

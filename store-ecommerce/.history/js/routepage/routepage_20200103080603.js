@@ -97,6 +97,21 @@ app.run(
 
           $rootScope.carts = response.data;
           $rootScope.amountOfProducts = $rootScope.carts.items.length;
+          $http({
+            method: "GET",
+            url: baseUrl + "categories"
+          }).then(function mySuccess(response) {
+            console.log(response);
+            
+              $rootScope.categories = response.data;
+              $rootScope.listCategories = [];
+              $rootScope.categories.forEach((item)=>{
+                $rootScope.listCategories.push(item);
+              })
+              console.log($rootScope.categories[0].name);
+              
+           
+          });
         });
       })
       $rootScope.removeitem = function (id) {
@@ -110,21 +125,7 @@ app.run(
         })
       }
 
-      $http({
-        method: "GET",
-        url: baseUrl + "categories"
-      }).then(function mySuccess(response) {
-        console.log(response);
-        
-          $rootScope.categories = response.data;
-          $rootScope.listCategories = [];
-          $rootScope.categories.forEach((item)=>{
-            $rootScope.listCategories.push(item);
-          })
-          console.log($rootScope.categories[0].name);
-          
-       
-      });
+      
       
     } else {
       $rootScope.finish = false;
