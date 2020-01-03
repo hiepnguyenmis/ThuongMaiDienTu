@@ -57,7 +57,8 @@ app.config(function($stateProvider, $urlRouterProvider){
   })
   .state('orders',{
     url:'/orders',
-    templateUrl:'pages/orders.html'
+    templateUrl:'pages/orders.html',
+    controller:'OrderController'
   })
 
 });

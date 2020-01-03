@@ -17,8 +17,6 @@
 
       });
     }
-
-
     getdataNewProducts = function () {
       $http({
         method: "GET",
