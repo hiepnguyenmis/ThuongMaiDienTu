@@ -22,7 +22,6 @@
         }
         
         doCheckout=function(){
-            console.log($scope.name);
             
         }
  

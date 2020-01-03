@@ -17,10 +17,12 @@
 
       });
     }
+
+
     getdataNewProducts = function () {
       $http({
         method: "GET",
-        url: baseUrl + 'products'
+        url: baseUrl + 'products/newest'
       }).then(function mySuccess(response) {
         $scope.newproducts = response.data;
         console.log($scope.products);

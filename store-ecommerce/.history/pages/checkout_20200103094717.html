@@ -39,10 +39,9 @@
                         <h3>Chi tiết hóa đơn</h3>
                         <div class="row">
                             
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="checkout-form-list">
-                                    <label>Họ và tên<span class="required"></span></label>
-                                    <input placeholder="Tên của bạn" name="buyer" type="text" ng-model="buyer">
+                                    <label>Họ&Tên: <span >Nguyen Van A</span></label>
                                     
                                 </div>
                             </div>
@@ -51,27 +50,38 @@
                             <div class="col-md-12">
                                 <div class="checkout-form-list">
                                     <label>Địa chỉ<span class="required"></span></label>
-                                    <textarea name="address" id="" cols="10" rows="5" ng-model="address" placeholder="Số nhà, phường, huyện/quận, tỉnh/thành"></textarea>
+                                    <input placeholder="Số 245" type="text">
                                 </div>
                             </div>
-                            
+                            <div class="col-md-12">
+                                <label>Đường<span class="required"></span></label>
+                                <div class="checkout-form-list">
+                                    <input placeholder="Nguyễn Chí Thanh" type="text">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="checkout-form-list">
+                                    <label>Huyện/Thành phố<span class="required"></span></label>
+                                    <input type="text">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="checkout-form-list">
+                                    <label>Tỉnh/Thành Phố<span class="required"></span></label>
+                                    <input placeholder="" type="text">
+                                </div>
+                            </div>
                             
                             <div class="col-md-6">
                                 <div class="checkout-form-list">
                                     <label>Địa chỉ email<span class="required"></span></label>
-                                    <input placeholder="" type="email" name="email" ng-model="email">
+                                    <input placeholder="" type="email">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="checkout-form-list">
                                     <label>Số điện thoại<span class="required"></span></label>
-                                    <input type="text" ng-model="phone" name="phone">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="checkout-form-list">
-                                    <label>Ghi chú khác<span class="required"></span></label>
-                                    <textarea name="notes" cols="10" rows="5" ng-model="notes"></textarea>
+                                    <input type="text">
                                 </div>
                             </div>
                             
@@ -164,7 +174,7 @@
                                 </div>
                             </div>
                             <div class="order-button-payment">
-                                <input value="Đặt hàng" type="submit" ng-click="doCheckout()">
+                                <input value="Đặt hàng" type="submit">
                             </div>
                         </div>
                     </div>
