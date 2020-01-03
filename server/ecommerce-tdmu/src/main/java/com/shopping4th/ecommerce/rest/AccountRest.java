@@ -63,22 +63,22 @@ public class AccountRest {
 		return this.accountService.findALl();
 	}
 	
-	@PostMapping("/login")
-	public String login(@RequestBody @Valid Accounts accounts) {
-		
-	
-		if(!accountService.existsByEmail(accounts.getEmail())) {
-			return "Not found user with this email!";
-		}
-		
-		Accounts loginAccount = this.accountService.findByEmail(accounts.getEmail());
-		if(loginAccount.getEmail().equals(accounts.getEmail()) && checkHashPasswd(accounts.getPassword(), loginAccount.getPassword())) {
-			return "Login succesfully with email " + loginAccount.getEmail();
-		}
-		
-		return "Login falied!";
-		
-	}
+//	@PostMapping("/login")
+//	public String login(@RequestBody @Valid Accounts accounts) {
+//		
+//	
+//		if(!accountService.existsByEmail(accounts.getEmail())) {
+//			return "Not found user with this email!";
+//		}
+//		
+//		Accounts loginAccount = this.accountService.findByEmail(accounts.getEmail());
+//		if(loginAccount.getEmail().equals(accounts.getEmail()) && checkHashPasswd(accounts.getPassword(), loginAccount.getPassword())) {
+//			return "Login succesfully with email " + loginAccount.getEmail();
+//		}
+//		
+//		return "Login falied!";
+//		
+//	}
 	
 	
 	@PostMapping("/signup")

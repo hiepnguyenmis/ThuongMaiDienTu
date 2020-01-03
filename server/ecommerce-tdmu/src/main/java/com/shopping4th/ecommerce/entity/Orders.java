@@ -17,9 +17,11 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 @Entity
 @Table(name="orders")
-public class Order {
+public class Orders {
 
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Id
@@ -37,6 +39,7 @@ public class Order {
 	private String orderStatus;
 	
 	@Temporal(TemporalType.TIMESTAMP)
+	@CreationTimestamp
     @Column(name = "created_at", updatable = false)
     private Date createdAt;
 	
@@ -157,11 +160,11 @@ public class Order {
 		this.notes = notes;
 	}
 
-	public Order() {
+	public Orders() {
 		super();
 	}
 
-	public Order(Accounts accounts, String isPaid, String orderStatus, Date deliveriedDate, String name, String address,
+	public Orders(Accounts accounts, String isPaid, String orderStatus, Date deliveriedDate, String name, String address,
 			String phone, List<OrderDetails> orderDetails, String notes) {
 		super();
 		this.accounts = accounts;

@@ -44,19 +44,11 @@ public class ProductRest {
 	@Autowired
 	private ProductService productService;
 	
-//	@Autowired
-//	public ProductRest(ProductService productService) {
-//		this.productService = productService;
-//	}
-
-	@Autowired private EntityLinks links;
 	
 	@GetMapping("/products")
 	public List<Product> getAllProduct(Pageable pageable){
 		return this.productService.findAll(pageable);
 	}
-	
-	
 
 	//@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/products/{id}")
