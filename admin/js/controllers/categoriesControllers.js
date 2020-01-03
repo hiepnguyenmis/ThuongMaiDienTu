@@ -14,8 +14,6 @@
   
                 $scope.categories=response.data;
                 $scope.loading=false;
-              
-                
             });
         }
         $scope.createCategory = function(){

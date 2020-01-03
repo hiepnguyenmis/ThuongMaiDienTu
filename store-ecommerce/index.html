@@ -125,22 +125,12 @@
                         <!-- Begin Header Middle Right Area -->
                         <div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15">
                             <!-- Begin Header Middle Searchbox Area -->
-                            <form action="#" class="hm-searchbox">
-                                <select class="nice-select select-search-category">
-                                    <option value="0">Tất cả</option>
-                                    <option value="0">Macbook</option>
-                                    <option value="10">Dell</option>
-                                    <option value="17">Assus</option>
-                                    <option value="20">HP</option>
-                                    <option value="21">MSI</option>
-                                    <option value="22">Acer</option>
-                                    <option value="23">LG</option>
-                                    <option value="24">Xiaomi</option>
-                                    <option value="25">Huawei</option>
-                                    <option value="26">Lenovo</option>
+                            <form  class="hm-searchbox">
+                                <select class="nice-select select-search-category" ng-model="idCategory">
+                                    <option ng-repeat='category in listCategory' value="{{category.id}}">{{category.name}}</option>
                                 </select>
-                                <input type="text" placeholder="Bạn muốn tìm gì ?">
-                                <button class="li-btn" type="submit"><i class="fa fa-search"></i></button>
+                                <input type="text" placeholder="Bạn muốn tìm gì ?" ng-model='key'>
+                                <button class="li-btn"><a  ng-href="#!search?id=61&key={{key}}" ><i class="fa fa-search"></i ></a></button>
                             </form>
                             <!-- Header Middle Searchbox Area End Here -->
                             <!-- Begin Header Middle Right Area -->
@@ -646,22 +636,21 @@
     <script src="js/main.js"></script>
     <script src="js/controllers/homeControllers.js"></script>
     <script src="js/controllers/CartControllers.js"></script>
+    <script src="js/controllers/searchController.js"></script>
 
     <!-- Subiz -->
-
-
-    <script>
-        (function (s, u, b, i, z) {
-            u[i] = u[i] || function () {
-                u[i].t = +new Date();
-                (u[i].q = u[i].q || []).push(arguments);
-            };
-            z = s.createElement('script');
-            var zz = s.getElementsByTagName('script')[0];
-            z.async = 1; z.src = b; z.id = 'subiz-script';
-            zz.parentNode.insertBefore(z, zz);
-        })(document, window, 'https://widgetv4.subiz.com/static/js/app.js', 'subiz');
-        subiz('setAccount', 'acqmpqdfszzflcfxuomo');
+<script>
+    (function(s, u, b, i, z){
+      u[i]=u[i]||function(){
+        u[i].t=+new Date();
+        (u[i].q=u[i].q||[]).push(arguments);
+      };
+      z=s.createElement('script');
+      var zz=s.getElementsByTagName('script')[0];
+      z.async=1; z.src=b; z.id='subiz-script';
+      zz.parentNode.insertBefore(z,zz);
+    })(document, window, 'https://widgetv4.subiz.com/static/js/app.js', 'subiz');
+    subiz('setAccount', 'acqnycsdgbirvfwvejit');
     </script>
     <!-- End Subiz -->
 

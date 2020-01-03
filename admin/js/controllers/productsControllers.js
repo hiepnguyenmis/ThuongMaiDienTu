@@ -42,8 +42,6 @@
         $scope.getCategoryById= function(id){
             $http.get(baseUrl+'categories/'+id).then(function success(res){
                 $scope.category = res.data;
-              
-                
             })
         }
 
@@ -78,7 +76,7 @@
                 productCode:$scope.productCode,
                 name:$scope.Name,
                 price: $scope.Price,
-           
+                description:$scope.description,
                 stock: $scope.Stock,
                 cpu:$scope.cpu,
                 ram: $scope.ram,
