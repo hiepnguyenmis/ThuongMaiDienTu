@@ -3,6 +3,7 @@ package com.shopping4th.ecommerce.rest;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.Order;
 import javax.validation.Valid;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -60,5 +62,16 @@ public class OrderRest {
 		order.setCreatedAt(new Date());
 		orderService.save(order);
 		return orderService.findById(order.getId());
+	}
+	
+	@PutMapping(value="/orders/{id}")
+	public Orders updateProduct(@PathVariable Long id, @RequestBody Orders order) {
+		if(!orderService.existsById(id)) {
+			throw new EntityNotFoundException("Order "+ id + " is not found");
+		}
+		
+		order.setId(id);
+		orderService.save(order);
+		return this.orderService.findById(id);
 	}
 }
