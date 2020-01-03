@@ -21,6 +21,8 @@ public interface ProductService {
 	public boolean existsById(Long id);
 	
 	public List<Product> findAll(Pageable pageable);
+	
+	public List<Product> findAllByOrderByCreatedAtDesc(Pageable pageable);
 		
 	public List<Product> findByCategoryId(Long categoryId, Pageable pageable);
 	

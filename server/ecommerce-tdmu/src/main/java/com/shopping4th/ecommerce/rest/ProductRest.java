@@ -49,6 +49,11 @@ public class ProductRest {
 	public List<Product> getAllProduct(Pageable pageable){
 		return this.productService.findAll(pageable);
 	}
+	
+	@GetMapping("/products/newest")
+	public List<Product> getAllProductNewest(Pageable pageable){
+		return this.productService.findAllByOrderByCreatedAtDesc(pageable);
+	}
 
 	//@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/products/{id}")

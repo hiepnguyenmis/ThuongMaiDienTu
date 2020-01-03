@@ -90,6 +90,12 @@ public class ProductServiceImpl implements ProductService {
 		Page<Product> resultProducts = this.productRepo.findByCategoryIdAndNameContaining(categoryId, keyword, pageable);
 		return resultProducts.getContent();
 	}
+
+	@Override
+	public List<Product> findAllByOrderByCreatedAtDesc(Pageable pageable) {
+		Page<Product> products=this.productRepo.findAllByOrderByCreatedAtDesc(pageable);
+		return products.getContent();
+	}
 	
 	
 
