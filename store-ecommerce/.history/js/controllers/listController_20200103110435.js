@@ -14,12 +14,10 @@
         getdataProducts = function () {
 			$http({
 				method: "GET",
-				url: baseUrl + 'categories/'+$stateParams.id+'/products'
+				url: baseUrl + 'products/' + $stateParams.id
 			}).then(function mySuccess(response) {
 				$scope.productsByCategory = response.data;
-                $scope.error=false;
-                console.log($scope.productsByCategory);
-                
+				$scope.eror=false;
 				//$scope.images = $scope.singleProducts.images;
 				//scope.defaultImage = $scope.images[0];
 			});

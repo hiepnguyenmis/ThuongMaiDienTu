@@ -17,7 +17,7 @@
 				url: baseUrl + 'categories/'+$stateParams.id+'/products'
 			}).then(function mySuccess(response) {
 				$scope.productsByCategory = response.data;
-                $scope.error=false;
+                $scope.eror=false;
                 console.log($scope.productsByCategory);
                 
 				//$scope.images = $scope.singleProducts.images;
