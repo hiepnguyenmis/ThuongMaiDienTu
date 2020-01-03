@@ -59,9 +59,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     })
     .state('listproduct', {
       url: '/products-by-category/:id',
-      templateUrl: 'pages/listproduct.html',
-      controller: 'ListProductController'
+      templateUrl: 'pages/listproduct.html'
 
+    })
+    .otherwise('/not-found', {
+      url: '/page-not-found',
+      
     });
 
 });

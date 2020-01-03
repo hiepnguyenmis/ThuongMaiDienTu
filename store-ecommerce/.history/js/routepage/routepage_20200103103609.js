@@ -62,7 +62,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       templateUrl: 'pages/listproduct.html',
       controller: 'ListProductController'
 
-    });
+    })
+    ;
 
 });
 

@@ -58,9 +58,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
     })
     .state('listproduct', {
-      url: '/products-by-category/:id',
-      templateUrl: 'pages/listproduct.html',
-      controller: 'ListProductController'
+      url: '/listproduct/:id',
+      templateUrl: 'pages/listproduct.html'
 
     });
 

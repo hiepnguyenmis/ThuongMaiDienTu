@@ -54,6 +54,7 @@
 						  $rootScope.carts = response.data;
 						  $rootScope.amountOfProducts=$rootScope.carts.items.length;
 						});
+					  
 					},(err)=>{
 					  console.log('that bai');
 					});

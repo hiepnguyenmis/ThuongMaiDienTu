@@ -1,7 +1,7 @@
 (function(module){
     module.controller('ListProductController', function($scope,$http, $stateParams){
         var baseUrl = 'http://localhost:8080/api/';
-     
+        console.log('list sp');
         
         this.$onInit=function(){
             getResult();
