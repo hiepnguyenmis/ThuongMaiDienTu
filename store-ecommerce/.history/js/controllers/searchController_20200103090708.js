@@ -47,9 +47,9 @@
 				$http.get(baseUrl+'products/'+id).then(function mySucces(res){
 					console.log(res.data);
 					let p ={
-						product: res.data
+						product
 					}
-					$http.post(baseUrl+'accounts/'+$scope.user.id+'/carts', p)
+					$http.post(baseUrl+'accounts/'+$scope.user.id+'/carts', res.data)
 					.then(function mySucces(res){
 					  console.log('thêm ok');
 					  

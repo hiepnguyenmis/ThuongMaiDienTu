@@ -45,32 +45,28 @@
 			  $location.path('/login');
 			}else{
 				$http.get(baseUrl+'products/'+id).then(function mySucces(res){
-					console.log(res.data);
-					let p ={
-						product: res.data
-					}
-					$http.post(baseUrl+'accounts/'+$scope.user.id+'/carts', p)
-					.then(function mySucces(res){
-					  console.log('thêm ok');
-					  
-					  //$rootScope.amountOfProducts=$rootScope.carts.items.length+1
-					  $http({
-						  method: "GET",
-						  url: baseUrl+'accounts/'+$rootScope.user.id+'/carts'
-						}).then(function mySuccess(response) {
-						  
-						  $rootScope.carts = response.data;
-						  $rootScope.amountOfProducts=$rootScope.carts.items.length;
-						});
-					  
-					},(err)=>{
-					  console.log('that bai');
-					});
+			
 				})
 				
 				
 				
-		
+			  $http.post(baseUrl+'accounts/'+$scope.user.id+'/carts', data)
+			  .then(function mySucces(res){
+				console.log('thêm ok');
+				
+				//$rootScope.amountOfProducts=$rootScope.carts.items.length+1
+				$http({
+					method: "GET",
+					url: baseUrl+'accounts/'+$rootScope.user.id+'/carts'
+				  }).then(function mySuccess(response) {
+					
+					$rootScope.carts = response.data;
+					$rootScope.amountOfProducts=$rootScope.carts.items.length;
+				  });
+				
+			  },(err)=>{
+				console.log('that bai');
+			  });
 	  
 			}
 		  }
