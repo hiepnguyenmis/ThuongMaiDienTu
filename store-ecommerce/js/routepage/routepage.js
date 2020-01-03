@@ -54,8 +54,15 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     })
     .state('newsdetail', {
       url: '/newsdetail',
-      templateUrl: 'pages/newsdetail.html'
+      templateUrl: 'pages/newsdetail.html',
+
+    })
+    .state('listproduct', {
+      url: '/listproduct/:id',
+      templateUrl: 'pages/listproduct.html'
+
     });
+
 });
 
 app.run(

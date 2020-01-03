@@ -32,15 +32,10 @@
 			  }).then(function mySucces(response){
 				$scope.user = response.data;
 				console.log(response.data);
-			
-				
 			  })
         }
-       
 		$scope.AddToCart=function(id){
 		
-			
-			
 			if($localStorage.currentUser==null){
 			  $location.path('/login');
 			}else{
@@ -67,11 +62,6 @@
 					  console.log('that bai');
 					});
 				})
-				
-				
-				
-		
-	  
 			}
 		  }
     });
