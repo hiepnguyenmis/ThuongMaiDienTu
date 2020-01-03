@@ -43,8 +43,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     })
 
     .state('search', {
-      url: '/search',
-      templateUrl: 'pages/search-engine.html'
+      url: '/search?id&key',
+      templateUrl: 'pages/search-engine.html',
+      controller: 'SearchController'
     })
 
     .state('news', {
@@ -101,20 +102,28 @@ app.run(
       $rootScope.removeitem = function (id) {
         console.log(id);
         $http.delete(baseUrl + "carts/" + id).then(function mySucces(res) {
-          console.log("Thanhc cong");
+          console.log("Thanh cong");
           // $rootScope.carts = res.data;
           let i = $rootScope.carts.items.find(e => e.id == id);
           $rootScope.carts.items.pop(i);
           $rootScope.amountOfProducts = $rootScope.carts.items.length;
-
         })
-
       }
 
+      $http({
+        method: "GET",
+        url: baseUrl + "categories"
+      }).then(function mySuccess(response) {
+    
+          $rootScope.categories = response.data;
+          console.log($rootScope.categories);
+        $rootScope.listCategory=$rootScope.categories;
+      });
+      
     } else {
       $rootScope.finish = false;
-
     }
+    
     console.log($localStorage.currentUser);
     console.log($rootScope.finish);
   }
