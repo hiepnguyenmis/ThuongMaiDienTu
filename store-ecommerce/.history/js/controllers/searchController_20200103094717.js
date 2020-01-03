@@ -20,6 +20,9 @@
                         $scope.eror=false;
                     }
                 })
+            }else{
+                alert('Chưa nhập từ khóa tìm kiếm');
+                
             }
         }
         getAccount=function(){

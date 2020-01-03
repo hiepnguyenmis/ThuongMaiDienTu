@@ -1,11 +1,9 @@
 (function(module){
     module.controller('ListProductController', function($scope,$http, $stateParams){
         var baseUrl = 'http://localhost:8080/api/';
-     
-        
         this.$onInit=function(){
             getResult();
-           
+            console.log('lis product');
             
         }
         
@@ -24,7 +22,11 @@
                         $scope.eror=false;
                     }
                 })
+            }else{
+                alert('Chưa nhập từ khóa tìm kiếm');
+                
             }
+        }
 
     });
 }(angular.module('myApp')));
